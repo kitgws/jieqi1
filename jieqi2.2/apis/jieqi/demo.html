@@ -1,0 +1,63 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+	<title>杰奇共享接口测试</title>
+</head>
+<body>
+	<form name="frmlogin" method="post" action="" target="_blank">
+		<fieldset>
+			<legend>杰奇共享接口测试</legend>
+			<div>
+				<label>客户ID：</label>
+				<input type="text" name="apiid" size="50" value="" />
+			</div>
+			<div>
+				<label>接口密钥：</label>
+				<input type="text" name="apikey" size="50" value="" />
+			</div>
+			<div>
+				<label>请求网址：</label>
+				<input type="text" id="apiurl" name="apiurl" size="50" value="" /> 不填写最后文件名，如： http://www.jieqi.com/apis/jieqi
+			</div>
+			<div>
+				<label>接口类型：</label>
+				<input type="radio" name="act" value="articlelist" checked="checked"  />小说列表
+				<input type="radio" name="act" value="infolist"  />信息列表
+				<input type="radio" name="act" value="articlecount"  />小说数量
+				<input type="radio" name="act" value="articleinfo" />小说信息
+				<input type="radio" name="act" value="articlechapter" />章节目录
+				<input type="radio" name="act" value="chaptercontent" />章节内容
+			</div>
+			<div>
+				<label>更新时间：</label>
+				<input type="text" name="uptime" size="50" value="" /> 如：201411060803000
+			</div>
+			<div>
+				<label>更新截止：</label>
+				<input type="text" name="endtime" size="50" value="" /> 如：201411070803000
+			</div>
+			<div>
+				<label>小说ID：</label>
+				<input type="text" name="aid" size="50" value="" />
+			</div>
+			<div>
+				<label>章节ID：</label>
+				<input type="text" name="cid" size="50" value="" />
+			</div>
+			<div>
+			<input type="submit" name="submit" value=" 提 交 " />
+			</div>
+		</fieldset>
+	</form>
+	错误代码	描述：<br />
+1	请求参数错误<br />
+2	sign签名验证错误<br />
+3	内容不允许共享<br />
+5	内容格式错误<br />
+99	其它错误<br />
+<script type="text/javascript">
+var url = window.location.href;
+document.getElementById('apiurl').value = url.replace(/\/\w+\.\w+$/ig, '');
+</script>
+</body>
+</html>
