@@ -1,0 +1,58 @@
+<div style="width:100%;padding:20px 0px;text-align:center;">
+
+<div class="jieqiNote" style="margin:15px auto;">使用会员中心<span class="hot"><strong>{?$api_nickname?}</strong></span><br />首次使用请填写你的昵称，方便下次自动登陆</div>
+
+<div id="tab1" style="margin:auto; width:60%; padding:20px;">
+     <div class="tablist">
+         <ul>
+         </ul>
+     </div>
+     <div class="tabcontent">
+         <div class="tabvalue">
+
+<form name="frmbindnew" id="frmbindnew" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+<table class="grid" width="100%" align="center">
+<caption></caption>
+<tr>
+  <td class="tdl" width="25%">昵称<span class="hot">(必填)</span></td>
+  <td class="tdr" width="75%"><input type="text" class="text" name="username" size="25" style="width:160px" value="{?$api_nickname?}" onBlur="Ajax.Update('{?$check_url?}?item=u&username='+this.value, {outid:'usermsg', tipid:'usermsg', onLoading:'<img border=\'0\' height=\'16\' width=\'16\' src=\'{?$jieqi_url?}/images/loading.gif\' /> Loading...'});" /> <span id="usermsg"></span>
+  <br /><span style="line-height:150%;color:gray;">用于本站登录及显示的用户名</span>
+  </td>
+</tr>
+<tr>
+  <td class="tdl">Email<span class="hot">(必填)</span></td>
+  <td class="tdr"><input type="text" class="text" name="email" size="25" style="width:160px" value="" onBlur="Ajax.Update('{?$check_url?}?item=m&email='+this.value, {outid:'mailmsg', tipid:'mailmsg', onLoading:'<img border=\'0\' height=\'16\' width=\'16\' src=\'{?$jieqi_url?}/images/loading.gif\' /> Loading...'});" /> <span id="mailmsg"></span></td>
+</tr>
+<tr>
+
+<tr>
+  <td class="tdl">&nbsp;<input type="hidden" name="act" value="bindnew" /></td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="确认绑定" /> <a href="{?$jieqi_url?}/"></a></td>
+</tr>
+</table>
+</form>
+         </div>
+         <div class="tabvalue" style="display:none">
+
+<form name="frmbindold" id="frmbindold" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+<table class="grid" width="100%" align="center">
+<caption>{?$apititle?}登录成功，跟本站已有账号绑定</caption>
+<tr>
+  <td class="tdl" width="25%">用户名</td>
+  <td class="tdr" width="75%"><input type="text" class="text" size="20" style="width:120px" name="username" onKeyPress="javascript: if (event.keyCode == 32 || event.which == 32) return false;">
+  </td>
+</tr>
+<tr>
+  <td class="tdl">密　码</td>
+  <td class="tdr"><input type="password" class="text" size="20" style="width:120px" name="password"></td>
+</tr>
+<tr>
+  <td class="tdl">&nbsp;<input type="hidden" name="act" value="bindold" /></td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="确认" /> <a href="{?$jieqi_url?}/"></a></td>
+</tr>
+</table>
+</form>
+         </div>
+     </div>
+</div>
+</div>

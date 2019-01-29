@@ -1,0 +1,91 @@
+
+<div style="width:100%;padding:20px 0px;text-align:center;min-height:360px">
+
+<div class="jieqiNote" style="margin:15px auto;display:none">来自QQ的<span class="hot"><strong>{?$api_nickname?}</strong></span>，你好：<br />使用本站会员功能，你可以选择新建账号或者使用已有的账号与QQ登录进行绑定！</div>
+<div id="tab1" style="margin:auto; width:60%; padding:20px;">
+     <div class="tablist" style="display:none">
+         <ul>
+             <li><a href="javascript:void(0)" onclick="selecttab(this)" class="selected">完善账号信息</a></li>
+             <li><a href="javascript:void(0)" onclick="selecttab(this)">已有账号？绑定我的账号</a></li>
+         </ul>
+     </div>
+     <div class="tabcontent">
+         <div class="tabvalue">
+
+<form name="frmbindnew" id="frmbindnew" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+<table class="grid" width="100%" align="center" style="height:200px">
+<caption style="  height: 2.5em;
+  line-height: 2.5em;
+  background: #F9F8F7;
+  border-left: 1px solid #F9F8F7;
+  border-right: 1px solid #F9F8F7;
+  border-top: 1px solid #F9F8F7;
+  font-weight: bold;
+  _font-size: 18px;
+  color: #D00D54;
+  text-align: left;
+  padding-left: 10px;">{?$apititle?}登录成功，是否绑定本站</caption>
+<tr  style="display:none">
+  <!--<td class="tdl" width="25%">用户名<span class="hot">(必填)</span></td>-->
+  <td class="tdr" width="75%"><input type="text" class="text" name="username" size="25" style="width:160px" value="{?$api_nickname?}" onBlur="Ajax.Update('{?$check_url?}?item=u&username='+this.value, {outid:'usermsg', tipid:'usermsg', onLoading:'<img border=\'0\' height=\'16\' width=\'16\' src=\'{?$jieqi_url?}/images/loading.gif\' /> Loading...'});" /> <span id="usermsg"></span>
+  <br /><span style="line-height:150%;color:gray;">用于本站登录及显示的用户名</span>
+  </td>
+</tr>
+<tr style="display:none">
+  <!--<td class="tdl">Email<span class="hot">(必填)</span></td>-->
+  <td class="tdr"><input id="email" type="text" class="text" name="email" size="25" style="width:160px" value="@yanqing.com" onBlur="Ajax.Update('{?$check_url?}?item=m&email='+this.value, {outid:'mailmsg', tipid:'mailmsg', onLoading:'<img border=\'0\' height=\'16\' width=\'16\' src=\'{?$jieqi_url?}/images/loading.gif\' /> Loading...'});" /> <span id="mailmsg"></span></td>
+</tr>
+<tr  style="display:none">
+  <!--<td class="tdl">本站密码</td>-->
+  <td class="tdr"><input type="password" class="text" name="password" size="25" style="width:160px" value="" /> <span id="passmsg"></span>
+  <br /><span style="line-height:150%;color:gray;">直接用本站用户名登录时候设置的密码，如果仅用{?$apititle?}登录，可不设。</span>
+  </td>
+</tr>
+<tr  style="display:none">
+  <!--<td class="tdl">确认密码</td>-->
+  <td class="tdr"><input type="password" class="text" name="repassword" size="25" style="width:160px" value="" /> <span id="repassmsg"></span>
+  <br /><span style="line-height:150%;color:gray;">重复输入以上密码。</span>
+  </td>
+</tr>
+
+<tr>
+  <input type="hidden" name="act" value="bindnew" />
+  <td style="display:block;text-align:center;padding:50px 0;" class="tdr" align="center"><input style="padding:10px 30px;background:#d00d54;border:none;color:#fff;border-radius: 5px;" type="submit" class="button" name="submit" value="确定"/></td>
+</tr>
+</table>
+
+</form>
+         </div>
+         <div class="tabvalue" style="display:none">
+
+<form name="frmbindold" id="frmbindold" action="{?$jieqi_user_url?}/api/{?$apiname?}/bind.php?do=submit" method="post">
+<table class="grid" width="100%" align="center">
+<caption>{?$apititle?}登录成功，跟本站已有账号绑定</caption>
+<tr>
+  <td class="tdl" width="25%">用户名</td>
+  <td class="tdr" width="75%"><input type="text" class="text" size="20" style="width:120px" name="username" onKeyPress="javascript: if (event.keyCode == 32 || event.which == 32) return false;">
+  </td>
+</tr>
+<tr>
+  <td class="tdl">密　码</td>
+  <td class="tdr"><input type="password" class="text" size="20" style="width:120px" name="password"></td>
+</tr>
+<tr>
+  <td class="tdl">&nbsp;<input type="hidden" name="act" value="bindold" /></td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="确认绑定" /> <a href="{?$jieqi_url?}/">以后再说，立即去看书！</a></td>
+</tr>
+</table>
+</form>
+         </div>
+     </div>
+</div>
+</div>
+<script type="text/javascript">
+
+  var str="{?$qq_user_info['figureurl']?}"
+	var sstr=str.substring(38)
+	var email = document.getElementById('email');
+	email.setAttribute('value',sstr.substring(3,20)+"@yanqing.com");
+	
+
+</script> 
