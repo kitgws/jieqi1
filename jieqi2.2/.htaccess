@@ -1,0 +1,45 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+#如果是一个物理存在的文件，禁止重写
+RewriteCond %{REQUEST_FILENAME} !-f
+#上面2条不识别REQUEST_FILENAME时的替代写法
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-d
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^templates/(.*).html$ /404.php
+RewriteRule ^themes/(.*)/(.*).html$ /404.php
+RewriteRule ^modules/(.*)/templates/$ /404.php
+RewriteRule ^modules/(.*)/templates/(.*).html$ /404.php
+RewriteRule ^(.*)search$ /modules/article/search.php
+RewriteRule ^(.*)boy.html$ /index.php
+RewriteRule ^(.*)boutique.html$ /boutique.php
+RewriteRule ^(.*)monthly.html$ /monthly.php
+RewriteRule ^(.*)qiandao.html$ /signin.php
+RewriteRule ^(.*)rank.html$ /rank.php
+RewriteRule ^(.*)end.html$ /modules/article/articlefilter.php?isfull=2&order=lastupdate&page=1
+RewriteRule ^(.*)classlist.html /modules/article/classlist.php
+RewriteRule ^(.*)search.html /modules/article/search.php
+RewriteRule ^(.*)pay.html /modules/pay/buyegold.php
+RewriteRule ^(.*)bookshelf.html /modules/article/bookcase.php
+RewriteRule ^(.*)userinfo.html /userdetail.php
+RewriteRule ^(.*)update.html /useredit.php
+RewriteRule ^(.*)qa.html /qa.php
+RewriteRule ^(.*)kefu.html /kefu.php
+RewriteRule ^(.*)paylog.html /modules/pay/paylog.php
+RewriteRule ^(.*)vip.html /modules/article/monthlybuy.php
+RewriteRule ^(.*)allsale.html /modules/article/toplist.php?order=allsale&page=1
+RewriteRule ^(.*)size.html /modules/article/toplist.php?order=size&page=1
+RewriteRule ^(.*)allvote.html /modules/article/toplist.php?order=allvote&page=1
+RewriteRule ^(.*)postdate.html /modules/article/toplist.php?order=postdate&page=1
+RewriteRule ^(.*)allvisit.html /modules/article/toplist.php?order=allvisit&page=1
+RewriteRule ^(.*)newsbook.html /modules/article/toplist.php?order=lastupdate&page=1
+RewriteRule ^book/([0-9]+)\.html$ /modules/article/articleinfo.php\?id=$1
+RewriteRule ^sort/([0-9]+)/([0-9]+)\.html$ /modules/article/articlelist.php\?sortid=$1&page=$2
+RewriteRule ^fullsort/([0-9]+)/([0-9]+)\.html$ /modules/article/articlelist.php\?fullflag=1&sortid=$1&page=$2
+RewriteRule ^initial/([01A-Z])/([0-9]+)\.html$ /modules/article/articlelist.php\?initial=$1&page=$2
+RewriteRule ^top/([a-z]+)/([0-9]+)\.html$ /modules/article/toplist.php\?order=$1&page=$2
+RewriteRule ^quanben/([a-z]+)/([0-9]+)\.html$ /modules/article/toplist.php\?fullflag=1&order=$1&page=$2
+RewriteRule ^shuku/([a-z]+)_([0-9]+)_([0-9]+)_([0-9]+)_([01A-Z])_([0-9]+)_([0-9]+)_([0-9]+)\.html$   /modules/article/articlefilter.php?order=$1&sortid=$2&size=$3&update=$4&initial=$5&isfull=$6&isvip=$7&page=$8
+RewriteRule ^author/([0-9]+)\.html$ /modules/article/authorpage.php\?id=$1
+RewriteRule ^book/[0-9]+/([0-9]+)/index\.html$ /modules/article/reader.php\?aid=$1
+RewriteRule ^book/[0-9]+/([0-9]+)/([0-9]+).html$ /modules/article/reader.php\?aid=$1&cid=$2
+RewriteRule ^obook/[0-9]+/([0-9]+)/([0-9]+).html$ /modules/obook/reader.php\?aid=$1&cid=$2
