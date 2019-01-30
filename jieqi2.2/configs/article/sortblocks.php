@@ -1,0 +1,4 @@
+<?php
+$jieqiBlocks[]=array('bid'=>0, 'blockname'=>'分类阅读', 'module'=>'article', 'filename'=>'block_sort', 'classname'=>'BlockArticleSort', 'side'=>6, 'title'=>'分类阅读', 'vars'=>'', 'template'=>'block_sort.html', 'contenttype'=>0, 'custom'=>0, 'publish'=>3, 'hasvars'=>0);
+
+?>
