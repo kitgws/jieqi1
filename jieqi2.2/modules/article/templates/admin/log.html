@@ -1,0 +1,20 @@
+<table width="100%" cellpadding="0" cellspacing="1" class="grid">
+  <tr align="center">
+    <td colspan="7" class="title">章节更新字数</td>
+  </tr>
+  <tr align="center">
+    <td width="5%" class="head">ID</td> 
+    <td width="15%" class="head">更新时间</td>
+    <td width="15%" class="head">小说ID</td>
+    <td width="10%" class="head">更新字数</td>
+  </tr>
+{?section name=i loop=$sizerows?}
+  <tr>
+    <td>{?$sizerows[i].id?}</td>
+    <td align="center">{?$sizerows[i].data|date:m-d H:i:s?}</td>
+    <td>{?$sizerows[i].bookid?}</td>
+    <td align="center">{?$sizerows[i].size?}</td>
+  </tr>
+{?/section?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>

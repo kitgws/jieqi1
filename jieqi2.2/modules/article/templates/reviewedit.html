@@ -1,0 +1,26 @@
+
+<div class="c-left">
+	<div id="write"><div class="mod mod-base comment-form book-comment-form">
+						<div class="bd">
+						<div class="column-2"><div class="left"><p> <img src="{?function jieqi_geturl:'system':'avatar':$jieqi_userid:'s'?}" alt="评论" width="50" height="50" class="hy-is-placeholder"> </p> <span class="name">{?$jieqi_username?}</span>
+						</div> 
+						<div class="right">
+						<form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$article_dynamic_url?}/reviewedit.php" target="_blank"> 
+						<div class="item"> 
+						<input type="text" class="text" name="ptitle" placeholder="标题" maxlength="100" value="{?$subject?}"> 
+						</div> 
+						<div class="item"> 
+						<textarea name="pcontent" class="text" placeholder="内容" style="overflow: hidden;">{?$posttext?}</textarea> 
+						<div style="position: absolute; display: none; word-wrap: break-word; font-weight: 400; width: 584px; font-family: Simsun; line-height: normal; font-size: 14px; padding: 10px;">&nbsp;</div>
+						</div> 
+						<div class="buttons"> 
+						<input type="hidden" name="yid" id="yid" value="{?$postid?}" />
+	                    <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+						
+						<input type="submit" name="Submit" class="submit button-input button-red" value=" 保存书评 ">
+						</div>
+						</form> 
+						</div>
+						</div>
+						</div></div></div>
+</div>

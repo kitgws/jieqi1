@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>{?$article_title?}_{?$jieqi_title?}_{?$sortname?}_{?$jieqi_sitename?}</title>
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$meta_description?}" />
+<meta charset="{?$jieqi_charset?}">
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+</head>
+<script>
+    var SiteURL = "{?$jieqi_url?}";
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/tianyin/css/style.css">
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/flexible.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.pin.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/main.js"></script>
+<script src="{?$jieqi_url?}/tianyin/js/layer.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/wap.js"></script>
+<style type="text/css">
+    .cline {
+        margin-bottom: 0.8rem;
+    }
+    * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+    }
+    input {
+        -webkit-user-select: auto;
+    }
+</style>
+<body>
+<div class="app_header_section" id="hongbaohoumian">
+<div class="app_header_banner">
+<div class="app_header_bannerLeft">
+<a href="/">首页</a>
+<i>></i>
+<a href="{?$url_articleinfo?}">书籍简介</a>
+<i>></i>
+内容
+</div>
+<div class="app_header_bannerRight">
+<a href="{?$jieqi_url?}/pay.html">充值</a>
+<a id="editButton">阅读设置</a>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="app_body  app_bodyMarginBottom">
+<div class="app_selectSpanBlock" style="display: none;">
+<div class="app_selectSpanBlock_top">
+<span class="button  button_left">A+</span>
+<span class="button  button_right">A-</span>
+<span class="center">12</span>
+</div>
+<div class="app_selectSpanBlock_bottom">
+<span><i class="color1" colorStyle="1">白天</i></span>
+<span><i class="color2" colorStyle="2">夜间</i></span>
+<span><i class="color3" colorStyle="3">大地</i></span>
+<span><i class="color4" colorStyle="4">护眼</i></span>
+<span><i class="color5" colorStyle="5">淡粉</i></span>
+<span><i class="color6" colorStyle="6">淡蓝</i></span>
+<span><i class="color7" colorStyle="7">靛蓝</i></span>
+</div>
+</div>
+<div class="app_wenzhangBlock  colorStyle1">
+<div class="title"><i></i>{?$chaptername?}</div>
+<div class="content" id="content">
+{?$jieqi_content?}
+</div>
+</div>
+<script type="text/javascript">
+            if (isWeiXin()) {
+                document.title="章节内容";
+                var pingjun = $('.app_footerBlockSpan a').length;
+                $('.app_footerBlockSpan a').css({'width': 100 / pingjun+"%"})
+            }
+            // 页面初始化设置
+            $('.app_wenzhangBlock').removeAttr('class').addClass('app_wenzhangBlock').addClass('colorStyle'+getChapterContentSetting(1));
+            var initFontSize = getChapterContentSetting(2);
+            $(".app_selectSpanBlock_top .center").html(initFontSize/2);
+            $("#content").css({'font-size': initFontSize/2/10+'rem'});
+            $(".app_wenzhangBlock .content").css({'line-height':(initFontSize/2/10+1.25)+'rem'});
+        </script>
+<div class="app_footerBlockSpan">
+<a href="{?$url_previous?}" class="footer1"><i>上一章</i></a>
+<a href="{?$url_index?}" class="footer2"><i>目录</i></a>
+<a href="{?$dynamic_url?}/addbookcase.php?bid={?$articleid?}&cid={?$chapterid?}" class="footer3"><i>书签</i></a>
+<a href="{?$url_next?}" class="footer4"><i>下一章</i></a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.base64.js"></script>
+<script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+
+        $('.app_selectSpanBlock_bottom i').click(function () {
+            var num = $(this).attr('colorStyle');
+            $('.app_wenzhangBlock').removeAttr('class').addClass('app_wenzhangBlock').addClass('colorStyle'+num);
+            writeChapterContentSetting(num, 1);
+        })
+
+        var  fontSize =  initFontSize;
+
+        $('.button_left').click(function () {
+            if(fontSize > 60){
+                malerr("不能再大了哦", 2);
+                fontSize = 61;
+            }else{
+                fontSize++;
+            }
+            $(".app_selectSpanBlock_top .center").html(fontSize/2);
+            $("#content").css({'font-size': fontSize/2/10+'rem'});
+            // 新增
+            $(".app_wenzhangBlock .content").css({'line-height':(fontSize/2/10+1.25)+'rem'});
+            writeChapterContentSetting(fontSize, 2);
+        })
+        $('.button_right').click(function () {
+            if(fontSize <= 24){
+                malerr("不能再小了哦", 2);
+                fontSize = 24;
+            }else{
+                fontSize--;
+            }
+            $(".app_selectSpanBlock_top .center").html(fontSize/2);
+            $("#content").css({'font-size': fontSize/2/10+'rem'})
+            // 新增
+            $(".app_wenzhangBlock .content").css({'line-height':(fontSize/2/10+1.25)+'rem'});
+            writeChapterContentSetting(fontSize, 2);
+        })
+        $("#editButton").click(function () {
+            if($('.app_selectSpanBlock').css('display')=='none'){
+                $('.app_selectSpanBlock').fadeIn(300);
+            }else{
+                $('.app_selectSpanBlock').fadeOut(300);
+            }
+
+        })
+
+        var pingjun = $('.app_footerBlockSpan a').length;
+        $('.app_footerBlockSpan a').css({'width': 100 / pingjun+"%"});
+
+        $(document).keydown(function(event) {
+            if (event.ctrlKey==true && (event.which == '118' || event.which == '86')) {
+                event.preventDefault();
+            }
+        });
+
+
+    })
+</script>
+</body>
+</html>

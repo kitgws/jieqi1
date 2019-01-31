@@ -1,0 +1,118 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+<form name="useredit" id="useredit" action="{?$jieqi_url?}/personedit.php?do=submit" method="post">
+  <table width="100%" class="grid" cellspacing="1" align="center">
+    <caption>
+    修改联系方式
+    </caption>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">说明：</td>
+      <td class="tdr"><span class="hottext">以下请填写真实联系方式，用于网站管理员跟您联系及收入结算，不会对外公开！</span></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">用户名：</td>
+      <td class="tdr">{?$jieqi_useruname?}</td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">昵称：</td>
+      <td class="tdr">{?$jieqi_username?}</td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">真实姓名：</td>
+      <td class="tdr"> {?if $personsvars['realname']!=""?}
+        {?$personsvars['realname']?}
+        <input type="hidden" name="p_realname" value="{?$personsvars['realname']?}" />
+        <span class="hottext"> (不可更改)</span> {? else ?}
+        <input type="text" class="text" name="p_realname" size="25" maxlength="100" value="{?$personsvars['realname']?}" />
+        <span class="hottext"> (*)</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">性别：</td>
+      <td class="tdr"><input type="radio" class="radio" name="p_gender" value="1"{?if $personsvars['gender_n'] == 1?} checked="checked"{?/if?}  />
+        男
+        <input type="radio" class="radio" name="p_gender" value="2"{?if $personsvars['gender_n'] == 2?} checked="checked"{?/if?} />
+        女<span class="hottext"> (*)</span>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">电话：</td>
+      <td class="tdr"><input type="text" class="text" name="p_telephone" size="25" maxlength="100" value="{?$personsvars['telephone']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">手机：</td>
+      <td class="tdr"><input type="text" class="text" name="p_mobilephone" size="25" maxlength="100" value="{?$personsvars['mobilephone']?}" />
+        <span class="hottext"> (*)</span></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">证件类型：</td>
+      <td class="tdr">{?if $personsvars['idcardtype']!="" ?}
+        {?$personsvars['idcardtype']?}
+        <input type="hidden" name="p_idcardtype" value="{?$personsvars['idcardtype']?}" />
+        <span class="hottext"> (不可更改)</span> {? else ?}
+        <input type="text" class="text" name="p_idcardtype" size="25" maxlength="100" value="{?if $personsvars['idcardtype'] == ''?}身份证{?else?}{?$personsvars['idcardtype']?}{?/if?}" />
+        <span class="hottext"> (*)</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">证件号码：</td>
+      <td class="tdr"> {?if $personsvars['idcard'] !="" ?}
+        {?$personsvars['idcard']?}
+        <input type="hidden" name="p_idcard" value="{?$personsvars['idcard']?}" />
+        <span class="hottext"> (不可更改)</span> {? else ?}
+        <input type="text" class="text" name="p_idcard" size="25" maxlength="100" value="{?$personsvars['idcard']?}" />
+        <span class="hottext"> (*)</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">收款银行：</td>
+      <td class="tdr"> {?if $personsvars['banktype']!=""?}
+        {?$personsvars['banktype']?}
+        <input type="hidden" name="p_banktype" value="{?$personsvars['banktype']?}" />
+        <span class="hottext"> (不可更改)</span> {?else?}
+        <input type="text" class="text" name="p_banktype" size="25" maxlength="100" value="{?$personsvars['banktype']?}" />
+        <span class="hottext">(*) 填写 银行名称/支付宝/邮局汇款</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">银行所在地：</td>
+      <td class="tdr"> {?if $personsvars['bankname']!=""?}
+        {?$personsvars['bankname']?}
+        <input type="hidden" name="p_bankname" value="{?$personsvars['bankname']?}" />
+        <span class="hottext"> (不可更改)</span> {?else?}
+        <input type="text" class="text" name="p_bankname" size="25" maxlength="100" value="{?$personsvars['bankname']?}" />
+        <span class="hottext">(*) 填写开户行的 省/市/区</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">卡号：</td>
+      <td class="tdr"> {?if $personsvars['bankcard']!=""?}
+        
+        {?$personsvars['bankcard']?}
+        <input type="hidden" name="p_bankcard" value="{?$personsvars['bankcard']?}" />
+        <span class="hottext"> (不可更改)</span> {?else?}
+        <input type="text" class="text" name="p_bankcard" size="25" maxlength="100" value="{?$personsvars['bankcard']?}" />
+        <span class="hottext"> (*)</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">持卡人姓名：</td>
+      <td class="tdr"> {?if $personsvars['bankuser']!=""?}
+        {?$personsvars['bankuser']?}
+        <input type="hidden" name="p_bankuser" value="{?$personsvars['bankuser']?}" />
+        <span class="hottext"> (不可更改)</span> {?else?}
+        <input type="text" class="text" name="p_bankuser" size="25" maxlength="100" value="{?$personsvars['bankuser']?}" />
+        <span class="hottext"> (*)</span> {?/if?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">联系地址：</td>
+      <td class="tdr"><input type="text" class="text" name="p_address" size="50" maxlength="250" value="{?$personsvars['address']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">邮编：</td>
+      <td class="tdr"><input type="text" class="text" name="p_zipcode" size="25" maxlength="100" value="{?$personsvars['zipcode']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">补充信息：</td>
+      <td class="tdr"><textarea class="textarea" name="p_mynote" rows="5" cols="50">{?$personsvars['mynote']?}</textarea></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">&nbsp;
+        <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}</td>
+      <td class="tdr"><input type="submit" class="button" name="submit"  id="submit" value="保 存" /></td>
+    </tr>
+  </table>
+</form>

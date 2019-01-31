@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Books Pages="{?$page?}">
+{?section name=i loop=$articlerows?}
+<Book>
+<Id>{?$articlerows[i].articleid?}</Id>
+<Title>{?$articlerows[i].articlename?}</Title>
+<Author>{?$articlerows[i].author?}</Author>
+<Updatetime>{?$articlerows[i].lastupdate|date:'Y-m-d H:i:s'?}</Updatetime>
+</Book>
+{?/section?}
+</Books>

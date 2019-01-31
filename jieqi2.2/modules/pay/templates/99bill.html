@@ -1,0 +1,44 @@
+<br /><br />
+<form name="frmpaypost" id="frmpaypost" method="post" action="{?$url_pay?}">
+  <table width="600" align="center" cellpadding="0" cellspacing="1" class="grid">
+  <caption>欢迎使用在线充值</caption>
+  <tr>
+    <td style="line-height:250%;">
+      您好，{?$buyname?}! <br />
+      您选择的交易类型为： <br />
+      <span class="hottext"> * 充值{?$egold?}{?$egoldname?}，支付金额：{?$money?}元</span><br />
+      系统将自动跳转到下一步，如未跳转，请点击“进入下一步”。<br />
+    </td>
+  </tr>
+    <tr> 
+      <td height="30" valign="middle">
+	  <input type="hidden" name="inputCharset" value="{?$inputCharset?}">
+	  <input type="hidden" name="bgUrl" value="{?$bgUrl?}">
+	  <input type="hidden" name="version" value="{?$version?}">
+	  <input type="hidden" name="language" value="{?$language?}">
+	  <input type="hidden" name="signType" value="{?$signType?}">
+	  <input type="hidden" name="merchantAcctId" value="{?$merchantAcctId?}">
+	  <input type="hidden" name="payerName" value="{?$payerName?}">
+	  <input type="hidden" name="orderId" value="{?$orderId?}">
+	  <input type="hidden" name="orderAmount" value="{?$orderAmount?}">
+	  <input type="hidden" name="payType" value="{?$payType?}">
+	  <input type="hidden" name="orderTime" value="{?$orderTime?}">
+	  <input type="hidden" name="productName" value="{?$productName?}">
+	  <input type="hidden" name="ext1" value="{?$ext1?}">
+	  <input type="hidden" name="ext2" value="{?$ext2?}">
+	  <input type="hidden" name="signMsg" value="{?$signMsg?}">
+      <input type="submit" class="button" value=" 进入下一步 " name="v_action">
+	  </td>
+    </tr>
+  </table>
+</form>
+<script language="javascript">
+function autopaypost(){
+	document.getElementById('frmpaypost').submit();
+}
+if (window.attachEvent){
+	window.attachEvent('onload',autopaypost);
+}else{
+	window.addEventListener('load',autopaypost,false);
+} 
+</script>

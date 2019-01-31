@@ -1,0 +1,235 @@
+<style type="text/css">
+.rewardLayer{
+		background-color:#FFFFFF;
+		padding:20px 0px 0 20px;
+		width:600px;
+		display:none;
+	}
+.rewardLayer strong,
+.rewardLayer span	{
+		color:#C59246
+		
+	}
+.rewardLayer ul li{
+	text-align:center;
+	cursor:pointer;
+	width:78px;
+	line-height:24px;
+	font-weight:bold;
+	float:left;
+	padding:10px 11px;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+	
+}
+.rewardLayer ul li:hover,
+.rewardLayer ul li.current{
+	
+	background-color:#EEEEEE;
+}
+
+.rewardLayerContent{
+	background-color:#EEEEEE;
+	clear:both;
+	padding:10px;
+}
+
+.rewarddir td {
+    padding: 5px 10px;
+	height:30px;
+	color:#666666;
+}
+
+.rewarddir td a.charge{
+    color: #5a5a5a;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.rewarddir {
+    width: 100%;
+    margin: 0px auto 0;
+}
+
+input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+.xubox_shades {
+    top: 0;
+    left: 0;
+    width: 100%;
+    _height: 100%;
+    _height: expression(document.body.offsetHeight+"px");
+}
+input {
+    _-webkit-appearance: textfield;
+    padding: 1px;
+    background-color: white;
+    border: 2px inset;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+}
+input, textarea, keygen, select, button {
+    margin: 0em;
+    font: 13.3333px Arial;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+}
+input, textarea, keygen, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+textarea {
+    -webkit-appearance: textarea;
+    background-color: white;
+    border: 1px solid;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    flex-direction: column;
+    resize: auto;
+    cursor: auto;
+    padding: 2px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+input[type="radio" i] {
+    margin: 3px 3px 0px 5px;
+}
+input[type="radio" i] {
+    -webkit-appearance: radio;
+    box-sizing: border-box;
+}
+input[type="radio" i], input[type="checkbox" i] {
+    margin: 3px 0.5ex;
+    padding: initial;
+    background-color: initial;
+    border: initial;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn {
+    display: inline-block;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: #45A1B8;
+    padding: 0 30px;
+    border: none;
+    border-radius: 0;
+}
+.btn-success.active, .btn-success.focus, .btn-success:active, .btn-success:focus, .btn-success:hover, .open>.dropdown-toggle.btn-success {
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    height: 30px;
+}	
+</style>
+<form action="{?$jieqi_modules['article']['url']?}/gifts.php?do=submit" method="post" id="formgift" name="formgift" target="_blank">
+<div class="rewardLayer layui-layer-wrap" style="display: block;">
+	<ul>
+
+            <li class="" data-name="红包" data-desc="多更多福气。满满的红包送上，祝大大早日立地成神！" data-id="2" data-nums="{?$redroseprice?}"><label onclick="$('#rdesc').val('多更多福气。满满的红包送上，祝大大早日立地成神！')"><img src="/sink/image/field.gif" class="donate-item donate-item-20" alt="红包">
+<input type="radio" id="rid" name="rid" checked="checked" value="2"></br>红包 <br><b><span style="color: #f60;">{?$redroseprice?}</span></b>/个</label></li>
+
+            <li class="" data-name="宝石" data-desc="宝石一颗永留存，愿大大的故事能永世长存！" data-id="3" data-nums="{?$yellowroseprice?}"><label onclick="$('#rdesc').val('宝石一颗永留存，愿大大的故事能永世长存！')"><img src="/sink/image/field.gif" class="donate-item donate-item-21" alt="宝石1">
+<input type="radio" id="rid" name="rid" value="3"></br>宝石<br><b><span style="color: #f60;">{?$yellowroseprice?}</span></b>/颗</label></li>
+
+            <li class="" data-name="马车" data-desc="作者大大的文太好看了，坐着马车去赶场！" data-id="4" data-nums="{?$blueroseprice?}"><label onclick="$('#rdesc').val('作者大大的文太好看了，坐着马车去赶场！')"><img src="/sink/image/field.gif" class="donate-item donate-item-22" alt="马车1">
+<input type="radio" id="rid" name="rid" value="4"></br>马车 <br><b><span style="color: #f60;">{?$blueroseprice?}</span></b>/辆</label></li>
+
+            <li class="" data-name="丫鬟" data-desc="送给大大随身丫鬟，保管您瞬间文思泉涌！" data-id="5" data-nums="{?$whiteroseprice?}"><label onclick="$('#rdesc').val('送给大大随身丫鬟，保管您瞬间文思泉涌！')"><img src="/sink/image/field.gif" class="donate-item donate-item-23" alt="丫鬟1">
+<input type="radio" id="rid" name="rid" value="5"></br>丫鬟 <br><b><span style="color: #f60;">{?$whiteroseprice?}</span></b>/个</label></li>
+
+            <li class="" data-name="府邸" data-desc="谢谢作者大大满足了我们的最初幻想，梦幻的府邸送上！" data-id="6" data-nums="{?$greenroseprice?}"><label onclick="$('#rdesc').val('谢谢作者大大满足了我们的最初幻想，梦幻的府邸送上！')"><img src="/sink/image/field.gif" class="donate-item donate-item-24" alt="府邸1">
+<input type="radio" id="rid" name="rid" value="6"></br>府邸 <br><b><span style="color: #f60;">{?$greenroseprice?}</span></b>/座</label></li>
+
+            <li class="" data-name="金印" data-desc="大大的小说精彩至极，一枚金印在手无人敢挡！" data-id="7" data-nums="{?$blackroseprice?}"><label onclick="$('#rdesc').val('大大的小说精彩至极，一枚金印在手无人敢挡！')"><img src="/sink/image/field.gif" class="donate-item donate-item-25" alt="金印1">
+<input type="radio" id="rid" name="rid" value="7"></br>金印 <br><b><span style="color: #f60;">{?$blackroseprice?}</span></b>/枚</label></li>
+	</ul>
+	<div class="clear:both;"></div>
+	<div class="rewardLayerContent">
+	<table class="rewarddir">
+                <tbody><tr>
+                    <td width="30">数量</td>
+                    <td><input type="text" onchange="changeRCount()" name="count" id="count" style="width:120px;padding:3px 5px;border-color:#ccc" placeholder="数量" name="count" value="1"> </td>
+<td width="70"><a href="/modules/pay/buyegold.php" class="charge">去充值</a></td>					
+                    </tr>
+                <tr>
+                    <td>赠言</td>
+                    <td>
+					<input type="text" id="rdesc" style="width:95%;padding:3px 5px;border-color:#ccc" placeholder="打赏内容" name="reply" value="多更多福气。哗啦啦的魔法币送上，祝大大早日立地成神！。">
+                    </td>
+<td>
+<input type="hidden" name="act" value="post" />{?$jieqi_token_input?}
+<input type="hidden" name="id" value="{?$articleid?}" />
+<input type="button" name="Submit" class="btn btn-success btn-sm" style="margin-top:10px;" value=" 立即赠送 " style="cursor:pointer;" onclick="Ajax.Request('formgift',{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));Form.reset('formgift');
+}});">
+</td>					
+                    </tr>
+        <tr>
+					<td>&nbsp;</td>
+                    <td>道具捧场后会得到相应的粉丝值</td>
+					<td>&nbsp;</td>					
+                    </tr>
+                </tbody></table>
+	</div>
+</div>
+</form>
+<!--
+
+<script type="text/javascript">
+
+      $("#wantreward").click(function(){
+            showRewardLayer();
+        });
+
+        $(".rewardLayer li").click(function() {
+            var me = $(this);
+            $(".rewardLayer li.current").removeClass("current");
+            $(this).addClass("current");
+            $("#rid").val(me.data("id"));
+            $("#rcount").val(1);
+            $("#rnums").val(me.data("nums"));
+            $("#rdesc").val(me.data("desc"));
+            $("#rname").text(me.data("name"));
+            $("#tnums").text(me.data("nums"));
+        });
+</script>
+-->

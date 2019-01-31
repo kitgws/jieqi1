@@ -1,0 +1,40 @@
+{?set $jieqi_pagetitle = "搜索关键词“{$searchkey}”-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "10"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">搜索</div>
+</div>
+</div>
+<div class="app_searchBlock">
+<div class="app_searchBlock_bar">
+<input type="text" value="" id="searvalue2" placeholder="输入想要搜索的小说名"/>
+<button class="button" onclick="search(2)"></button>
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock ">
+<div class="app_listBlock_con">
+<ul>
+{?section name=i loop=$articlerows?}
+<li>
+<a href="{?$articlerows[i].url_articleinfo?}">
+<div class="leftImage"><img src="{?$articlerows[i].url_image?}" /></div>
+<div class="rightBlock">
+<span class="rightBlock_title">{?$articlerows[i].articlename?}</span>
+<span class="rightBlock_name">{?$articlerows[i].author?} | {?$articlerows[i].sort?}</span>
+<span class="rightBlock_con">
+<span class="con">{?$articlerows[i].intro|truncate:40?}...</span>
+<span class="keyWord">
+<i class="k1">{?$articlerows[i].sort|truncate:4:''?}</i>
+</span>
+</span>
+</div>
+</a>
+</li>
+{?/section?}
+</ul>
+</div>
+<div class="app_reload"><span class="reload">正在加载更多</span></div>
+</div>

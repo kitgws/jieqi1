@@ -1,0 +1,253 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "authorblocks"?} 
+<script type="text/javascript">
+<!--
+function frmarticleedit_validate(){
+  if(document.frmarticleedit.sortid.value == ""){
+    alert("请输入类别");
+    document.frmarticleedit.sortid.focus();
+    return false;
+  }
+  if(document.frmarticleedit.articlename.value == ""){
+    alert("请输入小说名称");
+    document.frmarticleedit.articlename.focus();
+    return false;
+  }
+}
+//-->
+</script>
+<form name="frmarticleedit" id="frmarticleedit" action="{?$url_articleedit?}" method="post" onsubmit="return frmarticleedit_validate();" enctype="multipart/form-data">
+  <table width="100%" class="grid" cellspacing="1" align="center">
+    <caption>
+    编辑小说
+    </caption>
+    <tr valign="middle" align="left">
+      <td class="tdl" width="25%">类别：</td>
+      <td class="tdr"><select class="select" size="1" onchange="showtypes(this)" name="sortid" id="sortid">
+          
+  {?section name=i loop=$sortrows?}
+  
+          <option value="{?$i['key']?}"{?if $i['key'] == $articlevals['sortid']?} selected="selected"{?/if?}>{?$sortrows[i].caption?}</option>
+          
+  {?/section?}
+  
+        </select>
+        <span id="typeselect" name="typeselect"></span> 
+        <script type="text/javascript">
+  function showtypes(obj){
+    var typeselect=document.getElementById('typeselect');
+    typeselect.innerHTML='';
+    {?section name=i loop=$sortrows?}
+	  {?if $sortrows[i].types != ''?}
+	  if(obj.options[obj.selectedIndex].value == {?$i['key']?}) typeselect.innerHTML='<select class="select" size="1" name="typeid" id="typeid">{?section name=j loop=$sortrows[i].types?}<option value="{?$j['key']?}"{?if $j['key'] == $articlevals['typeid']?} selected="selected"{?/if?}>{?$sortrows[i]['types'][j]?}</option>{?/section?}</select>';
+	  {?/if?}
+    {?/section?}
+  }
+  showtypes(document.getElementById('sortid'));
+  </script></td>
+    </tr>
+   <tr valign="middle" align="left">
+      <td class="tdl">小说名称：{?$group?}</td>
+      <td class="tdr">
+      {?if$articlevals['articlename']!=""?}
+      
+      <input type="text"  name="articlename" id="articlename" value="{?$articlevals['articlename']?}" />
+       
+        {?else?}
+        <input type="text" class="text" name="articlename" id="articlename" size="30" maxlength="50" value="{?$articlevals['articlename']?}" />
+        <span class="hottext">如需修改书名，请联系编辑！</span>
+        {?/if?}
+        </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">标签：</td>
+      <td class="tdr">
+  <div class="dropdown">
+  <div><input type="text" class="text" name="keywords" id="tagwords" size="60" maxlength="100" value="{?$articlevals['keywords']?}"{?if $taglimit > 0?} readonly="readonly"{?/if?} />{?if $tagnum == 0?} <span class="hot">多个标签用英文空格分隔</span>{?/if?}</div>
+  {?if $tagnum > 0?}
+  <div class="dropbox" style="width:400px;">
+    <ul class="ultag">
+	{?section name=i loop=$tagwords?}
+	<li onclick="selecttag('tagwords', this);"{?if $tagwords[i].use > 0?} class="taguse"{?/if?}>{?$tagwords[i].name?}</li>
+	{?/section?}
+    </ul>
+  </div>
+  {?/if?}
+  </div>
+  </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">管理员：</td>
+      <td class="tdr"><input type="text" class="text" name="agent" id="agent" size="30" maxlength="30" value="{?$articlevals['agent']?}" />
+        <span class="hottext">可以指定一个本站现有用户作为管理员</span></td>
+    </tr>
+    {?if $allowtrans > 0?}
+    <tr valign="middle" align="left">
+      <td class="tdl">作者：</td>
+      <td class="tdr"><input type="text" class="text" name="author" id="author" size="30" maxlength="30" value="{?$articlevals['author']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">作者绑定：</td>
+      <td class="tdr"> {?section name=i loop=$authorflag['items']?}
+        <input type="radio" class="radio" name="authorflag" value="{?$i['key']?}" {?if $i['key'] == $articlevals['authorflag']?}checked="checked" {?/if?}/>
+        {?$authorflag['items'][i]?} 
+        {?/section?} </td>
+    </tr>
+    {?/if?}
+    <tr valign="middle" align="left">
+      <td class="tdl">授权级别：</td>
+      <td class="tdr">
+	  {?if $articlevals['permission_n']=="0"?}
+	  授权作品 <span class="hottext">如需修改授权级别，请联系编辑！</span>
+	  {?else?}
+	  独家作品 <span class="hottext">如需修改授权级别，请联系编辑！</span>
+	  {?/if?}
+	 <!-- {?section name=i loop=$permission['items']?}
+        <input type="radio" class="radio" name="permission" value="{?$i['key']?}" {?if $i['key'] == $articlevals['permission_n']?}checked="checked" {?/if?}/>
+        {?$permission['items'][i]?} 
+        {?/section?}--> </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">首发状态：</td>
+      <td class="tdr"> 
+	  {?if $articlevals['firstflag_n']=="0"?}
+	  他站首发 <span class="hottext">如需修改首发状态，请联系编辑！</span>
+	  {?else?}
+	  本站首发 <span class="hottext">如需修改首发状态，请联系编辑！</span>
+	  {?/if?}
+	  <!--{?section name=i loop=$firstflag['items']?}
+        <input type="radio" class="radio" name="firstflag" value="{?$i['key']?}"{?if $i['key'] == $articlevals['firstflag_n']?}checked="checked" {?/if?}/>
+        {?$firstflag['items'][i]?} 
+        {?/section?}-->
+</td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">写作进度：</td>
+      <td class="tdr"> {?section name=i loop=$progress['items']?}
+        <input type="radio" class="radio" name="progress" value="{?$i['key']?}" {?if $i['key'] == $articlevals['progress_n']?}checked="checked" {?/if?}/>
+        {?$progress['items'][i]?} 
+        {?/section?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">内容简介：</td>
+      <td class="tdr"><textarea class="textarea" name="intro" id="intro" rows="8" cols="70">{?$articlevals['intro']?}</textarea></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">本书公告：</td>
+      <td class="tdr"><textarea class="textarea" name="notice" id="notice" rows="8" cols="70">{?$articlevals['notice']?}</textarea></td>
+    </tr>
+    {?if $eachlinknum > 0?}
+    <tr valign="middle" align="left">
+      <td class="tdl">推荐小说ID（互换链接）：</td>
+      <td class="tdr"><input type="text" class="text" name="eachlinkids" id="eachlinkids" size="30" maxlength="500" value="{?$articlevals['eachlinkids']?}" />
+        <span class="hottext">必须是本站小说ID，最多{?$eachlinknum?}个，用空格分开</span></td>
+    </tr>
+    {?/if?}
+    <tr valign="middle" align="left">
+      <td class="tdl">封面小图：</td>
+      <td class="tdr"><input type="file" class="text" size="30" name="articlespic" id="articlespic" />
+        <span class="hottext">图片格式：{?$imagetype?}</span></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">封面大图：</td>
+      <td class="tdr"><input type="file" class="text" size="30" name="articlelpic" id="articlelpic" />
+        <span class="hottext">图片格式：{?$imagetype?}</span></td>
+    </tr>
+    {?if $allowmodify > 0?}
+    <tr>
+      <td colspan="2" class="head">管理员修改选项</td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">发表者：</td>
+      <td class="tdr"><input type="text" class="text" name="poster" id="poster" size="30" maxlength="30" value="{?$articlevals['poster']?}" />
+        <span class="hottext">必须是本站会员名称</span></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">是否签约：</td>
+      <td class="tdr"> {?section name=i loop=$issign['items']?}
+        <input type="radio" class="radio" name="issign" value="{?$i['key']?}" {?if $i['key'] == $articlevals['issign_n']?}checked="checked" {?/if?}/>
+        {?$issign['items'][i]?} 
+        {?/section?} </td>
+    </tr>
+    <!--
+<tr valign="middle" align="left">
+  <td class="tdl">是否包月：</td>
+  <td class="tdr">
+  {?section name=i loop=$monthly['items']?}
+  <input type="radio" class="radio" name="monthly" value="{?$i['key']?}" {?if $i['key'] == $articlevals['monthly_n']?}checked="checked" {?/if?}/>{?$monthly['items'][i]?} 
+  {?/section?}
+  <span class="hottext">对于已经签约小说有效</span>
+</td>
+</tr>
+-->
+    <tr valign="middle" align="left">
+      <td class="tdl">所属频道：</td>
+      <td class="tdr"> {?section name=i loop=$rgroup['items']?}
+        <input type="radio" class="radio" name="rgroup" value="{?$i['key']?}" {?if $i['key'] == $articlevals['rgroup_n']?}checked="checked" {?/if?}/>
+        {?$rgroup['items'][i]?} 
+        {?/section?} </td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">点击数：</td>
+      <td class="tdr"> 日：
+        <input type="text" class="text" name="dayvisit" size="10" maxlength="10" value="{?$articlevals['dayvisit']?}" />
+        周：
+        <input type="text" class="text" name="weekvisit" size="10" maxlength="10" value="{?$articlevals['weekvisit']?}" />
+        月：
+        <input type="text" class="text" name="monthvisit" size="10" maxlength="10" value="{?$articlevals['monthvisit']?}" />
+        总：
+        <input type="text" class="text" name="allvisit" size="10" maxlength="10" value="{?$articlevals['allvisit']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">推荐数：</td>
+      <td class="tdr"> 日：
+        <input type="text" class="text" name="dayvote" size="10" maxlength="10" value="{?$articlevals['dayvote']?}" />
+        周：
+        <input type="text" class="text" name="weekvote" size="10" maxlength="10" value="{?$articlevals['weekvote']?}" />
+        月：
+        <input type="text" class="text" name="monthvote" size="10" maxlength="10" value="{?$articlevals['monthvote']?}" />
+        总：
+        <input type="text" class="text" name="allvote" size="10" maxlength="10" value="{?$articlevals['allvote']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">鲜花数：</td>
+      <td class="tdr"> 日：
+        <input type="text" class="text" name="dayflower" size="10" maxlength="10" value="{?$articlevals['dayflower']?}" />
+        周：
+        <input type="text" class="text" name="weekflower" size="10" maxlength="10" value="{?$articlevals['weekflower']?}" />
+        月：
+        <input type="text" class="text" name="monthflower" size="10" maxlength="10" value="{?$articlevals['monthflower']?}" />
+        总：
+        <input type="text" class="text" name="allflower" size="10" maxlength="10" value="{?$articlevals['allflower']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">鸡蛋数：</td>
+      <td class="tdr"> 日：
+        <input type="text" class="text" name="dayegg" size="10" maxlength="10" value="{?$articlevals['dayegg']?}" />
+        周：
+        <input type="text" class="text" name="weekegg" size="10" maxlength="10" value="{?$articlevals['weekegg']?}" />
+        月：
+        <input type="text" class="text" name="monthegg" size="10" maxlength="10" value="{?$articlevals['monthegg']?}" />
+        总：
+        <input type="text" class="text" name="allegg" size="10" maxlength="10" value="{?$articlevals['allegg']?}" /></td>
+    </tr>
+    <tr valign="middle" align="left">
+      <td class="tdl">月票数：</td>
+      <td class="tdr"> 日：
+        <input type="text" class="text" name="dayvipvote" size="10" maxlength="10" value="{?$articlevals['dayvipvote']?}" />
+        周：
+        <input type="text" class="text" name="weekvipvote" size="10" maxlength="10" value="{?$articlevals['weekvipvote']?}" />
+        月：
+        <input type="text" class="text" name="monthvipvote" size="10" maxlength="10" value="{?$articlevals['monthvipvote']?}" />
+        总：
+        <input type="text" class="text" name="allvipvote" size="10" maxlength="10" value="{?$articlevals['allvipvote']?}" /></td>
+    </tr>
+    {?/if?}
+    <tr valign="middle" align="left">
+      <td class="tdl">&nbsp;
+        <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+        <input type="hidden" name="id" id="id" value="{?$articlevals['articleid']?}" /></td>
+      <td class="tdr"><input type="submit" class="button" name="submit"  id="submit" value="提 交" /></td>
+    </tr>
+  </table>
+</form>

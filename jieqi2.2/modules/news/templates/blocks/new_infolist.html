@@ -1,0 +1,16 @@
+<div class="c_nav"><a href="{?$url_more?}">作者专区最新公告</a></div>
+<div class="right_main_content">
+{?section name=i loop=$newsrows?}
+{?if $i['order'] == 1?}
+
+           
+        <h1 class="h2_second">{?$newsrows[i].title?}</h1>
+     
+{?$newsrows[i].contents?}
+        
+<div class="c_nav"><a href="{?$url_more?}">更多新闻</a></div>
+{?else?}
+<a class="text_02" target="_blank" href="{?function jieqi_geturl:'news':'info':$newsrows[i].topicid?}" targe="_blank" class="name">{?$newsrows[i].title?}</a>
+{?/if?}
+{?/section?}
+ </div>

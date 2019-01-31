@@ -1,0 +1,34 @@
+<table class="grid" width="100%" align="center">
+  <caption>VIP等级管理</caption>
+  <tr align="center">
+    <th width="50">序号</th>
+    <th width="150">VIP等级名称</th>
+    <th width="140">最小消费数量</th>
+	<th width="140">最大消费数量</th>
+	 <th width="140">充值额外赠送虚拟币</th>
+	<th width="140">充值额外赠送积分</th>
+	<th width="140">订阅打折</th>
+    <th width="100">操作</th>
+  </tr>
+  {?section name=i loop=$vips?}
+  <tr>
+    <td align="center">{?$vips[i].vipid?}</td>
+    <td align="center">{?$vips[i].caption?}</td>
+    <td align="left">{?$vips[i].minegold?}</td>
+	<td align="left">{?$vips[i].maxegold?}</td>
+	<td align="left">{?$vips[i].extraegold?}%</td>
+	<td align="left">{?$vips[i].extradiv?}</td>
+	<td align="left">{?$vips[i].viptype?}</td>
+    <td align="center"><a href="{?$jieqi_url?}/admin/vips.php?id={?$vips[i].vipid?}&action=edit">编辑</a><a href="javascript:if(confirm('确实要删除该头衔么？')) document.location='{?$jieqi_url?}/admin/vips.php?id={?$vips[i].vipid?}&action=delete';">删除</a></td>
+  </tr>
+  {?/section?}
+  <tr>
+    <td colspan="8" class="foot">&nbsp;</td>
+  </tr>
+</table>
+<br />
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td align="center">{?$form_addvip?}</td>
+  </tr>
+</table>

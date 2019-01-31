@@ -1,0 +1,14 @@
+{?if $reviewrows|count > 0?}
+							{?section name=i loop=$reviewrows?}	  
+<li class="column-2 "><div class="left"> <p> <a href="{?function jieqi_geturl:'system':'user':$reviewrows[i].posterid?}"><img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}" alt="{?$reviewrows[i].poster?}" width="50" height="50"></a>  </p> <a class="name" href="{?function jieqi_geturl:'system':'user':$reviewrows[i].posterid?}" title="{?$reviewrows[i].poster?}">{?$reviewrows[i].poster?}</a><img src="/sink/image/vip/lv{?$reviewrows[i].vipid?}.gif" width="20" class="fans-level-icon" title="{?$reviewrows[i].vip?}">
+<p class="identity"><i class="rk{?$reviewrows[i].honorid?}"></i></p>  
+</div> 
+<div class="right">
+ <h3><a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}">{?if $reviewrows[i].istop == 1?}<span class="top">[置顶]</span>{?/if?}{?if $reviewrows[i].isgood == 1?}<span class="good">[精华]</span>{?/if?}{?$reviewrows[i].title|str_replace:"<br />":" "|truncate:80:'..'?}</a></h3>  <p class="summary"> {?$reviewrows[i].posttext?} </p>  <div class="controls"><span class="time">{?$reviewrows[i].posttime|date:Y-m-d H:i:s?}</span><a href="{?$jieqi_modules['article']['url']?}/reviewshow.php?rid={?$reviewrows[i].topicid?}" class="reply">回复({?$reviewrows[i].replies?})</a>
+ </div>
+ </div>
+ </li>
+ {?/section?}
+ {?else?}
+ 暂无精华评论
+{?/if?}

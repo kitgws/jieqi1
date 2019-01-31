@@ -1,0 +1,67 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+
+
+
+<table class="grid" width="100%" align="center">
+<caption>作者状态</caption>
+<tr align="center">
+<th width="20%">申请书名</th>
+    <th width="35%">申请时间</th>
+	<th width="13%">状态</th>
+<th width="13%">类型</th> 
+</tr>
+  {?section name=i loop=$monthlyrows?}
+  <tr valign="middle">	
+  <td><a href="/modules/article/articleinfo.php?id={?$monthlyrows[i].bookid?}" target="_blank">{?$monthlyrows[i].bookname?}</a></td>
+	<td>{?$monthlyrows[i].date|date:'Y-m-d'?}</td>
+    <td>{?if $monthlyrows[i].typeid == 0?}处理中{?elseif $monthlyrows[i].typeid == 1?}已失败{?elseif $monthlyrows[i].typeid == 2?}通过{?/if?}</td>
+<td>{?if $monthlyrows[i].types ==1 ?}签约{?elseif $monthlyrows[i].types == 2?}上架{?/if?}</td>
+  </tr>
+  {?/section?}
+</table>
+
+<form name="frmnewarticle" id="frmnewarticle" action="{?$jieqi_url?}/modules/article/tool.php?do=submit" method="post" onsubmit="return frmnewdraft_validate();">
+<table width="100%" class="grid" cellspacing="1" align="center">
+<caption class="pianyi">申请{?if $tid == 1?}签约{?elseif $tid == 2?}上架{?/if?}</caption>
+<tr valign="middle" align="left">
+  <td class="tdl" width="20%">申请标准：</td>
+  <td class="tdr" width="80%">
+  字数大于或者等于{?$sizes?}
+</td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl" width="10%">小说名称：</td>
+  <td class="tdr" width="90%">
+
+		<div id="selarticle" style="display:block;">
+		<select class='select'  size='1' name='articleid' id='articleid'>
+		<option value='0'>--请选择--</option>
+        {?section name=i loop=$articlerows?}
+		<option value='{?$articlerows[i].articleid?}'>{?$articlerows[i].articlename?}</option>
+		{?/section?}
+		</div>
+
+  </td>
+</tr>
+
+<tr valign="middle" align="left">
+  <td class="tdl">联系方式：</td>
+  <td class="tdr"><input type="text" class="text" name="pc" id="pc" size="30" maxlength="100" value="" /> <span class="hottext"></span>*输入你的手机号码或者是固定电话</td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">作者留言：</td>
+  <td class="tdr"><textarea class="textarea" name="text" id="text" rows="6" cols="60"></textarea>*输入你想对编辑说的话，作品申请的理由等。</td>
+</tr>
+<tr valign="middle" align="left">
+  <td width="20%">
+  &nbsp;
+  <input type="hidden" name="action" id="action" value="post" />
+  <input type="hidden" name="type" id="type" value="{?$tid?}"/>
+  </td>
+  <td>
+  <input type="submit" class="button" name="submit"  id="submit" value="提 交" />
+  </td>
+</tr>
+</table>
+</form>

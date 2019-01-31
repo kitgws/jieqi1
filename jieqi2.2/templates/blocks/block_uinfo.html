@@ -1,0 +1,15 @@
+
+<ul>
+  {?if $avatar > 0?}<img src="{?function jieqi_geturl:'system':'avatar':$uid:'s':$avatar?}" class="avatars" alt="{?$name?}">{?/if?}
+
+  <li><strong>{?$name?}</strong></li>
+  <li><a href="javascript:;" onclick="openDialog('{?$jieqi_url?}/newmessage.php?receiver={?$name|urlencode?}&ajax_gets=jieqi_contents', false);" class="message">发送消息</a></li>
+  <li><a id="addfriends{?$uid?}" href="javascript:;" onclick="Ajax.Tip('{?$jieqi_url?}/addfriends.php?id={?$uid?}&act=add{?$jieqi_token_url?}', {method: 'POST'});"  class="friend">加为好友</a></li>
+  {?if $jieqi_modules['space']['publish']==1?}
+  <li><a href="{?function jieqi_geturl:'system':'user':$uid:'space'?}" class="space">个人空间</a></li>
+  {?else?}
+  <li><a href="{?function jieqi_geturl:'system':'user':$uid:'info'?}"  class="userinfo">查看资料</a></li>
+  {?/if?}
+  <li><a href="{?$jieqi_url?}/ptopics.php?oid={?$uid?}"  class="parlor">会 客 室</a></li>
+</ul>
+

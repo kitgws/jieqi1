@@ -1,0 +1,68 @@
+{?set $jieqi_pagetitle = "开通包月-{$jieqi_sitename}"?}
+
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">开通包月</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_openReadBlock">
+<form name="frmlogin" method="post" action="/modules/article/monthlybuy.php">
+<div class="app_openReadBlock_li  app_deleteMargin">
+<div class="app_openReadBlock_liTitle">成为VIP用户</div>
+<div class="app_openReadBlock_select">
+
+<ul>
+{?section name=i loop=$jieqimonthly['article']['options']?}
+<li {?if $i['order'] ==1?}class="active"{?/if?}>
+<input type="radio" class="radio" name="buytype" value="{?$i['key']?}" {?if $i['order'] ==1?}checked="checked"{?/if?} style="display:none;"/>
+<div class="app_borderBlock">
+<span class="top">畅读{?$i['key']?}个月</span>
+<span class="bottom">{?$jieqimonthly['article']['options'][i]?}元</span>
+</div>
+</li>
+{?/section?}
+</ul>
+</div>
+<input type="hidden" name="act" value="buy">{?$jieqi_token_input?}
+<div class="app_openReadBlock_button" onclick="javascript:document.frmlogin.submit();">提交订单</div>
+
+</div>
+</form>
+<div class="app_friendTips">
+<span class="tips">温馨提示</span>
+<span class="cons">
+1.我们真诚期待您支持正版阅读，您的每一阅读币的订阅购买，都是对作者的莫大鼓励，代表您对创作者的最大认可。<br/>
+2.开通畅读后，您可以全场免费畅读所有自营书籍，不再按照章节收费，是最节省的方式，推荐您开通畅读包，长期畅读更优惠！<br/>
+3.支付即视为同意<a href="#">《支付条款》</a><br/>
+4.如果您充值未到账或者无法继续阅读，您可以通过QQ客服群12345678以及客服电话10086联系客服。<br/>
+</span>
+</div>
+</div>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/user.js"></script>
+<!-- <script type="text/javascript"> -->
+<!-- $('.radio').click(function(){ -->
+    <!-- var  $radio = $(this).find("input[type=radio]"), -->
+             <!-- $flag  = $radio.is(":checked"); -->
+    <!-- if( !$flag ){ -->
+        <!-- $radio.prop("checked",true);    -->
+    <!-- } -->
+<!-- }); -->
+<!-- </script> -->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.app_openReadBlock_select li').click(function () {
+            $(this).parent().find('li').removeClass('active');
+			var  $radio = $(this).find("input[type=radio]"),
+					 $flag  = $radio.is(":checked");
+			if( !$flag ){
+				$radio.prop("checked",true);   
+			}
+            $(this).addClass('active');
+        })
+    })
+
+</script>

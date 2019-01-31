@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<Book>
+<Id>{?$articleid?}</Id>
+<Title>{?$articlename?}</Title>
+<Author>{?$author?}</Author>
+<Class>{?$sort?}</Class>
+<Cover>{?$url_simage?}</Cover>
+<state>{?$fullflag?}</state>
+<IsVip>{?$isvip?}</IsVip>
+<Updatetime>{?$lastupdate|date:'Y-m-d H:i:s'?}</Updatetime>
+<summary>{?$intro?}</summary>
+</Book>

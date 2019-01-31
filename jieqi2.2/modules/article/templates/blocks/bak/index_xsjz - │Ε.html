@@ -1,0 +1,19 @@
+<div class="l_cont">
+{?section name=i loop=$articlerows?}
+{?if $i['index'] == 0?}
+	<div class="l_cont_left">
+		<p class="p_img"><a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img src="{?$articlerows[i].url_image?}" /></a></p>
+		<h5><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">{?$articlerows[i].articlename|truncate:24:'..'?}</a></h5>
+		<p class="p_name"><span>作者：</span><a href="{?function jieqi_geturl:'system':'user':$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author|truncate:20:'..'?}</a></p>
+		<p class="p_jianjie"><span>简介：</span>{?$articlerows[i].intro|truncate:150:'..'?}</p>
+		<p class="p_caozuo"><a target="_blank" href="{?$articlerows[i].url_articleindex?}">点击阅读</a><a target="_blank" href="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articlerows[i].articleid?}">查看评论</a></p>
+	</div>
+{?else?}
+	{?if $i['index'] == 1?}<div class="l_cont_right"><ul>{?/if?}
+	<li><span class="sp_01"><a target="_blank" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename|truncate:26:'..'?} 
+  </a></span><span class="sp_02"><a class="gray" href="{?function jieqi_geturl:'system':'user':$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author|truncate:16:'..'?}</a></span></li>
+	{?if $i['order'] == $i['count']?}</ul></div>{?/if?}
+{?/if?}
+{?/section?}
+<div class="cb"></div>
+</div>

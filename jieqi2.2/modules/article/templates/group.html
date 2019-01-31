@@ -1,0 +1,15 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "groupblocks"?}
+<table class="grid" width="100%" align="center">
+<caption>作品列表 - {?$groupname?}频道</caption>
+  <tr align="center">
+    <th width="25%">小说名称</th>
+    <th width="35%">最新章节</th>
+    <th width="15%">作者</th>
+	<th width="9%">字数</th>
+    <th width="10%">{?if $_request['order'] == 'postdate'?}入库{?else?}更新{?/if?}</th>
+    <th width="6%">状态</th>
+  </tr>
+{?$jieqi_pageblocks['1']['content']?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>

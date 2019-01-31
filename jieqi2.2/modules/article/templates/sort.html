@@ -1,0 +1,128 @@
+
+{?set $jieqi_pagetitle = "{$sort}-{$jieqi_sitename}"?}
+{?set $meta_keywords = "{$sort} {$jieqi_sitename}"?}
+<script language="javascript" type="text/javascript" src="{?$jieqi_url?}/scripts/sort.js"></script>
+<div class="main">
+	<div class="sortcl">
+		<div class="block" style="height:300px;">
+			<div class="blocktitle">最新入库</div>
+			<div class="blockcontent">
+				{?block bid="0" blockname="最新入库" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="postdate,9,$sortid,0,0,0" template="sort_flph.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+			</div>
+		</div>
+	</div>
+
+	<div class="sortcc">
+		<div class="block" style="height:300px;">
+			{?block bid="0" blockname="封面轮换" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="toptime,4,$sortid,0,0,0" template="sort_fmlh.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+		</div>
+	</div>
+	
+	<div class="sortcr">
+		<div class="block" style="height:300px;">
+			<div class="index_tabl2">
+				<span>推荐榜</span>
+				<ul>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">周</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">月</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">总</a></li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="index_tabc2">
+				<div class="tabvalue">{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvote,8,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvote,8,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvote,8,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="main">
+	<div class="indexcm">
+		<div class="block" style="height:696px;">
+			<div class="blocktitle">分类推荐</div>
+			<div id="fl_cont">
+				<div class="fl_box">
+					<div class="bx_name"><h4>VIP推荐</h4><span><a class="bmore" target="_blank" href="{?$jieqi_modules['article']['url']?}/articlefilter.php?sortid={?$sortid?}&order=allvote&other=2">更多&gt;&gt;</a></span></div>
+					{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvote,11,$sortid,0,0,0,1" template="index_fltj.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+				</div>
+				<div class="fl_box">
+					<div class="bx_name"><h4>全本推荐</h4><span><a class="bmore" target="_blank" href="{?$jieqi_modules['article']['url']?}/articlefilter.php?sortid={?$sortid?}&order=allvote&progress=4">更多&gt;&gt;</a></span></div>
+					{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvote,11,$sortid,0,1,0,0" template="index_fltj.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+				</div>
+				<div class="fl_box">
+					<div class="bx_name"><h4>热门收藏</h4><span><a class="bmore" target="_blank" href="{?$jieqi_modules['article']['url']?}/articlefilter.php?sortid={?$sortid?}&order=goodnum">更多&gt;&gt;</a></span></div>
+					{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="goodnum,11,$sortid,0,0,0,0" template="index_fltj.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+				</div>
+				<div class="fl_box">
+					<div class="bx_name"><h4>字数排行</h4><span><a class="bmore" target="_blank" href="{?$jieqi_modules['article']['url']?}/articlefilter.php?sortid={?$sortid?}&order=size">更多&gt;&gt;</a></span></div>
+					{?block bid="0" blockname="推荐榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="size,11,$sortid,0,0,0,0" template="index_fltj.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+				</div>
+				</div class="cb"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="indexcr">
+		<div class="block" style="height:342px;">
+			<div class="index_tabl2">
+				<span>月票榜</span>
+				<ul>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">周</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">月</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">总</a></li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="index_tabc2">
+				<div class="tabvalue">{?block bid="0" blockname="月票榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvipvote,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="月票榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvipvote,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="月票榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvipvote,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+			</div>
+		</div>
+		<div class="block" style="height:342px;">
+			<div class="index_tabl2">
+				<span>点击榜</span>
+				<ul>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">周</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">月</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">总</a></li>
+				</ul>
+				<div class="cb"></div>
+			</div>
+			<div class="index_tabc2">
+				<div class="tabvalue">{?block bid="0" blockname="点击榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvisit,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="点击榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvisit,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="点击榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvisit,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="indexcm">
+		<div class="block" style="height:342px;">
+			<div class="index_tabl3">
+				<ul>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)" class="selected">公众章节最近更新</a></li>
+					<li><a href="javascript:void(0)" onmouseover="selecttab(this)">VIP章节最近更新</a></li>
+				</ul>
+			</div>
+			<div class="index_tabc3">
+				<div class="tabvalue">{?block bid="0" blockname="公众章节最近更新" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="lastupdate,12,$sortid,0,0,0,2" template="index_gzgx.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+				<div class="tabvalue" style="display:none">{?block bid="0" blockname="VIP章节最近更新" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="lastupdate,12,$sortid,0,0,0,1" template="index_vipgx.html" contenttype="4" custom="0" publish="3" hasvars="1"?}</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="indexcr">
+		<div class="block" style="height:342px;">
+			<div class="blocktitle">鲜花榜</div>
+			<div class="blockcontent">
+				{?block bid="0" blockname="点击榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allflower,9,$sortid,0,0,0" template="sort_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+			</div>
+		</div>
+	</div>
+</div>

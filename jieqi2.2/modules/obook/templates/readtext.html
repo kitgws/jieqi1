@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>{?$articlename?}-{?$chaptername?}-{?$jieqi_sitename?}</title>
+<meta http-equiv="Content-Type" content="text/html; charset={?$jieqi_charset?}" />
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$meta_description?}" />
+<meta name="author" content="{?$meta_author?}" />
+<meta name="copyright" content="{?$meta_copyright?}" />
+<meta name="generator" content="jieqi.com" />
+<link rel="stylesheet" href="{?$static_url?}/css/page.css" type="text/css" media="all"  />
+<script type="text/javascript">
+<!--
+var url_preview = "{?$url_preview?}";
+var url_next = "{?$url_next?}";
+var url_index = "{?$url_index?}";
+var articleid = "{?$articleid?}";
+var chapterid = "{?$chapterid?}";
+function jumpPage() {
+  var event = document.all ? window.event : arguments[0];
+  if (event.keyCode == 37) document.location = url_preview;
+  if (event.keyCode == 39) document.location = url_next;
+  if (event.keyCode == 13) document.location = url_index;
+}
+document.onkeydown=jumpPage;
+-->
+</script>
+</head>
+<body bgcolor="#e7f4fe" oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()" >
+
+<div class="headlink">
+<div class="linkleft"><a href="{?$jieqi_main_url?}/">{?$jieqi_sitename?}</a> &gt; <a href="{?function jieqi_geturl:'article':'articlelist':1:$sortid?}">{?$sort?}</a> &gt; <a href="{?function jieqi_geturl:'article':'article':$articleid:'info'?}">{?$articlename?}</a></div>
+
+<div class="linkright"><a href="{?$url_preview?}">上一页</a> | <a href="{?$url_index?}">返回书目</a> | <a href="{?$url_next?}">下一页</a> | <a href="{?$jieqi_modules['article']['url']?}/addbookcase.php?bid={?$articleid?}&ocid={?$ochapterid?}" target="_blank">加入书签</a> | <a href="{?$jieqi_modules['article']['url']?}/uservote.php?id={?$articleid?}" target="_blank">推荐本书</a> | <a href="{?function jieqi_geturl:'article':'article':$articleid:'info'?}">返回书页</a></div>
+</div>
+
+<div class="title">{?$chaptername?}</div>
+
+<div class="info">{?$chaptertime|date:'Y-m-d H:i'?} 更新，共 {?$chaptersize_c?} 字</div>
+
+<div id="content" class="content">{?$jieqi_content?}</div>
+
+<div class="footlink"><a href="{?$url_preview?}">上一页</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{?$url_index?}">返回目录</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="{?$url_next?}">下一页</a></div>
+
+
+<div class="copyright">
+作品本身仅代表作者本人的观点，与本站立场无关。如因而由此导致任何法律问题或后果，本站均不负任何责任。<br />
+网站版权所有：{?$jieqi_sitename?}
+</div>
+
+<noscript><iframe src="*.html"></iframe></noscript>
+</body>
+</html>

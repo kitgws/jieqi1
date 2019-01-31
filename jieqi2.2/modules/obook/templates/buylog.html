@@ -1,0 +1,22 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+{?set jieqi_page_rows = "30"?}
+<table class="grid" width="100%" align="center">
+<caption>VIP章节订阅记录</caption>
+  <tr align="center">
+    <th width="20%">书名</th>
+    <th width="50%">章节</th>
+    <th width="15%">价格</th>
+    <th width="15%">购买日期</th>
+  </tr>
+  {?section name=i loop=$obuyinforows?}
+  <tr>
+    <td><a href="{?function jieqi_geturl:'article':'article':$obuyinforows[i].articleid:'index'?}" target="_blank">{?$obuyinforows[i].obookname?}</a></td>
+    <td><a href="{?$obook_static_url?}/reader.php?oid={?$obuyinforows[i].obookid?}&cid={?$obuyinforows[i].ochapterid?}" target="_blank">{?$obuyinforows[i].chaptername?}</a></td>
+    <td align="center">{?$obuyinforows[i].buyprice?}</td>
+    <td align="center">{?$obuyinforows[i].buytime|date:'Y-m-d H:i'?}</td>
+  </tr>
+  {?/section?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>
+

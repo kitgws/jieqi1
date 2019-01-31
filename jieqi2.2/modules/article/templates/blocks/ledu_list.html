@@ -1,0 +1,17 @@
+{?section name=i loop=$articlerows?}
+<li>
+<a href="{?$articlerows[i].url_articleinfo?}">
+<div class="leftImage"><img src="{?$articlerows[i].url_image?}" /></div>
+<div class="rightBlock">
+<span class="rightBlock_title">{?$articlerows[i].articlename?}</span>
+<span class="rightBlock_name">{?$articlerows[i].author?} | {?$articlerows[i].sort?}</span>
+<span class="rightBlock_con">
+<span class="con">{?$articlerows[i].intro|truncate:45?}...</span>
+<span class="keyWord">
+<i class="k1">{?$articlerows[i].sort|truncate:4:''?}</i>
+</span>
+</span>
+</div>
+</a>
+</li>
+{?/section?}

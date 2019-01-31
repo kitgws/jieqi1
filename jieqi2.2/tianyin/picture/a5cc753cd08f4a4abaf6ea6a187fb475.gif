@@ -1,0 +1,174 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>乐读用户登录</title>
+<link rel="stylesheet" href="css/signIn.css">
+    <script src="http://res.wx.qq.com/connect/zh_CN/htmledition/js/wxLogin.js"></script>
+<script src="js/jquery.js"></script>
+    <script src="js/login.js"></script>
+     <script src="js/jquery.cookies.js"></script>
+<script>
+    $(document).ready(function (e) {
+        // 居中显示
+        var winH = window.innerHeight || document.documentElement.clientHeight;
+        var objH = (winH - 600) / 2;
+        if(objH<10){
+            objH=10;
+        }
+        $('.signIn_box').css('top', objH);
+
+        // 登录界面的TAB
+	 
+    $('.signIn_main .signIn_tab').eq(0).show();
+        
+        $('.signIn_head li').click(function () {
+            $(".signIn_tab_tip").css("visibility", "hidden");
+        var index = $(this).index();
+        $('.signIn_head li').siblings().removeClass('active').eq(index).addClass('active');
+        $('.signIn_main .signIn_tab').hide().eq(index).show();
+    });
+    $(".signIn_tab_tip").css("visibility", "hidden");
+        // 微信二维码
+    $('.signIn_tab_other li').hover(function () {
+        var quicklogin = new WxLogin({
+            id: "sign_er",
+            appid: "wx3212c6e2505db5f5",
+            scope: "snsapi_login",
+            redirect_uri: "http%3a%2f%2fhi.txtbook.com.cn%2fquicklogin%2fweixinlogin.aspx",
+            state: "txtbook",
+            href: "http%3a%2f%2fhi.txtbook.com.cn%2fcss%2fsignIn.css"
+
+                });
+        $(this).find('.sign_er').css('display', 'block')
+		.animate({ top: -400 }, 300, function () {
+		    $(this).animate({ top: -408 }, 300, function () {
+		        $(this).animate({ top: -405 }, 100);
+		    });
+		});
+    }, function () {
+        $(this).find('.sign_er').hide().css('top', '-425px');
+    });
+
+        // INPUT提示
+        $('.signIn_input').click(function () {
+            $(this).find('span').hide();
+            $(this).find('input').focus();
+        });
+        $('.signIn_input input').blur(function () {
+            if ($(this).val() == '') {
+                $(this).next().show();
+            }
+        });
+        $('input').focus(function () {
+            $(this).next('span').hide();
+        });
+
+        var nn = $("#login_account").val();
+        if (nn != null && nn != undefined && nn.length > 0) {
+            $("#login_account_div").find('span').hide();
+            $("#login_account_div").find('input').show();
+        }
+
+
+});
+</script>
+</head>
+
+<body>
+<!-- 登录注册页面 Begin -->
+<div class="signIn">
+	<img class="signIn_bg" src="http://asset.txtbook.com.cn/hi/signIn_bg7.jpg">
+    <!-- 背景图 End -->
+    <div class="signIn_box">
+    	<div class="signIn_logo">
+        	<img src="images/sign_logo.png">
+        </div>
+        <!-- LOGO End -->
+    	<div class="signIn_head">
+        	<ul>
+            	<li class="active"><a href="javascript:void(0)">登录</a></li>
+                <li><a href="javascript:void(0)">注册</a></li>
+            </ul>
+        </div>
+        <!-- TAB切换 End -->
+        <div class="signIn_main">
+        	<div class="signIn_tab">
+            	<div class="signIn_tab_box">
+                	<form id="">
+                        <p>亲爱的书友，乐读欢迎您的到来！</p>
+                        <div class="signIn_input" id="login_account_div">
+                        	<input type="text" id="login_account" value="">
+                            <span>昵称/邮箱</span>
+                        </div>
+                        <div class="signIn_input">
+                        	<input class="signIn_tab_no" id="login_pwd" type="password">
+                            <span>密码</span>
+                        </div>
+                        <div class="signIn_tab_tip">
+                            请输入正确的账户密码
+                        </div>
+                        <!-- 错误提示 End -->
+                        <input id="btn_login" type="submit" onclick="return login();" value="登录">
+                        <div class="signIn_tab_forget">
+                            
+                        </div>
+                        <div class="signIn_tab_other">
+                            <span>用合作网站账号登录</span>
+                            <ul>
+                                <li>
+                                	<div class="sign_er" id="sign_er"></div>
+                                	<a href="javascript:void(0)"><div class="sign_weixin"></div>微信</a>
+                                </li>
+                                <li><a href="http://hi.txtbook.com.cn/quicklogin/qqlogin.aspx"><div class="sign_qq"></div>QQ</a></li>
+                                <li><a href="http://hi.txtbook.com.cn/quicklogin/weibologin.aspx"><div class="sign_weibo"></div>微博</a></li>
+                                <li><a href="http://hi.txtbook.com.cn/quicklogin/baidulogin.aspx"><div class="sign_baidu"></div>百度</a></li>
+                                <li><a href="http://hi.txtbook.com.cn/quicklogin/alipaylogin.aspx"><div class="sign_zhifu"></div>支付宝</a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <!-- 具体内容 End -->
+            </div>
+            <div class="signIn_tab">
+            	<div class="signIn_tab_box">
+                	<form id="Form1">
+                        <p>欢迎您加入乐读大家庭！</p>
+                        <div class="signIn_input">
+                        	<input type="text" id="register_nickname">
+                            <span>昵称（必填）</span>
+                        </div>
+                        <div class="signIn_input signIn_tab_no">
+                        	<input type="text" id="register_phoneno">
+                            <span>手机号码</span>
+                        </div>
+                        <div class="signIn_input signIn_tab_no">
+                        	<input type="password" id="register_pwd1">
+                            <span>密码（必填）</span>
+                        </div>
+                        <div class="signIn_input signIn_tab_no">
+                        	<input type="password" id="register_pwd2">
+                            <span>再次确认密码（必填）</span>
+                        </div>
+                        <div class="signIn_tab_tip">
+                            请输入正确的账户密码
+                        </div>
+                        <!-- 错误提示 End -->
+                        <input id="btn_register" type="submit" onclick="return register();" value="注册">
+                    </form>
+                </div>
+                <!-- 具体内容 End -->
+            </div>
+        </div>
+    </div>
+    <div class="signIn_meg">
+    	<p>电子书下载 免费电子书下载 txt电子书下载 TXTBOOK.com.cn 版权所有 京ICP备13037522号京公网安备11010502025031</p>
+        <p>Copyright @ 2006-2015 TXTBOOK.Com.Cn. All Rights Reserved .</p>
+        <p><script src="http://s94.cnzz.com/stat.php?id=301259&web_id=301259&show=pic" language="JavaScript"></script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cdiv id='cnzz_stat_icon_30081801'%3E%3C/div%3E%3Cscript src='" + cnzz_protocol + "w.cnzz.com/c.php%3Fid%3D30081801' type='text/javascript'%3E%3C/script%3E"));</script></p>
+    </div>
+</div>
+<!-- 登录注册页面 End -->
+</body>
+</html>

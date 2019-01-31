@@ -1,0 +1,6 @@
+{?section name=i loop=$linkrows?}
+<a data-collect-index="{?$i['order']?}" href="{?$linkrows[i].url?}" target="_blank" boxid="ruoxiaHomeFlink">{?$linkrows[i].name?}</a>
+{?/section?}
+{?if $linkrows|count > 10?}
+<a data-collect-index="11" href="{?$url_more?}" target="_blank" boxid="ruoxiaHomeFlink">¸ü¶à</a>
+{?/if?}

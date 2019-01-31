@@ -1,0 +1,10 @@
+{?section name=i loop=$articlerows?}
+  <tr>
+    <td><a href="{?$articlerows[i].url_articleindex?}" class="gray" target="_blank">[Ŀ¼]</a><a href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a></td>
+    <td>{?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}" target="_blank">{?$articlerows[i].vipvolume?} {?$articlerows[i].vipchapter?}</a><span class="hottext">vip</span>{?else?}<a href="{?$articlerows[i].url_lastchapter?}" target="_blank">{?$articlerows[i].lastvolume?} {?$articlerows[i].lastchapter?}</a>{?/if?}</td>
+    <td>{?if $articlerows[i].authorid == 0?}{?$articlerows[i].author?}{?else?}<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" target="_blank">{?$articlerows[i].author?}</a>{?/if?}</td>
+	<td>{?$articlerows[i].size_k?}K</td>
+    <td align="center">{?if $_request['order'] == 'postdate'?}{?$articlerows[i].postdate|date:'Y-m-d'?}{?else?}{?$articlerows[i].lastupdate|date:'Y-m-d'?}{?/if?}</td>
+    <td align="center">{?$articlerows[i].fullflag?}</td>
+  </tr>
+  {?/section?}

@@ -1,0 +1,70 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "{$articlename}粉丝排行"?}
+{?set jieqi_page_rows = "10"?}
+
+<div class="c-left">
+						<h1 class="page-title">
+							《{?$articlename?}》的粉丝榜
+						</h1>
+						<div class="left fl">
+							<div class="left-bd">
+								<div class="mod fans-levels">
+									<div class="bd">
+										<table class="fixed-table table table-hover table-striped table-bordered" width="100%">
+											<thead>
+												<tr>
+													<th width="30">排行</th>
+													<th>用户名</th>
+													<th>级别</th>
+													<th>粉丝值</th>
+												</tr>
+											</thead>
+											<tbody>
+											{?section name=i loop=$creditrows?}
+												<tr>
+														<td class="index"><span>{?$creditrows[i].order?}</span></td>
+														<td class="name"><div class="range"><a href="{?function jieqi_geturl:'system':'user':$creditrows[i].uid?}" target="_blank">{?$creditrows[i].uname?}</a></div></td>
+														<td class="title"><div class="range">
+															<img alt="{?$creditrows[i].rank?}" src="{?$creditrows[i].img?}" title="{?$creditrows[i].rank?}">
+															</div>
+														</td>
+														<td class="score">{?$creditrows[i].point?}</td>
+													</tr>
+												{?/section?}
+												</tbody>
+										</table>
+										<div class="sp-20"></div>
+									</div>
+								</div><!-- end mod -->
+							</div>
+						</div><!-- end left layout -->
+						<div class="pages">{?$url_jumppage?}</div>
+					</div>
+					<div class="c-right">
+						<div class="mod rank-declare">
+							<div class="hd">
+								<h3 class="sidebar-title">粉丝榜说明</h3>
+							</div>
+							<div class="bd">
+								<h5>一、粉丝榜的定义</h5>
+								<p>读者对作品进行捧场、订阅所消费小说币的排名。</p>
+								<h5>二、粉丝值的定义</h5>
+								<p>读者对作品进行捧场、订阅消费幻飞币时便能获取积分值。换算关系为：1幻飞币=1粉丝值。</p>
+								<h5>三、积分值与级别对应关系</h5>
+								<table width="100%" class="fixed-table table">
+									<thead>
+										<tr>
+											<th>粉丝值</th>
+											<th>级别</th>
+										</tr>
+									</thead>
+									<tbody>
+										</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="mod-back">
+							<a href="{?function jieqi_geturl:'article':'article':$articleid:'info':$articlecode?}"><i class="icon"></i>返回{?$articlename?}</a>
+						</div>
+					</div>

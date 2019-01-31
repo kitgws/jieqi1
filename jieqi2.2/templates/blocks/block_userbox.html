@@ -1,0 +1,19 @@
+<ul class="ulnav">
+<li><a href="{?$jieqi_url?}/myfriends.php">我的好友</a></li>
+<li><a href="{?$jieqi_url?}/ptopics.php?uid=self">我的留言</a></li>
+{?if $jieqi_modules['article']['publish'] > 0?}
+<li><a href="{?$jieqi_modules['article']['url']?}/bookcase.php">我的书架</a></li>
+<li><a href="{?$jieqi_modules['article']['url']?}/myactlog.php?act=tip">打赏记录</a></li>
+{?/if?}
+{?if $jieqi_modules['obook']['publish'] > 0?}
+<li><a href="{?$jieqi_modules['obook']['url']?}/buylist.php">订阅记录</a></li>
+{?/if?}
+{?if $jieqi_modules['pay']['publish'] > 0?}
+<li><a href="{?$jieqi_modules['pay']['url']?}/buyegold.php">在线充值</a></li>
+<li><a href="{?$jieqi_modules['pay']['url']?}/paylog.php">充值记录</a></li>
+{?/if?}
+{?if $jieqi_modules['article']['publish'] > 0?}
+<li><a href="{?$jieqi_modules['article']['url']?}/applywriter.php" style="color:red">申请作者</a></li>
+{?/if?}
+<li><a href="{?$jieqi_url?}/online.php">在线用户</a></li>
+</ul> 

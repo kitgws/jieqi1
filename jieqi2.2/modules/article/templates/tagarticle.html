@@ -1,0 +1,25 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "guideblocks"?}
+{?set jieqi_page_rows = "30"?}
+<table class="grid" width="100%" align="center">
+<caption>标签“{?$tagname?}”的小说列表</caption>
+  <tr align="center">
+    <th width="25%">小说名称</th>
+    <th width="32%">最新章节</th>
+    <th width="15%">作者</th>
+	<th width="9%">字数</th>
+    <th width="13%">更新</th>
+    <th width="6%">状态</th>
+  </tr>
+  {?section name=i loop=$articlerows?}
+  <tr>
+    <td><a href="{?$articlerows[i].url_articleindex?}" class="gray" target="_blank">[目录]</a><a href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename?}</a></td>
+    <td><a href="{?$articlerows[i].url_articleindex?}" target="_parent">{?$articlerows[i].lastvolume?} {?$articlerows[i].lastchapter?}</a></td>
+    <td>{?if $articlerows[i].authorid == 0?}{?$articlerows[i].author?}{?else?}<a href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" target="_parent">{?$articlerows[i].author?}</a>{?/if?}</td>
+	<td>{?$articlerows[i].size_k?}K</td>
+    <td align="center">{?$articlerows[i].lastupdate|date:'Y-m-d'?}</td>
+    <td align="center">{?$articlerows[i].fullflag?}</td>
+  </tr>
+  {?/section?}
+  <tr><td colspan="6" align="right"><div class="pages">{?$url_jumppage?}</div></td></tr>
+</table>

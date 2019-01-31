@@ -1,0 +1,56 @@
+<form name="frmsearch" method="get" action="{?$jieqi_modules['pay']['url']?}/admin/paylog.php">
+<table class="grid" width="100%" align="center">
+    <tr>
+        <td>条件：<select class="select"  size="1" name="keytype">
+		<option value="buyname"{?if $_request['keytype'] == 'buyname'?} selected="selected"{?/if?}>用户名</option>
+		<option value="payid"{?if $_request['keytype'] == 'payid'?} selected="selected"{?/if?}>交易序号</option>
+		</select>
+		关键字： <input name="keyword" type="text" class="text" size="15" maxlength="50" value="{?$_request['keyword']?}">
+		状态：<select class="select"  size="1" name="payflag">
+		<option value="all"{?if $_request['payflag'] == 'all'?} selected="selected"{?/if?}>全部</option>
+		<option value="success"{?if $_request['payflag'] == 'success'?} selected="selected"{?/if?}>已成功</option>
+		<option value="failure"{?if $_request['payflag'] == 'failure'?} selected="selected"{?/if?}>未成功</option>
+		</select>
+		交易日期：<input name="datestart" type="text" class="text" size="10" maxlength="10" value="{?$_request['datestart']?}">-<input name="dateend" type="text" class="text" size="10" maxlength="10" value="{?$_request['dateend']?}">
+        <input type="submit" name="btnsearch" class="button" value="搜 索">      
+		日期格式：2012-05-06
+        </td>
+    </tr>
+	<tr>
+		<td>
+		总记录数：{?$paylogstat['cot']?}， 总{?$egoldname?}：{?$paylogstat['sumegold']?}
+		</td>
+	</tr>
+</table>
+</form>
+<table class="grid" width="100%" align="center" style="margin-top:10px;">
+  <caption>在线充值记录</caption>
+  <tr align="center" valign="middle">
+    <th width="10%">序号</th>
+    <th width="15%">交易时间</th>
+    <th width="15%">用户名</th>
+    <th width="10%">购买点数</th>
+    <th width="15%">支付方式</th>
+    <th width="15%">交易状态</th>
+    <th width="20%">操作</th>
+  </tr>
+  {?section name=i loop=$paylogrows?}
+  <tr valign="middle">
+    <td align="center">{?$paylogrows[i].payid?}</td>
+    <td align="center">{?$paylogrows[i].buytime|date:'Y-m-d H:i:s'?}</td>
+    <td align="center"><a href="{?function jieqi_geturl:'system':'user':$paylogrows[i].buyid?}" target="_blank">{?$paylogrows[i].buyname?}</a></td>
+    <td align="center">{?$paylogrows[i].egold?}</td>
+    <td align="center">{?$paylogrows[i].paytype?}</td>
+    <td align="center">{?$paylogrows[i].payflag?}</td>
+    <td align="center">
+	{?if $paylogrows[i].payflag_n == 0?}
+	<a id="act_confirm_{?$paylogrows[i].payid?}" href="javascript:;" onclick="if(confirm('确实要手工确认该订单么？')) Ajax.Tip('{?$jieqi_modules['pay']['url']?}/admin/paylog.php?id={?$paylogrows[i].payid?}&act=confirm{?$jieqi_token_url?}', {method: 'POST'});">手工处理</a> | 
+	<a id="act_del_{?$paylogrows[i].payid?}" href="javascript:;" onclick="if(confirm('确实要删除么？')) Ajax.Tip('{?$jieqi_modules['pay']['url']?}/admin/paylog.php?id={?$paylogrows[i].payid?}&act=del{?$jieqi_token_url?}', {method: 'POST'});">删除</a>
+	{?else?}
+	{?$paylogrows[i].note?}
+	{?/if?}
+	</td>
+  </tr>
+  {?/section?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>

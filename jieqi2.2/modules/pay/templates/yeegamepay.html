@@ -1,0 +1,116 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "游戏点卡充值-{$jieqi_sitename}"?}
+
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paylist_tab" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="4" custom="1" publish="3" hasvars="0"?}
+
+<form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/yeecard.php">
+<table class="grid" width="100%" align="center">
+  <caption>游戏点卡充值</caption>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	<input name="cardtype" type="radio" class="radio" value="QQCARD" onchange="showSubPaySelect();" onClick="this.blur();" checked="checked" />Q币卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="SNDACARD" onchange="showSubPaySelect();" onClick="this.blur();" />盛大卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="JUNNET" onchange="showSubPaySelect();" onClick="this.blur();" />骏网一卡通&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="ZHENGTU" onchange="showSubPaySelect();" onClick="this.blur();" />征途卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="JIUYOU" onchange="showSubPaySelect();" onClick="this.blur();" />久游卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="NETEASE" onchange="showSubPaySelect();" onClick="this.blur();" />网易卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="SOHU" onchange="showSubPaySelect();" onClick="this.blur();" />搜狐卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="WANMEI" onchange="showSubPaySelect();" onClick="this.blur();" />完美卡&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="YPCARD" onchange="showSubPaySelect();" onClick="this.blur();" />易宝e卡通&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="ZONGYOU" onchange="showSubPaySelect();" onClick="this.blur();" />纵游一卡通&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="TIANXIA" onchange="showSubPaySelect();" onClick="this.blur();" />天下一卡通&nbsp;&nbsp;
+	<input name="cardtype" type="radio" class="radio" value="TIANHONG" onchange="showSubPaySelect();" onClick="this.blur();" />天宏一卡通&nbsp;&nbsp;
+	</td>
+  </tr>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	<div style="width:100%;clear:both;">
+	<span id="subselect" name="subselect"></span>
+  <script type="text/javascript">
+  //检查选中项
+  function selectRadioValue(radioName){
+	  var radioObj = document.getElementsByName(radioName);
+	  var radioValue="";
+	  for(var i=0;i<radioObj.length;i++){
+		  if(radioObj[i].checked){
+			  radioValue = radioObj[i].value;
+			  break;
+		}
+	}
+	return radioValue;
+  }
+  //输出一行金额选项html
+  function htmlOnePaySelect(ary){
+	  return '<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="'+ary[1]+'" class="radio"> '+ary[1]+'{?$egoldname?}（'+ary[0]+'元）</li>';
+  }
+  //切换可选项
+  function showSubPaySelect(){
+	var subselect=document.getElementById('subselect');
+	var selectvalue = selectRadioValue('cardtype');
+	var egoldtypes = {'s1000':[1000,75000], 's500':[500,37500], 's468':[468,35100], 's350':[350,26250], 's300':[300,22500], 's250':[250,18750], 's208':[208,15600], 's200':[200,15000], 's180':[180,13500], 's120':[120,9000], 's100':[100,7500], 's68':[68,5100], 's60':[60,45000], 's50':[50,3750], 's45':[45,3375], 's40':[40,3000], 's35':[35,2625], 's30':[30,2250], 's25':[25,1875], 's20':[20,1500], 's18':[18,1350], 's15':[15,1125], 's10':[10,750], 's6':[6,450], 's5':[5,375], 's2':[2,150]}
+	subselect.innerHTML = '';
+	switch(selectvalue){
+		case "JUNNET":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s6)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "SNDACARD":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s1000)+htmlOnePaySelect(egoldtypes.s350)+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s45)+htmlOnePaySelect(egoldtypes.s35)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "ZHENGTU":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s500)+htmlOnePaySelect(egoldtypes.s468)+htmlOnePaySelect(egoldtypes.s300)+htmlOnePaySelect(egoldtypes.s250)+htmlOnePaySelect(egoldtypes.s208)+htmlOnePaySelect(egoldtypes.s180)+htmlOnePaySelect(egoldtypes.s120)+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s68)+htmlOnePaySelect(egoldtypes.s60)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s25)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s18)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "QQCARD":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s200)+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s60)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "JIUYOU":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s25)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+htmlOnePaySelect(egoldtypes.s2)+'</ul>';
+			break;
+		case "NETEASE":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+'</ul>';
+			break;
+		case "WANMEI":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s15)+'</ul>';
+			break;
+		case "SOHU":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s40)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "ZONGYOU":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "TIANXIA":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s6)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "TIANHONG":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+		case "YPCARD":
+			subselect.innerHTML='<ul>'+htmlOnePaySelect(egoldtypes.s100)+htmlOnePaySelect(egoldtypes.s50)+htmlOnePaySelect(egoldtypes.s30)+htmlOnePaySelect(egoldtypes.s20)+htmlOnePaySelect(egoldtypes.s15)+htmlOnePaySelect(egoldtypes.s10)+htmlOnePaySelect(egoldtypes.s5)+'</ul>';
+			break;
+	}
+  }
+  if (window.attachEvent){
+	window.attachEvent('onload',showSubPaySelect);
+  }else{
+	window.addEventListener('load',showSubPaySelect,false);
+  } 
+  </script>
+	<div class="cb"></div>
+	</div>
+	</td>
+  </tr>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	请输入卡号：<input type="text" class="text" name="cardno" size="25" value="" /><br />
+	请输入密码：<input type="text" class="text" name="cardpwd" size="25" value="" /><br />
+	<br />
+	<input type="submit" name="Submit" value="进入下一步" class="button" >
+    <input type="hidden" name="act" value="pay">{?$jieqi_token_input?}
+	<input type="hidden" name="type" value="yeegame">
+	</td>
+  </tr>
+</table>
+</form>
+<div class="textbox">
+<strong>说明：</strong><br />支持各类点卡充值，请务必选择正确的点卡类型以及对应的金额。<br />
+</div>

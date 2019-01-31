@@ -1,0 +1,33 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "环迅网银充值-{$jieqi_sitename}"?}
+
+<div class="divbox">
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paynav" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="0" custom="1" publish="3" hasvars="0"?}
+</div>
+<form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/ips.php">
+<table class="grid" width="100%" align="center">
+  <caption>环迅网银充值</caption>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	<strong>请选择您要的充值金额：</strong><br />
+	<div style="width:100%;clear:both;margin-bottom:10px;">
+	<ul>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="50000" class="radio"> 50000{?$egoldname?}（500元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="20000" class="radio"> 20000{?$egoldname?}（200元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="10000" class="radio"> 10000{?$egoldname?}（100元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="5000" class="radio"> 5000 {?$egoldname?}（50元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="2000" class="radio"> 2000 {?$egoldname?}（20元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="1000" class="radio"> 1000 {?$egoldname?}（10元）</li>
+	</ul>
+	<div class="cb"></div>
+	</div>
+	<input type="submit" name="Submit" value="进入下一步" class="button" >
+    <input type="hidden" name="action" value="pay">
+    </td>
+  </tr>
+</table>
+</form>
+<div class="textbox">
+<strong>说明：</strong><br />支持国内各大银行在线充值，需要用户的银行卡开通网上银行支付功能。<br />
+</div>

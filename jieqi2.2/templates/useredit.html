@@ -1,0 +1,42 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+{?set $jieqi_pagetitle = "修改资料-{$jieqi_sitename}"?}
+<script type="text/javascript">
+function jieqiFormValidate_useredit(){
+  if(document.useredit.email.value == ""){
+    alert("请输入Email");
+    document.useredit.email.focus();
+    return false;
+  }
+}
+</script>
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">用户信息编辑</div>
+</div>
+</div>
+<div class="app_body">
+<form name="useredit" id="useredit" action="{?$jieqi_url?}/useredit.php?do=submit" method="post" onsubmit="return jieqiFormValidate_useredit();">
+<div class="app_wanJiPassWord">
+<div class="app_lisBlockSpan3 ">
+<ul>
+<li>
+<span class="left">昵称：</span>
+<input id="nickname" type="text" name="nickname" value="{?$nickname?}" placeholder="{?$nickname?}" />
+</li>
+<li>
+<span class="left">Email：</span>
+<input id="phone" name="email" type="text" value="{?$email?}" placeholder="请输入Email" />
+</li>
+<li>
+<span class="left">QQ：</span>
+<input id="phone" name="qq" type="text" value="{?$qq?}" placeholder="请输入QQ" />
+</li>
+</ul>
+</div>
+<input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+<div class="app_listBlockButton"><button type="submit" name="submit">确认</button></div>
+</div>
+</form>

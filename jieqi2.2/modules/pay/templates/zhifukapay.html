@@ -1,0 +1,98 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "支付卡充值-{$jieqi_sitename}"?}
+
+<div class="divbox">
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paynav" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="0" custom="1" publish="3" hasvars="0"?}
+</div>
+<table class="grid" width="600">
+  <caption>
+  支付卡充值
+  </caption>
+  <tr>
+    <td>
+      <table class="hide" width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="4%">&nbsp;</td>
+          <td width="44%" valign="middle">
+		  {?if $islogin == 1?}
+		  <form name="frmbank" method="post" action="zhifuka.php">
+		  支付卡类型：<br />
+		  		<select name="cardtype" id="cardtype">
+				  <!-- 值由三部分组成，用|分割，分别是 卡类型|卡面值代码|卡金额 -->
+		          <option value="zfk|zfk001|0.01">支付卡0.01元(1点{?$egoldname?})</option>
+		          <option value="zfk|zfk010|10">支付卡10元(1000点{?$egoldname?})</option>
+				  <option value="zfk|zfk030|30">支付卡30元(3000点{?$egoldname?})</option>
+				  <option value="zfk|zfk030|30">支付卡30元(3000点{?$egoldname?})</option>
+				  <option value="zfk|zfk050|50">支付卡50元(5000点{?$egoldname?})</option>
+				  
+				  <option value="szx|szx010|10">神州行10元(1000点{?$egoldname?})</option>
+				  <option value="szx|szx030|30">神州行30元(3000点{?$egoldname?})</option>
+				  <option value="szx|szx050|50">神州行50元(5000点{?$egoldname?})</option>
+				  
+				  <option value="qqb|qqb005|5">Q币卡5元(500点{?$egoldname?})</option>
+				  <option value="qqb|qqb010|10">Q币卡10元(1000点{?$egoldname?})</option>
+				  <option value="qqb|qqb015|15">Q币卡15元(1500点{?$egoldname?})</option>
+				  
+				  <option value="sdk|sdk005|5">盛大一卡通5元(500点{?$egoldname?})</option>
+				  <option value="sdk|sdk010|10">盛大一卡通10元(1000点{?$egoldname?})</option>
+				  <option value="sdk|sdk015|15">盛大一卡通15元(1500点{?$egoldname?})</option>
+				  
+	            </select><br /><br />
+			支付卡号：<br />
+			<input name="cardnum" type="text" size="30" /><br /><br />
+			支付卡密码：<br />
+			<input name="cardpass" type="text" size="30" /><br /><br /><br />
+			<input name="submit" type="submit" value=" 确认提交 " />
+			</form>
+			{?else?}
+	<form name="frmlogin" method="post" action="{?$url_login?}">
+ <table class="grid" width="250" align="center">
+    <caption>请先登陆</caption>
+    <tr align="center">
+      <td><table class="hide" width="100%"  border="0" cellspacing="0" cellpadding="5">
+        <tr>
+          <td width="37%" align="right" valign="middle">用户名：</td>
+          <td width="63%"><input type="text" class="text" size="20" maxlength="30" name="username" onKeyPress="javascript: if (event.keyCode==32) return false;" ></td>
+        </tr>
+        <tr>
+          <td align="right" valign="middle">密　码：</td>
+          <td><input type="password" class="text" size="20" maxlength="30" name="password"></td>
+        </tr>
+        {?if $show_checkcode == 1?}
+        <tr>
+          <td align="right" valign="middle">验证码：</td>
+          <td><input type="text" class="text" size="8" maxlength="8" name="checkcode">&nbsp;<img src="{?$url_checkcode?}"></td>
+        </tr>
+        {?/if?}
+        <tr align="center">
+          <td colspan="2"><input type="hidden" name="action" value="login">
+            <input type="checkbox" class="checkbox" name="usecookie" value="1">
+记录cookie&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="submit" class="button" value="&nbsp;登&nbsp;&nbsp;录&nbsp;" name="submit1"></td>
+          </tr>
+      </table></td>
+    </tr>
+	<tr align="center"> 
+      <td class="foot"> <a href="{?$url_register?}">新用户注册</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{?$url_getpass?}">取回密码</a> 
+      </td>
+    </tr>
+  </table>
+</form>
+{?/if?}
+		  </td>
+          <td width="4%" valign="top">&nbsp;</td>
+          <td width="48%" valign="top"><p>操作说明：<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;1、支持51支付卡、神州行卡、Q币卡及各类游戏卡支付，详情请访问<a href="http://www.zhifuka.net/index.asp" target="_blank">http://www.zhifuka.net/index.asp</a>。<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;2、请在左边选择您使用的支付卡类型。<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;3、输入对应的卡号和密码并提交，系统将返回是否提交成功信息。<br />
+  &nbsp;&nbsp;&nbsp;&nbsp;4、提交成功后请等候1-5分钟，再检查自己账号，是否成功充值{?$egoldname?}。<br />
+  </p>
+  <br /><span class="hottext">注意：用户提交卡号和密码，只能确认提交成功，并不能马上充值成功。如果显示提交成功，可以先关闭本页面，稍后再检查自己帐户是否充值成功。</span>
+  </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<br /><br />

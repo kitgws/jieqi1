@@ -1,0 +1,241 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "阅读币充值-{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">阅读币充值</div>
+</div>
+</div>
+<div class="app_body">
+<!-- <div class="app_body_banner"> -->
+<!-- <img src="{?$jieqi_url?}/tianyin/picture/720230.png" /> -->
+<!-- </div> -->
+<div class="app_openReadBlock">
+<form name="weixinpay" method="post" action="{?$jieqi_modules['pay']['url']?}/weixin/weixin.php">
+<div class="app_openReadBlock_li  app_deleteMargin">
+<div class="app_openReadBlock_liTitle">微信充值</div>
+<div class="app_openReadBlock_select">
+<ul>
+<li class="active">
+<input type="radio" name="egold" value="1000" class="radio" checked="checked" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>1000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">10元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="5000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>3000{?$egoldname?}</i>
+<!-- <i>+送500阅读币</i> -->
+</span>
+</span>
+<span class="bottom">30元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="5000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>5000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">50元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="100000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>10000{?$egoldname?}</i>
+<!-- <i>+送10000阅读币</i> -->
+</span>
+</span>
+<span class="bottom">100元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="300000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>30000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">300元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="500000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>50000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">500元</span>
+</div>
+</li>
+</ul>
+</div>
+<input type="hidden" name="act" value="pay">
+{?$jieqi_token_input?}
+<div class="app_openReadBlock_button" onclick="javascript:document.weixinpay.submit();">提交订单</div>
+</div>
+</form>
+<form name="alipay" method="post" action="{?$jieqi_modules['pay']['url']?}/alipay.php">
+<div class="app_openReadBlock_li  ">
+<div class="app_openReadBlock_liTitle">支付宝充值</div>
+<div class="app_openReadBlock_select">
+<ul>
+<li class="active">
+<input type="radio" name="egold" value="1000" class="radio" checked="checked" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>1000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">10元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="5000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>3000{?$egoldname?}</i>
+<!-- <i>+送500阅读币</i> -->
+</span>
+</span>
+<span class="bottom">30元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="5000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>5000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">50元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="100000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>10000{?$egoldname?}</i>
+<!-- <i>+送10000阅读币</i> -->
+</span>
+</span>
+<span class="bottom">100元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="300000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>30000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">300元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="500000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>50000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">500元</span>
+</div>
+</li>
+</ul>
+</div>
+<input type="hidden" name="act" value="pay">{?$jieqi_token_input?}
+<div class="app_openReadBlock_button" onclick="javascript:document.alipay.submit();">提交订单</div>
+</div>
+</form>
+<form name="paypal" method="post" action="{?$jieqi_modules['pay']['url']?}/paypal.php">
+<div class="app_openReadBlock_li  ">
+<div class="app_openReadBlock_liTitle">PayPal充值</div>
+<div class="app_openReadBlock_select">
+<ul>
+<li class="active">
+<input type="radio" name="egold" value="6000" class="radio" checked="checked" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>6000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">10美元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="12000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>12000{?$egoldname?}</i>
+<!-- <i>+送500阅读币</i> -->
+</span>
+</span>
+<span class="bottom">20美元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="30000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>30000{?$egoldname?}</i>
+</span>
+</span>
+<span class="bottom">50美元</span>
+</div>
+</li>
+<li>
+<input type="radio" name="egold" value="60000" class="radio" style="display:none;">
+<div class="app_borderBlock">
+<span class="top">
+<span class="number">
+<i>60000{?$egoldname?}</i>
+<!-- <i>+送10000阅读币</i> -->
+</span>
+</span>
+<span class="bottom">100美元</span>
+</div>
+</li>
+</ul>
+</div>
+<input type="hidden" name="act" value="pay">{?$jieqi_token_input?}
+<div class="app_openReadBlock_button" onclick="javascript:document.paypal.submit();">提交订单</div>
+</div>
+</form>
+<div class="app_friendTips">
+<span class="tips">温馨提示</span>
+<span class="cons">
+1.我们真诚期待您支持正版阅读，您的每一阅读币的订阅购买，都是对作者的莫大鼓励，代表您对创作者的最大认可。<br/>
+2.VIP收费章节定价，每阅读1000字仅需5阅读币。30元即可兑换3000阅读币，可至少阅读60万字，需要作者至少4个月时间才能创作完成。<br/>
+3.支付即视为同意<a href="#">《支付条款》</a><br/>
+4.如果您充值未到账或者无法继续阅读，您可以通过QQ客服群12345678以及客服电话10086联系客服。<br/>
+</span>
+</div>
+</div>

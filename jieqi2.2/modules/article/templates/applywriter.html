@@ -1,0 +1,73 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+{?set $jieqi_pagetitle = "申请成为作者-{$jieqi_sitename}"?}
+<script language="javascript" type="text/javascript" src="/scripts/jquery-latest.min.js"></script>
+<script language="javascript" type="text/javascript">
+function formcheck(){
+  if(document.getElementById('applytext').value == "") {
+    alert('请输入申请小说样章！');
+	document.getElementById('applytext').focus();
+    return false;
+  }
+}
+
+function textstatnum(){
+  alert('当前长度 '+ document.getElementById('applytext').value.length + ' 个字。');
+}
+</script>
+{?block bid="0" blockname="会员工具" module="system" filename="block_userbox_tab" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<form action="{?$jieqi_modules['article']['url']?}/applywriter.php" method="post" onsubmit="return formcheck();">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="grid" style="display:none;" id="jump_table">
+	<caption>作者申请</caption>
+	<tr>
+	<td style="padding:10px;font-size:14px;line-height:180%;">
+	<p>请完善<a style="color:#ff6600" href="/personedit.php">联系信息</a>中带星号的必填项后再尝试作者申请，谢谢！</p>
+	</td>
+	</tr>
+	</table>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="grid" style="display:none;" id="applywriter_form_table">
+	<caption>作者申请</caption>
+	<tr>
+		<td style="padding:10px;font-size:14px;line-height:180%;">
+		<p>
+		<strong>一、作者申请条例：</strong><br />
+		&nbsp;&nbsp;&nbsp; 1、发表小说必须为原创作品。<br />
+		&nbsp;&nbsp;&nbsp; 2、有比较稳定的写作时间和写作速度。<br />
+		&nbsp;&nbsp;&nbsp; 3、小说内容不得含有色情、政治及其他违规内容。<br />
+		&nbsp;&nbsp;&nbsp; 4、遇到问题可咨询悦读坊客服人员，QQ：1830343590 <br />
+		</p>
+		<p>
+		<strong>二、申请要求：</strong><br />
+		&nbsp;&nbsp;&nbsp; 申请原创作者必须提交不少于2000字的原创小说样章，由编辑审核通过后才能发表小说哦。<br /><br />
+		</p>
+		<div style="margin:5px 0;">
+		<strong>请在下面输入小说样章：</strong>  <input name="textstat" type="button" class="button" onclick="textstatnum();" value=" 字数统计 " />
+		</div>
+		<textarea id="applytext"  class="textarea" name="applytext" cols="80" rows="15"></textarea>
+		</td>
+	</tr>
+	<tr>
+    <td align="center" class="foot">
+	<input name="act" type="hidden" value="applywriter" />{?$jieqi_token_input?}
+	<input name="submit" type="submit" id="submit" class="button" value=" 同意并申请 " />
+	</td>
+  </tr>
+</table>
+</form>
+<script>
+	$.ajax({
+
+            url:"/extends/api/applywriter.php",
+            data:{parm:null},
+            type:"get",
+            dataType:"json",
+            success: function(result){
+				var message = result['message'];
+				if(message == 'true'){
+					$("#applywriter_form_table").show();
+				}else{
+					$("#jump_table").show();
+				}
+			}
+	});
+</script>

@@ -1,0 +1,104 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "充值卡充值-{$jieqi_sitename}"?}
+
+<div class="divbox">
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paynav" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="0" custom="1" publish="3" hasvars="0"?}
+</div>
+<form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/99card.php">
+<table class="grid" width="100%" align="center">
+  <caption>充值卡充值</caption>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+      <table class="hide" width="100%" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <td align="left"><strong>请输入点卡信息：</strong></td>
+              </tr>
+			  <tr>
+                <td>
+				点卡类型：
+				<select class="select" size="1" name="cardtype">
+				<option value="0">神州行</option>
+				<option value="1">联通卡</option>
+				<option value="3">电信卡</option>
+				<option value="4">骏网一卡通</option>
+				</select>
+				</td>
+              </tr>
+              <tr>
+                <td>
+				点卡金额：
+				<select class="select" size="1" name="egold">
+				<option value="50000">500元(兑换50000{?$egoldname?})</option>
+				<option value="30000">300元(兑换30000{?$egoldname?})</option>
+				<option value="10000">100元(兑换10000{?$egoldname?})</option>
+				<option value="5000">50元(兑换5000{?$egoldname?})</option>
+				<option value="3000">30元(兑换3000{?$egoldname?})</option>
+				<option value="2000">20元(兑换2000{?$egoldname?})</option>
+				<option value="1500">15元(兑换1500{?$egoldname?})</option>
+				<option value="1000">10元(兑换1000{?$egoldname?})</option>
+				</select>
+				</td>
+              </tr>
+              <tr>
+                <td>点卡卡号：<input type="text" class="text" name="cardno" size="25" maxlength="50" value="" /></td>
+              </tr>
+              <tr>
+                <td>点卡密码：<input type="text" class="text" name="cardpwd" size="25" maxlength="50" value="" /></td>
+              </tr>
+              <tr>
+                <td><input type="submit" name="Submit" value="进入下一步" class="button" >
+                    <input type="hidden" name="action" value="pay"></td>
+              </tr>
+          </table>
+    </td>
+  </tr>
+</table>
+</form>
+<div class="textbox">
+<strong>说明：</strong><br />支持各类充值卡充值，请务必选择正确的点卡类型以及对应的金额。<br />
+</div>
+
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "神州行卡充值-{$jieqi_sitename}"?}
+<form name="frmbank" method="post" action="{?$jieqi_modules['pay']['url']?}/99card.php">
+<table class="grid" width="600" align="center">
+  <caption>神州行卡充值</caption>
+  <tr>
+    <td>
+      <table class="hide" width="100%"  border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="4%">&nbsp;</td>
+          <td width="44%" valign="middle"><table class="hide" width="262" border="0" cellspacing="0" cellpadding="3">
+              <tr>
+                <td align="left">请选择购买类别</td>
+              </tr>
+              <tr>
+                <td><input type="radio" name="egold" value="10000" class="radio">
+            10000{?$egoldname?}（100元）</td>
+              </tr>
+              <tr>
+                <td><input type="radio" name="egold" value="5000" class="radio">
+            5000{?$egoldname?}（50元）</td>
+              </tr>
+              <tr>
+                <td><input type="submit" name="Submit" value="进入下一步" class="button" >
+                    <input type="hidden" name="action" value="bankpay"></td>
+              </tr>
+          </table></td>
+          <td width="4%" valign="top">&nbsp;</td>
+          <td width="48%" valign="top">操作说明：<br />
+              <br />
+&nbsp;&nbsp;&nbsp;&nbsp;1、购买神州行充值卡（50元，100元）<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2、在页面点击相应面值充值按钮,点“下一步”<br />
+&nbsp;&nbsp;&nbsp;&nbsp;3、选择“刮开一张新的神州行卡支付”，输入您的Email地址，点“下一步”之后，输入“神州行卡卡号”和“神州行卡密码”。点确定支付就成功了。<br /><br />
+特别提醒：<br /><br />
+&nbsp;&nbsp;&nbsp;&nbsp;1.“金卡神州行充值卡”为地方发行卡，不能充值翠微币。<br />
+&nbsp;&nbsp;&nbsp;&nbsp;2. 如果充值不成功，请联系客服QQ帮忙解决</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</form>

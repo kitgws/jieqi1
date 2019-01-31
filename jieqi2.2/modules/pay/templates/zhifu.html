@@ -1,0 +1,120 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+{?set $jieqi_pagetitle = "微信-{$jieqi_sitename}"?}
+
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paylist_tab" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<link rel="stylesheet" href="/weixin/Css/public.css" media="screen">
+<link rel="stylesheet" href="/weixin/Css/weui.min.css" media="screen">
+
+<div class="bd">
+    	<form id="form">
+        <div class="weui_cells_title"><img src="/imagesd/weixin.png" width="280" height="120"></div>
+        <div class="weui_cells">
+           <div style="background:#F9F8F7;"</div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label"></label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                <span style="color:#D00D54;">微信充值</span>
+                    <input class="weui_input" type="hidden" id="username" name="username" placeholder="{?$jieqi_username?}" value="{?$jieqi_username?}"/>
+                </div>
+            </div>
+        </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">金额</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <ul id="price">
+                      <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="50000" class="price radio"> 500元(50000币)</li>
+    									<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="20000" class="price radio"> 200元(20000币)</li>
+    									<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="10000" class="price radio"> 100元(10000币)</li>
+    									<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="5000" class="price radio"> 50元(5000币)</li>
+    									<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="3000" class="price radio"> 30元(3000币)</li>
+    									<li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="2000" class="price radio"> 20元(2000币)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div style=" padding:50px 15px;margin:auto;">
+            <div id="tj" class="weui_btn weui_btn_primary" style="background-color:#00aaef;">立即充值</div>
+        </div>
+        </form>
+	</div>
+<div class="textbox">
+<strong>说明：</strong><br />微信支付<br />
+</div>
+<div id="dialog_alert1" class="weui_dialog_alert" style="display:none;">
+    <div class="weui_mask"></div>
+        <div class="weui_dialog">
+            <div class="weui_dialog_hd"><strong class="weui_dialog_title">信息提示</strong></div>
+            <div class="weui_dialog_bd"></div>
+            <div class="weui_dialog_ft">
+                <a href="#" class="weui_btn_dialog primary">确定</a>
+            </div>
+        </div>
+    </div>
+    <div id="dialog_alert2" class="weui_dialog_confirm" style="display:none;">
+        <div class="weui_mask"></div>
+        <div class="weui_dialog">
+            <div class="weui_dialog_hd"><strong class="weui_dialog_title">信息提示</strong></div>
+            <div class="weui_dialog_bd"></div>
+            <div class="weui_dialog_ft">
+                <a href="#" class="weui_btn_dialog default">取消</a>
+                <a href="#" class="weui_btn_dialog primary">确定</a>
+            </div>
+        </div>
+    </div>
+    <div id="loadingToast" class="weui_loading_toast" style="display:none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <div class="weui_loading">
+                <!-- :) -->
+                <div class="weui_loading_leaf weui_loading_leaf_0"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_1"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_2"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_3"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_4"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_5"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_6"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_7"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_8"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_9"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_10"></div>
+                <div class="weui_loading_leaf weui_loading_leaf_11"></div>
+            </div>
+            <p class="weui_toast_content">数据加载中</p>
+        </div>
+    </div>
+
+    <div id="toast" style="display: none;">
+        <div class="weui_mask_transparent"></div>
+        <div class="weui_toast">
+            <i class="weui_icon_toast"></i>
+            <p class="weui_toast_content">跳转中...</p>
+        </div>
+    </div>
+
+<script src="/weixin/Js/jquery.min.js"></script>
+<script src="/weixin/Js/public.js"></script>
+<script>
+	$(function(){
+		$("#tj").click(function(){
+			if(!$(this).hasClass("weui_btn_disabled")){
+				$('#tj').addClass("weui_btn_disabled");
+				$('#loadingToast').show();
+				username=$('#username').val();
+				price=$('.price:checked').val();
+				$.post("/weixin/ajax.php?act=add",{username:username,price:price},function(data){
+					str=data.split(":");
+					$('#loadingToast').hide();
+					if(str[0]=='success'){
+						$('#toast').show(function(){});
+						to_url(str[1]);
+					}else{
+						$('.weui_dialog_bd').html(str[1]);
+						$('.weui_dialog_alert').show();
+						$("#tj").removeClass("weui_btn_disabled");
+					}
+				});
+			}
+		});
+	});
+   </script>

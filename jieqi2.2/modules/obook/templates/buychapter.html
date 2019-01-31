@@ -1,0 +1,70 @@
+{?set jieqi_blocks_module = "article"?}
+<style type="text/css">
+.buychapter_box{width:100%;
+height:auto;
+zoom:1;
+overflow:hidden;
+padding:20px 0px;
+font-size:15px;}
+.buychapter_list{width:100%;
+height:auto;
+zoom:1;
+overflow:hidden;
+padding:10px 0px;
+border-bottom:solid 1px #fbe2e1;}
+.buychapter_list p{line-height:22px;}
+.buychapter_list span{color:#e7423d}
+.buychapter_btn{width:100%;
+height:auto;
+zoom:1;
+overflow:hidden;
+padding:10px 0px;}
+.buychapter_btn input{width:48%;
+height:30px;
+border:none;
+background:#e7423d;
+color:#fff;
+border-radius:5px;
+margin-top:10px;}
+</style>
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">章节内容</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock app_deleteMargin">
+<div class="app_listBlock_con3">
+	<form name="frmbuychapter" method="post" action="{?$url_buychapter?}">
+	<div class="buychapter_box">
+		<div class="buychapter_list">
+			<p>本章是VIP专属页面哦！请支持作者，支持正版！</p>
+		</div>
+		<div class="buychapter_list">
+			<p><span>{?$chaptername?}</span></p>
+			<p>你好：<span>{?$username?}</span></p>
+		</div>
+		<div class="buychapter_list">
+			<p>本章原价：<span>{?$saleprice?}{?$egoldname?}</span></p>
+		</div>
+		<div class="buychapter_list">
+			<p>您的账户余额：<span>{?$useremoney?}{?$egoldname?}</span></p>
+		</div>
+		<div class="buychapter_list">
+		<input type="checkbox" name="autobuy" value="1"> <span>自动订阅本书其它VIP章节</span>
+		</div>
+		<div class="buychapter_btn">
+			<input type="hidden" name="act" value="buy">{?$jieqi_token_input?}
+			<input type="hidden" name="cid" value="{?$cid?}">
+			<input type="submit" value="点击阅读本站" name="submit">
+			<input type="button" style="float:right;background:#1c1a1a;" value="充值{?$egoldname?}" name="submit">
+		</div>
+	</div>
+	</form>
+</div>
+</div>
+</div>
+</div>		
+

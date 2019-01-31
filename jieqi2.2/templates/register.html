@@ -1,0 +1,38 @@
+{?set $jieqi_pagetitle = "用户注册-{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">注册</div>
+</div>
+</div>
+<form name="frmregister" id="frmregister" action="{?$form_action?}?do=submit" method="post">
+<div class="app_body">
+<div class="app_bindPhoneBlock">
+<div class="app_lisBlockSpan  app_addPaddingStyle">
+<ul>
+<li class="phone">
+<input id="phone" type="text" name="username" value="" placeholder="请输入用户名" />
+</li>
+<li class="password">
+<input id="pass" type="password" value="" name="password" placeholder="请输入密码" />
+</li>
+<li class="code">
+<input id="verifycode" type="password" name="repassword" value="" placeholder="请确认密码" />
+</li>
+<li class="qq">
+<input id="verifycode" type="text" name="email" value="" placeholder="请输入邮箱" />
+</li>
+<input type="hidden" name="sex" value="0" value="login">
+<li class="qq">
+<input id="verifycode" type="text" name="qq" value="" placeholder="请输入QQ号码" />
+</li>
+</ul>
+</div>
+<input type="hidden" name="act" value="newuser" />
+<div class="app_listBlockButton"><button type="submit" name="submit">立即注册</button></div>
+<div class="app_dengLu_bottom">
+注册即表示您同意<a href="#" class="blue">《服务条款和隐私政策》</a>
+</div>
+</div>
+</form>

@@ -1,0 +1,14 @@
+{?section name=i loop=$creditrows?}
+<li title="{?$creditrows[i].point?}" class="top first">
+	    	    							<span class="title">
+												<img src="{?$creditrows[i].img?}" alt="{?$creditrows[i].rank?}">
+	    	    									</span>
+	    	    							<span class="index">{?$i['order']?}</span>
+	   	    								<a href="{?function jieqi_geturl:'system':'user':$creditrows[i].uid:'info'?}" class="name">{?$creditrows[i].uname?}</a>
+		    	        				</li>
+{?/section?}
+</ul>
+<p class="more">
+	    	    					<a href="{?$jieqi_modules['article']['url']?}/creditlist.php?id={?$articleid?}">¸ü¶àÅÅÃû&gt;&gt;</a>
+	   	    					</p>
+	   	    				</div>

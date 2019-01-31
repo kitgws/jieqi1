@@ -1,0 +1,7 @@
+{?section name=i loop=$newsrows?}
+<div class="notify" data-collect-id="2103">
+								<h5><a data-collect-index="1" boxid="ruoxiaHomeNotice" target="_blank" href="{?function jieqi_geturl:'news':'info':$newsrows[i].topicid?}">{?$newsrows[i].title|truncate:40:'..'?}</a></h5>
+									<p class="sub">
+										{?$newsrows[i].summary|truncate:40:'..'?}</p>
+								</div>
+{?/section?}

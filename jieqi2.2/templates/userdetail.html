@@ -1,0 +1,50 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "用户中心-{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">账户</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_accountBlock">
+<div class="app_accountBlock_headerBg">
+<img src="{?$jieqi_url?}/tianyin/picture/headerbg.png" class="background" />
+{?if $qq == ""?}
+<div class="app_accountBlock_headerCon"><img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}" />
+</div>
+{?else?}
+<div class="app_accountBlock_headerCon"><img src="http://q2.qlogo.cn/headimg_dl?bs={?$qq?}&dst_uin={?$qq?}&dst_uin={?$qq?}&;dst_uin={?$qq?}&spec=100&url_enc=0&referer=bu_interface&term_type=PC" />
+</div>
+{?/if?}
+<div class="app_accountBlock_name">
+<span class="name">{?$uname?}</span>
+</div>
+<div class="app_accountBlock_edit"><a href="update.html"></a></div>
+</div>
+<div class="app_accountBlock_lis">
+<ul>
+<li class="ico1">{?$egoldname?}<i>{?$egold?}</i><span class="btn" onclick="javascript:window.location.href='pay.html'">充值</span></li>
+<li class="ico4">包月状态<i>{?if $overtime > 0?}{?$overtime|date:'Y-m-d'?}{?else?}未开通包月{?/if?}</i><span class="btn" onclick="javascript:window.location.href='{?$jieqi_modules['article']['url']?}/monthlybuy.php?id={?$uid?}&ajax_gets=jieqi_contents'">开通</span></li>
+</ul>
+</div>
+<div class="app_accountBlock_lis2">
+<ul>
+<li class="ico3"><a href="bookshelf.html">我的书架</a></li>
+</ul>
+</div>
+<div class="app_accountBlock_lis2">
+<ul>
+<li class="ico5"><a href="paylog.html">充值记录</a></li>
+</ul>
+</div>
+<div class="app_accountBlock_lis2">
+<ul>
+<li class="ico6"><a href="qa.html">常见问题</a></li>
+</ul>
+</div>
+<div class="app_changeUser">
+<button onclick="javascript:window.location.href='logout.php'">退出账号</button>
+</div>
+</div>

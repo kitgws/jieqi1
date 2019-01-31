@@ -1,0 +1,14 @@
+{?if $ownerid > 0?}
+<a href="{?function jieqi_geturl:'system':'user':$uid?}"><img src="{?function jieqi_geturl:'system':'avatar':$uid:'l':$avatar?}" alt="{?$name?}" /></a>
+<a href="{?function jieqi_geturl:'system':'user':$uid?}">{?$name?}</a><br />
+<span>性别：{?$sex?}</span><br />
+<span>等级：{?$group?}</span><br />
+<span>积分：{?$score?}</span><br />
+{?else?}
+<img src="{?$jieqi_url?}/images/noavatar.jpg" alt="{?$name?}" />
+<a href="#">{?$name?}</a><br />
+<span>状态：非本站会员</span><br />
+<span>&nbsp;</span><br />
+<span>&nbsp;</span><br />
+{?/if?}
+<div class="cb"></div>

@@ -1,0 +1,47 @@
+<form name="frmquery" method="post" action="{?$jieqi_url?}/admin/personlist.php">
+<table class="grid" width="100%" align="center">
+    <td align="right">
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="hide">
+      <tr>
+        <td width="30%" valign="middle">联系人数：{?$rowcount?}</td>
+        <td width="70%" align="right" valign="middle">
+		关键字：
+        <input name="keyword" type="text" class="text" id="keyword" size="20" maxlength="50">
+		<input name="keytype" type="radio" value="realname" checked="checked" />姓名 
+		<input name="keytype" type="radio" value="idcard" />身份证号 
+		<input name="keytype" type="radio" value="mobilephone" />手机号码 
+		<input name="keytype" type="radio" value="telephone" />电话号码 
+		&nbsp;&nbsp;
+        <input type="submit" name="Submit" value="搜 索" class="button">&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</form>
+<br />
+
+<table class="grid" width="100%" align="center">
+<caption>联系人列表</caption>
+  <tr align="center" class="head">
+    <td width="15%" valign="middle">姓名</td>
+	<td width="5%" valign="middle">性别</td>
+	<td width="30%" valign="middle">证件号码</td>
+	<td width="15%" valign="middle">手机</td>
+    <td width="15%" valign="middle">电话</td>
+    <td width="20%" valign="middle">操作</td>
+  </tr>
+  {?section name=i loop=$personsrows?}
+  <tr valign="middle">
+    <td><a href="{?function jieqi_geturl:'system':'user':$personsrows[i].uid:'info'?}" target="_blank">{?$personsrows[i].realname?}</a></td>
+	<td align="center">{?$personsrows[i].gender?}</td>
+	<td>{?$personsrows[i].idcardtype?}：{?$personsrows[i].idcard?}</td>
+    <td>{?$personsrows[i].mobilephone?}</td>
+    <td>{?$personsrows[i].telephone?}</td>
+    <td align="center"> <a href="{?$jieqi_url?}/admin/personinfo.php?id={?$personsrows[i].uid?}">详细</a> | <a href="{?$jieqi_url?}/admin/personmanage.php?id={?$personsrows[i].uid?}">修改</a> |<a href="{?$jieqi_url?}/admin/usermanage.php?id={?$personsrows[i].uid?}">账号</a></td>
+  </tr>
+  {?/section?}
+</table>
+
+<div class="pages">{?$url_jumppage?}</div>

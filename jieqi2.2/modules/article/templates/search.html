@@ -1,0 +1,36 @@
+{?set $jieqi_pagetitle = "搜索_{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">搜索</div>
+</div>
+</div>
+
+<div class="app_searchBlock">
+<div class="app_searchBlock_bar">
+<input type="text" value="" id="searvalue2" placeholder="输入想要搜索的小说名"/>
+<button class="button" onclick="search(2)"></button>
+</div>
+</div>
+
+<div class="app_hotBlock">
+<div class="app_listBlock_title2  app_deleteLine">
+<span class="h1">大家都在搜</span>
+</div>
+<div class="app_hotBlock_lis2" id="taglist">
+{?block bid="0" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="0" title="区块" vars="allvote,10,0,0,0,0" template="ledu_search.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock ">
+<div class="app_listBlock_title  tit_icon5">
+<span class="h1">大家都在看</span>
+</div>
+<div class="app_listBlock_con">
+<ul>
+{?block bid="0" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="0" title="区块" vars="allvisit,5,0,0,0,0" template="ledu_list.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+</ul>
+</div>
+<div class="app_reload"><span class="reload">正在加载更多</span></div>
+</div>

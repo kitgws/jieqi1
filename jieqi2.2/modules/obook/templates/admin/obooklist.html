@@ -1,0 +1,32 @@
+<form name="frmsearch" method="get" action="{?$url_obook?}">
+<table class="grid" width="100%" align="center">
+    <tr>
+        <td>关键字：
+            <input name="keyword" type="text" id="keyword" class="text" size="15" maxlength="50"> 
+            <input name="keytype" type="radio" class="radio" value="0" checked="checked">书名
+            <input type="radio" name="keytype" class="radio" value="1">作者 
+			&nbsp;&nbsp;
+            <input type="submit" name="btnsearch" class="button" value="搜 索">
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="{?$obook_dynamic_url?}/admin/obooklist.php">全部电子书</a> | <a href="{?$obook_dynamic_url?}/admin/obooklist.php?display=self">本站电子书</a>        
+        </td>
+    </tr>
+</table>
+</form>
+<table class="grid" width="100%" align="center">
+<caption>{?$obooktitle?}</caption>
+  <tr align="center">
+    <th width="40%">电子书名称</th>
+    <th width="20%">作者</th>
+    <th width="20%">总销售额</th>
+    <th width="20%">操作</th>
+  </tr>
+  {?section name=i loop=$obookrows?}
+  <tr>
+    <td><a href="{?function jieqi_geturl:'article':'article':$obookrows[i].articleid:'info'?}" target="_blank">{?$obookrows[i].obookname?}</a></td>
+    <td>{?if $obookrows[i].authorid == 0?}{?$obookrows[i].author?}{?else?}<a href="{?function jieqi_geturl:'system':'user':$obookrows[i].authorid?}" target="_blank">{?$obookrows[i].author?}</a>{?/if?}</td>
+    <td align="center">{?$obookrows[i].sumemoney?}</td>
+    <td align="center"><a href="{?function jieqi_geturl:'article':'article':$obookrows[i].articleid:'index'?}" target="_blank">目录</a> | <a href="{?$obook_static_url?}/admin/txtobook.php?id={?$obookrows[i].obookid?}">下载TXT</a></td>
+  </tr>
+  {?/section?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>

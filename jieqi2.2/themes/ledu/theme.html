@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>{?$jieqi_pagetitle?}</title>
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$meta_description?}" />
+<meta charset="{?$jieqi_charset?}">
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<style type="text/css">
+body,td,th {
+	font-family: PingFangSC-Light, "Microsoft YaHei", Helvetica, Arial, sans-serif;
+}
+</style>
+</head>
+<script>
+    var SiteURL = "{?$jieqi_url?}";
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/tianyin/css/style.css">
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/flexible.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.pin.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/main.js"></script>
+<script src="{?$jieqi_url?}/tianyin/js/layer.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/wap.js"></script>
+<body>
+<div class="app_goBackToTop"></div>
+<div class="app_position"></div>
+<div class="app_header_section">
+<div class="app_header_section_top">
+<a class="app_logoLinK" style='background-image: url("{?$jieqi_url?}/tianyin/images/logo.png")' href="{?$jieqi_url?}"></a>
+<div class="app_header_section_rightButtons">
+<ul>
+<li class="book">
+<a href="{?$jieqi_url?}/bookshelf.html"></a>
+</li>
+<li class="search">
+<a href="{?$jieqi_url?}/search.html"></a>
+</li>
+<li class="my">
+<a href="{?$jieqi_url?}/userinfo.html"></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="app_header_section_bottom">
+<ul>
+<li {?if $jieqi_thisfile|basename == 'index.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}">首页</a>
+</li>
+<li {?if $jieqi_thisfile|basename == 'boutique.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}/boutique.html">精品</a>
+</li>
+<li {?if $jieqi_thisfile|basename == 'monthly.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}/monthly.html">包月</a>
+</li>
+<li {?if $jieqi_thisfile|basename == 'buyegold.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}/pay.html">充值</a>
+</li>
+</ul>
+</div>
+</div>
+{?if $jieqi_top_bar != ""?}{?$jieqi_top_bar?}{?/if?}
+{?if $jieqi_showtblock == 1?}
+{?section name=i loop=$jieqi_tblocks?}
+  {?if $jieqi_tblocks[i].title != ""?}{?$jieqi_tblocks[i].title?}{?/if?}
+  {?$jieqi_tblocks[i].content?}
+{?/section?}
+{?/if?}
+
+{?if $jieqi_clblocks|empty == false || $jieqi_crblocks|empty == false?}
+
+{?section name=i loop=$jieqi_clblocks?}
+
+  {?if $jieqi_clblocks[i].title != ""?}{?$jieqi_clblocks[i].title?}{?/if?}
+{?$jieqi_clblocks[i].content?}
+
+{?/section?}
+
+{?section name=i loop=$jieqi_crblocks?}
+
+  {?if $jieqi_crblocks[i].title != ""?}{?$jieqi_crblocks[i].title?}{?/if?}
+{?$jieqi_crblocks[i].content?}
+ 
+{?/section?}
+
+{?/if?}
+
+
+{?if $jieqi_showlblock == 1?}
+
+{?section name=i loop=$jieqi_lblocks?}
+
+{?if $jieqi_lblocks[i].title != ""?}{?$jieqi_lblocks[i].title?}{?/if?}
+{?$jieqi_lblocks[i].content?}
+
+{?/section?}  
+
+  {?if $jieqi_showrblock == 1?}{?else?}{?/if?}
+{?else?}
+  {?if $jieqi_showrblock == 1?}{?else?}{?/if?}
+{?/if?}
+{?if $jieqi_showcblock == 1?}
+{?section name=i loop=$jieqi_ctblocks?}
+
+{?if $jieqi_ctblocks[i].title != ""?}{?$jieqi_ctblocks[i].title?}{?/if?}
+{?$jieqi_ctblocks[i].content?}
+
+{?/section?}
+{?section name=i loop=$jieqi_cmblocks?}
+
+{?if $jieqi_cmblocks[i].title != ""?}{?$jieqi_cmblocks[i].title?}{?/if?}
+{?$jieqi_cmblocks[i].content?}
+
+{?/section?}
+{?/if?}
+{?if $jieqi_contents != ""?}{?$jieqi_contents?}{?/if?}
+{?if $jieqi_showcblock == 1?}
+{?section name=i loop=$jieqi_cbblocks?}
+
+{?if $jieqi_cbblocks[i].title != ""?}{?$jieqi_cbblocks[i].title?}{?/if?}
+{?$jieqi_cbblocks[i].content?}
+
+{?/section?}
+{?/if?}
+
+{?if $jieqi_showrblock == 1?}
+
+{?section name=i loop=$jieqi_rblocks?}
+
+{?if $jieqi_rblocks[i].title != ""?}{?$jieqi_rblocks[i].title?}{?/if?}
+{?$jieqi_rblocks[i].content?}
+
+{?/section?}
+
+{?/if?}
+
+
+{?if $jieqi_showbblock == 1?}
+{?section name=i loop=$jieqi_bblocks?}
+
+  {?if $jieqi_bblocks[i].title != ""?}{?$jieqi_bblocks[i].title?}{?/if?}
+{?$jieqi_bblocks[i].content?}
+
+{?/section?}
+{?/if?}
+{?if $jieqi_bottom_bar != ""?}{?$jieqi_bottom_bar?}{?/if?}
+{?if $jieqi_thisfile|basename != 'toplist.php'?}
+<div class="app_searchBlock">
+<div class="app_searchBlock_bar">
+<input type="text" value="" id="searvalue2" placeholder="输入想要搜索的小说名"/>
+<button class="button" onclick="search(2)"></button>
+</div>
+</div>
+<div class="app_footerBlock">
+<button class="contact" onclick="javascript: window.location.href='{?$jieqi_url?}/kefu.html'">在线客服</button>
+<span class="footerCon">
+客服QQ群：1378283361<br/>
+客服电话：想办法自己填呗<br/>
+&copy; 根本就不存在的文化传媒有限公司<br/>
+这一行主要填各种备案号<br/>
+地址：根本就不存在的公司地址
+</span>
+</div>
+{?/if?}
+</div>
+{?if $jieqi_thisfile|basename == 'toplist.php'?}
+<script type="text/javascript">
+    // 页数
+    var pageindex = 2;
+    // 是否有更多数据
+    var moredata = true;
+    function loadMore(object) {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+
+            if(!moredata) return;
+            $('.app_reload').fadeIn(300);
+            ajaxrequest('books/toplist.php?order={?$ajax_order?}&page='+pageindex,{},function(data)
+            {
+                $('.app_reload').fadeOut(300);
+                object.find('ul').append(data.data);
+                pageindex=pageindex+1;
+            },function()
+            {
+                moredata = false;
+                $('.app_reload').removeClass("app_reload").addClass("app_noData");
+                $('.reload').html("没有更多数据了").addClass("noData").removeClass("reload");
+                $('.app_reload').fadeIn(300);
+            });
+
+        }
+    }
+
+
+    $(document).ready(function () {
+
+
+
+        $(window).scroll(function () {
+            loadMore($('.app_listBlock_con'));
+        });
+
+        document.addEventListener('touchstart',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+        document.addEventListener('touchmove',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+        document.addEventListener('touchend',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+    })
+</script>
+{?/if?}
+{?if $jieqi_thisfile|basename == 'articlefilter.php'?}
+<script type="text/javascript">
+            // 页数
+            var pageindex = 2;
+            // 是否有更多数据
+            var moredata = true;
+            function loadMore(object) {
+                if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+
+                    if(!moredata) return;
+                    $('.app_reload').fadeIn(300);
+					{?if $ajax_order|ajax_size != ''?}
+					ajaxrequest('books/articlefilter.php?order={?$ajax_order?}&size={?$ajax_size?}&page='+pageindex,{},function(data)
+					{?else?}
+					{?if $ajax_order|ajax_isfull != ''?}
+					ajaxrequest('books/articlefilter.php?order={?$ajax_order?}&isfull={?$ajax_isfull?}&page='+pageindex,{},function(data)
+					{?else?}
+					{?if $ajax_order|ajax_sortid != ''?}
+					ajaxrequest('books/articlefilter.php?order={?$ajax_order?}&sortid={?$ajax_sortid?}&page='+pageindex,{},function(data)
+					{?else?}
+					{?if $ajax_order != ''?}
+                    ajaxrequest('books/articlefilter.php?order={?$ajax_order?}&page='+pageindex,{},function(data)
+					{?/if?}
+					{?/if?}
+					{?/if?}
+					{?/if?}
+                    {
+                        $('.app_reload').fadeOut(300);
+                        object.find('ul').append(data.data);
+                        pageindex=pageindex+1;
+                    },function()
+                    {
+                        moredata = false;
+                        $('.app_reload').removeClass("app_reload").addClass("app_noData");
+                        $('.reload').html("没有更多数据了").addClass("noData").removeClass("reload");
+                        $('.app_reload').fadeIn(300);
+                    });
+
+                }
+            }
+
+
+            $(document).ready(function () {
+
+                $(window).scroll(function () {
+                    loadMore($('.app_listBlock_con'));
+
+                });
+                document.addEventListener('touchstart',function () {
+                    loadMore($('.app_listBlock_con'));
+                },false);
+                document.addEventListener('touchmove',function () {
+                    loadMore($('.app_listBlock_con'));
+                },false);
+                document.addEventListener('touchend',function () {
+                    loadMore($('.app_listBlock_con'));
+                },false);
+            })
+
+</script>
+{?/if?}
+{?if $jieqi_thisfile|basename == 'search.php'?}
+<script type="text/javascript">
+
+
+    var pageindex=2;
+    var moredata;
+    if (1 == 1) {
+        moredata = true;
+    } else  {
+        moredata = false;
+    }
+    function loadMore(object) {
+        if ($(document).scrollTop() >= $(document).height() - $(window).height()) {
+
+
+            if(!moredata) return;
+
+            $('.app_reload').fadeIn(300);
+
+            ajaxrequest("books/search.php?searchtype=all&searchkey={?$ajax_key?}&page="+pageindex,{},function(data){
+
+                $('.app_reload').fadeOut(300);
+                object.find('ul').append(data.data);
+                pageindex=pageindex+1;
+            },function()
+            {
+                moredata=false;
+                $('.app_reload').removeClass("app_reload").addClass("app_noData");
+                $('.reload').html("没有更多数据了").addClass("noData").removeClass("reload");
+                $('.app_reload').fadeIn(300);
+            })
+        }
+    }
+    $(document).ready(function () {
+
+        $("#searvalue2").val("{?$ajax_key?}");
+
+        $(window).scroll(function () {
+            loadMore($('.app_listBlock_con'));
+        });
+
+        document.addEventListener('touchstart',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+        document.addEventListener('touchmove',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+        document.addEventListener('touchend',function () {
+            loadMore($('.app_listBlock_con'));
+        },false);
+    })
+
+</script>
+{?/if?}
+{?if $jieqi_thisfile|basename == 'buyegold.php'?}
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/user.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.app_openReadBlock_select li').click(function () {
+            $(this).parent().find('li').removeClass('active');
+			var  $radio = $(this).find("input[type=radio]"),
+					 $flag  = $radio.is(":checked");
+			if( !$flag ){
+				$radio.prop("checked",true);   
+			}
+            $(this).addClass('active');
+        })
+    })
+
+</script>
+{?/if?}
+{?if $jieqi_thisfile|basename == 'bookcase.php'?}
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.base64.js"></script>
+<script type="text/javascript">
+            $(document).ready(function () {
+                $("#deleteAll").hide();
+                $('#manage').click(function () {
+                    if($(this).hasClass('active')){
+                        $('.rightTime').show();
+                        $('.delete').hide();
+                        $("#deleteAll").show();
+                        $(this).html('管理').removeClass('active');
+                        window.location.reload();
+                    }else{
+                        $(".app_listBlock_con3 ul li a").attr("href", "javascript:void(0)");
+                        $('.rightTime').hide();
+                        $('.delete').show();
+                        $("#deleteAll").show();
+                        $(this).html('完成').addClass('active');
+                    }
+                })
+            })
+</script>
+{?/if?}
+</body>
+</html>

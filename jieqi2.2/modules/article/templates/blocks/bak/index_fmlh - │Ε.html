@@ -1,0 +1,27 @@
+<div id="ifocus">
+	<div class="newjd_topbox">
+		<div id="ifocus_pic">
+			<div id="ifocus_piclist" style="top: -825px; left: 0px;">
+				<ul>
+					{?section name=i loop=$articlerows?}
+					<li><a target="_blank" href="{?$articlerows[i].url_articleinfo?}"><img src="{?$articlerows[i].url_image?}"></a></li>
+					{?/section?}
+				</ul>
+			</div>
+		</div>
+		<div id="ifocus_btn">
+			<ul>
+			{?section name=i loop=$articlerows?}
+				<li class="{?if $i['index'] == 0?}current{?else?}normal{?/if?}"><a target="_blank" href="{?$articlerows[i].url_articleinfo?}"><img src="{?$articlerows[i].url_image?}" alt="{?$articlerows[i].articlename?}"></a></li>
+			{?/section?}
+			</ul>
+		</div>
+	</div>
+	<div id="ifocus_tx">
+		<ul>
+		{?section name=i loop=$articlerows?}
+			<li class="{?if $i['index'] == 0?}current{?else?}normal{?/if?}"><h3><a target="_blank" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename|truncate:30:'..'?}</a></h3>{?$articlerows[i].intro|truncate:1000:'..'?}</li>
+		{?/section?}
+		</ul>
+	</div>
+</div>

@@ -1,0 +1,32 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+
+{?set $jieqi_pagetitle = "PayPal充值-{$jieqi_sitename}"?}
+
+<div class="divbox">
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paynav" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="0" custom="1" publish="3" hasvars="0"?}
+</div>
+<form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/99bill.php">
+<table class="grid" width="100%" align="center">
+  <caption>PayPal充值</caption>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	<strong>请选择您要的充值金额：</strong><br />
+	<div style="width:100%;clear:both;margin-bottom:10px;">
+	<ul>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="60000" class="radio"> 60000{?$egoldname?}（100美元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="30000" class="radio"> 30000 {?$egoldname?}（50美元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="12000" class="radio"> 12000 {?$egoldname?}（20美元）</li>
+	  <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="6000" class="radio"> 6000 {?$egoldname?}（10美元）</li>
+	</ul>
+	<div class="cb"></div>
+	</div>
+	<input type="submit" name="Submit" value="进入下一步" class="button" >
+    <input type="hidden" name="action" value="pay">
+    </td>
+  </tr>
+</table>
+</form>
+<div class="textbox">
+<strong>说明：</strong><br />PayPal是在线付款解决方案的全球领导者，支持多种货币支付。<br />
+</div>

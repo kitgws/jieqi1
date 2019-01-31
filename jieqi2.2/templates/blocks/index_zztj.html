@@ -1,0 +1,13 @@
+{?if $ownerid > 0?}
+<ul class="ulrow">
+  <li class="ulrow_li">
+ <!-- <img src="{?function jieqi_geturl:'system':'avatar':$uid:'s':$avatar?}" class="avatars" alt="{?$name?}">-->
+   <img src="{?function jieqi_geturl:'system':'avatar':$uid:$avatar?}" class="avatars" alt="{?$name?}">
+
+  </li>
+  <li><strong><a href="{?function jieqi_geturl:'system':'user':$uid?}" target="_blank">{?$name?}</a></strong></li>
+   <!--<li>{?$group?}</li>
+    <li>{?$honor?}</li>-->
+	<li>{?$intro?}</li>
+</ul>
+{?/if?}

@@ -1,0 +1,90 @@
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/jquery.tools.min.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+$("div.tabs02").tabs(".tab_cnt2",{event:'mouseover'});
+});
+//]]>
+</script>
+
+<div id="pbody">
+	 <div style="border:#eee solid 1px;" class="box1">
+          <div class="c_head">
+              <h3><span></span>小说排行榜</h3>
+          </div>
+          <div class="c_body">
+              <ul class="rank_title_list clearfix">
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'allvisit'?}">总点击榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'monthvisit'?}">月点击榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'weekvisit'?}">周点击榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'allvote'?}">总推荐榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'monthvote'?}">月推荐榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'weekvote'?}">周推荐榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'goodnum'?}">总收藏榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'size'?}">总字数榜 </a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'postdate'?}">最新入库</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'lastupdate'?}">最近更新</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'allflower'?}">总鲜花榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'monthflower'?}">月鲜花榜</a></li>
+                  <li><a href="{?function jieqi_geturl:'article':'toplist':'weekflower'?}">周鲜花榜</a></li>
+				  <li><a href="{?function jieqi_geturl:'article':'toplist':'allvipvote'?}">总月票榜</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="row rank clearfix">
+            <div class="column">
+                <h2><span class="rank">点击榜</span></h2>
+                <div class="tabs02"><a>周</a>|<a>月</a>|<a>总</a></div>
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvisit,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvisit,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvisit,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+            <div class="column">
+                <h2><span class="rank">推荐榜</span></h2>
+                <div class="tabs02"><a>周</a>|<a>月</a>|<a>总</a></div>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+            <div class="column">
+                <h2><span class="rank">鲜花榜</span></h2>
+                <div class="tabs02"><a>周</a>|<a>月</a>|<a>总</a></div>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekflower,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthflower,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allflower,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+            <div class="column" style=" margin-right:0;">
+                <h2><span class="rank">月票榜</span></h2>
+                <div class="tabs02"><a>周</a>|<a>月</a>|<a>总</a></div>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="weekvipvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="monthvipvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+				{?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="allvipvote,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+
+			<div class="column">
+                <h2><span class="rank">收藏榜</span></h2>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="goodnum,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+			<div class="column">
+                <h2><span class="rank">字数榜</span></h2>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="size,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+            <div class="column">
+                <h2><span class="rank">最新入库</span></h2>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="postdate,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+             </div>
+            <div class="column" style=" margin-right:0;">
+                <h2><span class="rank">最近更新</span></h2>
+                {?block bid="0" blockname="排行榜" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="-1" title="" vars="lastupdate,10,0,0,0,0" template="rank_phb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+
+             </div>
+    </div>
+</div>

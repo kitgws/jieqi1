@@ -1,0 +1,26 @@
+{?set jieqi_blocks_module = "obook"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+{?set jieqi_page_rows = "30"?}
+<table class="grid" width="100%" align="center">
+<caption>我的作品收入管理</caption>
+  <tr align="center">
+    <th width="23%">书名</th>
+    <th width="12%">更新</th>
+	<th width="10%">打赏收入</th>
+    <th width="10%">总收入</th>
+    <th width="10%">待结算</th>
+    <th width="35%">管理</th>
+  </tr>
+  {?section name=i loop=$obookrows?}
+  <tr>
+    <td><a href="{?function jieqi_geturl:'article':'article':$obookrows[i].articleid:'info'?}" target="_blank">{?$obookrows[i].obookname?}</a></td>
+    <td align="center">{?$obookrows[i].lastupdate|date:'Y-m-d'?}</td>
+	<td align="center">{?$obookrows[i].sumtip?}</td>
+    <td align="center">{?$obookrows[i].sumemoney?}</td>
+    <td align="center">{?$obookrows[i].remainemoney?}</td>
+    <td align="center"><a href="{?$jieqi_modules['article']['url']?}/articleactlog.php?id={?$obookrows[i].articleid?}&act=tip">打赏记录</a> <a href="{?$obook_dynamic_url?}/chapterstat.php?oid={?$obookrows[i].obookid?}">销售明细</a> <a href="{?$obook_dynamic_url?}/paidlog.php?oid={?$obookrows[i].obookid?}">结算记录</a></td>
+  </tr>
+  {?/section?}
+</table>
+<div class="pages">{?$url_jumppage?}</div>
+

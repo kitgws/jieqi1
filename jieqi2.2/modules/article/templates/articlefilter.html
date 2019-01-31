@@ -1,0 +1,52 @@
+{?set jieqi_blocks_module = "article"?}
+{?set $jieqi_pagetitle = "小说书库-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "10"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">小说书库</div>
+</div>
+</div>
+<div class="app_header_section">
+<div class="app_header_section_bottom2">
+<ul>
+{?section name=i loop=$orderrows?}
+{?if $orderrows[i]['selected'] > 0?}
+<li class="active">
+<a href="{?$orderrows[i]['url']?}">{?$orderrows[i]['name']?}</a>
+</li>
+{?else?}
+<li> <a href="{?$orderrows[i]['url']?}">{?$orderrows[i]['name']?}</a>
+</li>
+{?/if?}
+{?/section?}
+</li>
+</ul>
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock">
+<div class="app_listBlock_con">
+<ul>
+{?section name=i loop=$articlerows?}
+<li>
+<a href="{?$articlerows[i].url_articleinfo?}">
+<div class="leftImage"><img src="{?$articlerows[i].url_image?}" /></div>
+<div class="rightBlock">
+<span class="rightBlock_title">{?$articlerows[i].articlename?}</span>
+<span class="rightBlock_name">{?$articlerows[i].author?} | {?$articlerows[i].sort?}</span>
+<span class="rightBlock_con">
+<span class="con">{?$articlerows[i].intro|truncate:40?}...</span>
+<span class="keyWord">
+<i class="k1">{?$articlerows[i].sort|truncate:4:''?}</i>
+</span>
+</span>
+</div>
+</a>
+</li>
+{?/section?}
+</ul>
+</div>
+<div class="app_reload"><span class="reload">正在加载更多</span></div>
+</div>

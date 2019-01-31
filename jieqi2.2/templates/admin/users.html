@@ -1,0 +1,61 @@
+<form name="frmquery" method="post" action="{?$jieqi_url?}/admin/users.php">
+<table class="grid" width="100%" align="center">
+  <tr align="center">
+	<td>
+	<a href="{?$jieqi_url?}/admin/users.php">全部会员</a>{?section name=i loop=$grouprows?} | <a href="{?$jieqi_url?}/admin/users.php?groupid={?$grouprows[i].groupid?}">{?$grouprows[i].groupname?}</a>{?/section?}
+	 | <a href="{?$jieqi_url?}/admin/users.php?isvip=1" class="hot">VIP会员</a>
+	 | <a href="{?$jieqi_url?}/admin/users.php?monthly=1" class="hot">包月会员</a>
+	</td>
+  </tr>
+  <tr>
+    <td align="right">
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0" class="hide">
+      <tr>
+        <td width="30%">会员数：{?$rowcount?}</td>
+        <td width="70%" align="right">
+		关键字：
+        <input name="keyword" type="text" class="text" id="keyword" size="20" maxlength="50">
+		<input name="keytype" type="radio" value="name" checked="checked" />昵称 
+		<input name="keytype" type="radio" value="uname" />用户名 
+		<input name="keytype" type="radio" value="email" />Email 
+		&nbsp;&nbsp;
+        <input type="submit" name="Submit" value="搜 索" class="button">&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+    </td>
+  </tr>
+</table>
+</form>
+<br />
+<form action="" method="post" name="checkform" id="checkform">
+<table class="grid" width="100%" align="center">
+<caption>用户列表</caption>
+  <tr align="center" class="head">
+    <td width="15%">昵称(用户名)</td>
+	<td width="14%">Email</td>
+	<td width="12%">最后登录</td>
+	<td width="10%">最后IP</td>
+    <td width="7%">等级</td>
+    <td width="7%">积分</td>
+    <td width="7%">{?$egoldname?}</td>
+	<td width="8%">VIP状态</td>
+    <td width="20%">操作</td>
+  </tr>
+  {?section name=i loop=$userrows?}
+  <tr>
+    <td><a href="{?function jieqi_geturl:'system':'user':$userrows[i].uid:'info'?}" target="_blank">{?$userrows[i].name?} <span class="gray">({?$userrows[i].uname?})</span></a></td>
+	<td><a href="mailto:{?$userrows[i].email?}">{?$userrows[i].email?}</a></td>
+	<td align="center">{?$userrows[i].lastlogin|date:'Y-m-d H:i'?}</td>
+    <td>{?if $userrows[i]['setting']['lastip'] != ''?}{?$userrows[i]['setting']['lastip']?}{?else?}{?$userrows[i]['setting']['regip']?}{?/if?}</td>
+    <td>{?$userrows[i].group?}</td>
+    <td align="center">{?$userrows[i].score?}</td>
+    <td align="center">{?$userrows[i].egold?}</td>
+	<td align="center">{?if $userrows[i].monthly > 0?}包月:{?$userrows[i].overtime|date:'Y-m-d'?}{?elseif $userrows[i].isvip > 0?}VIP会员{?else?}免费会员{?/if?}</td>
+    <td align="center"><a href="{?$jieqi_url?}/admin/usermanage.php?id={?$userrows[i].uid?}">管理会员</a> | <a href="{?$jieqi_url?}/admin/personmanage.php?id={?$userrows[i].uid?}">联系信息</a>{?if $jieqi_modules['pay']['publish'] > 0?} | <a href="{?$jieqi_modules['pay']['url']?}/admin/changeegold.php?uid={?$userrows[i].uid?}">手工充值</a>{?/if?}</td>
+  </tr>
+  {?/section?}
+</table>
+</form>
+<div class="pages">{?$url_jumppage?}</div>
+

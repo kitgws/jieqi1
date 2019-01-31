@@ -1,0 +1,67 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+<script type="text/javascript">
+var customprice = '{?$customprice?}';
+function frmchapteredit_validate(){
+  if(document.frmchapteredit.chaptername.value == ""){
+    alert("请输入章节标题");
+    document.frmchapteredit.chaptername.focus();
+    return false;
+  }
+  if(document.frmchapteredit.chaptercontent.value == "" ){
+	alert( "请输入章节内容" );
+	document.frmchapteredit.chaptercontent.focus();
+	return false;
+  }
+}
+</script>
+<form name="frmchapteredit" id="frmchapteredit" action="{?$jieqi_modules['article']['url']?}/admin/draftedit.php?do=submit" method="post" onsubmit="return frmchapteredit_validate();">
+<table width="100%" class="grid" cellspacing="1" align="center">
+<caption>编辑草稿</caption>
+<tr valign="middle" align="left">
+		<td class="tdl" width="20%">{?if $isvip == 0?}小说名称：{?else?}电子书名称：{?/if?}</td>
+		<td class="tdr">
+		{?if $isvip == 0?}
+		{?$articlename?} <input type='hidden' name='articleid' value='{?$articleid?}' />
+		{?else?}
+		{?$articlename?} <input type='hidden' name='obookid' value='{?$obookid?}' />
+		{?/if?}
+		</td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">章节标题：</td>
+  <td class="tdr"><input type="text" class="text" name="chaptername" id="chaptername" size="50" maxlength="50" value="{?$chaptername?}" /></td>
+</tr>
+{?if $isvip > 0 && $customprice > 0?}
+	<tr valign="middle" align="left" id="sprice">
+		<td class="tdl">本章定价：</td>
+		<td class="tdr"><input type='text' class='text' name='saleprice' id='saleprice' size='10' maxlength='10' value='{?$saleprice?}' /><span class="hot">{?$egoldname?}(留空则自动按字数计价)</span></td>
+	</tr>
+{?/if?}
+<tr valign="middle" align="left">
+		<td class="tdl">是否定时发表：</td>
+		<td class="tdr">
+		<input type="radio" class="radio" name="uptiming" value="0"{?if $pubdate == 0?} checked="checked"{?/if?} onclick="document.getElementById('pubtime').style.display='none';" />否 &nbsp; 
+		<input type="radio" class="radio" name="uptiming" value="1"{?if $pubdate > 0?} checked="checked"{?/if?} onclick="document.getElementById('pubtime').style.display='';" />是 &nbsp; 
+		</td>
+</tr>
+<tr valign="middle" align="left" id="pubtime" {?if $pubdate == 0?}style="display:none;"{?/if?}>
+		<td class="tdl">定时发表时间：</td>
+		<td class="tdr">
+		<input type="text" class="text" name="pubyear" id="pubyear" size="4" maxlength="4" value="{?$pubyear?}" />年<input type="text" class="text" name="pubmonth" id="pubmonth" size="2" maxlength="2" value="{?$pubmonth?}" />月<input type="text" class="text" name="pubday" id="pubday" size="2" maxlength="2" value="{?$pubday?}" />日<input type="text" class="text" name="pubhour" id="pubhour" size="2" maxlength="2" value="{?$pubhour?}" />时<input type="text" class="text" name="pubminute" id="pubminute" size="2" maxlength="2" value="{?$pubminute?}" />分
+		</td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">章节内容：</td>
+  <td class="tdr"><textarea class="textarea" name="chaptercontent" id="chaptercontent" style="width:100%;height:400px;">{?$chaptercontent?}</textarea></td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">&nbsp;
+  <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+  <input type="hidden" name="id" value="{?$id?}" />
+  <input type="hidden" name="isvip" value="{?$isvip?}" />
+  </td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="提 交" /></td>
+</tr>
+</table>
+</form>

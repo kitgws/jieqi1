@@ -1,0 +1,35 @@
+<script type="text/javascript">
+function frmgetpass_validate(){
+  if(document.frmgetpass.uname.value == ""){
+    alert( "请输入用户名" );
+	document.frmgetpass.uname.focus();
+	return false;
+  }
+  if(document.frmgetpass.email.value == ""){
+    alert( "请输入Email" );
+	document.frmgetpass.email.focus();
+	return false;
+  }
+}
+</script>
+<form name="frmgetpass" id="frmgetpass" action="{?$jieqi_url?}/getpass.php?do=submit" method="post" onsubmit="return frmgetpass_validate();">
+<table class="grid" width="60%" style="min-width:480px;">
+  <caption>忘记密码？</caption>
+  <tr valign="middle" align="left">
+    <td class="tdl" width="25%">说明：</td>
+    <td class="tdr" width="75%">提交以下信息并后，请查看您的邮箱，根据提示的链接返回本站重新设定密码。</td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td class="tdl">用户名：</td>
+    <td class="tdr"><input type="text" class="text" name="uname" size="25" value="" /></td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td class="tdl">Email：</td>
+	<td class="tdr"><input type="text" class="text" name="email" size="25" value="" /></td>
+  </tr>
+  <tr valign="middle" align="left">
+    <td class="tdl">&nbsp;<input type="hidden" name="act" value="sendpass" />{?$jieqi_token_input?}</td>
+	<td class="tdr"><input type="submit" class="button" name="submit" value="提 交" /></td>
+  </tr>
+</table>
+</form>

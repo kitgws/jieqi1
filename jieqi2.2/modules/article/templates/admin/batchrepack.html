@@ -1,0 +1,38 @@
+<form name="batchrepack" id="batchrepack" action="{?$url_batchrepack?}" target="_blank" method="post" onsubmit="return confirm('确实要开始重新生成么？');">
+<table class="grid" width="100%" align="center">
+<caption>小说批量生成</caption>
+<tr>
+  <td class="tdl" width="25%">限制条件：</td>
+  <td class="tdr" width="75%">
+  <input name="act" type="radio" value="packwithid" checked="checked"> 小说ID从 <input type="text" class="text" name="fromid" id="fromid" size="10" maxlength="15" value="{?$minaid?}" /> 到 <input type="text" class="text" name="toid" id="toid" size="10" maxlength="15" value="{?$maxaid?}" /> <span class="hot">当前数据库小说ID为：{?$minaid?} - {?$maxaid?}</span>
+  <hr />
+  <input name="act" type="radio" value="packwithtime"> 更新时间从 <input type="text" class="text" name="starttime" id="starttime" size="20" maxlength="20" value="" /> 到 <input type="text" class="text" name="stoptime" id="stoptime" size="20" maxlength="20" value="" /> <span class="hot">时间格式举例：2005-01-23 23:06:30</span>
+  </td>
+</tr>
+<tr>
+  <td class="tdl">分类：</td>
+  <td class="tdr">
+  {?section name=i loop=$sortrows?}
+  <input type="checkbox" class="checkbox" name="sortid[]" value="{?$i['key']?}" />{?$sortrows[i].caption?}&nbsp;&nbsp; 
+  {?/section?}
+  </td>
+</tr>
+<tr>
+  <td class="tdl">生成选项：</td>
+  <td class="tdr"><input type="checkbox" class="checkbox" name="packflag[]" value="makeopf" />生成OPF(小说目录结构文件)
+<input type="checkbox" class="checkbox" name="packflag[]" value="makeindex" />生成目录页HTML
+<input type="checkbox" class="checkbox" name="packflag[]" value="makechapter" />生成章节页HTML
+<input type="checkbox" class="checkbox" name="packflag[]" value="maketxtjs" />生成章节内容JS
+<input type="checkbox" class="checkbox" name="packflag[]" value="makezip" />生成ZIP
+<input type="checkbox" class="checkbox" name="packflag[]" value="makefull" />生成HTML全文阅读
+<input type="checkbox" class="checkbox" name="packflag[]" value="maketxtfull" />生成TXT全文阅读
+<input type="checkbox" class="checkbox" name="packflag[]" value="makeumd" />生成手机电子书UMD
+<input type="checkbox" class="checkbox" name="packflag[]" value="makejar" />生成手机电子书JAR
+</td>
+</tr>
+<tr>
+  <td class="tdl">&nbsp;{?$jieqi_token_input?}</td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="开始生成" /></td>
+</tr>
+</table>
+</form>

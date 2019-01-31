@@ -1,0 +1,21 @@
+{?if $reviewrows|count > 0?}
+{?section name=i loop=$reviewrows?}	  
+ <li>
+<span class="userHeader"><a href="javascript:void (0)"><img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}" /></a></span>
+<div class="contentList">
+<div class="userName">{?$reviewrows[i].poster?}</div>
+<div class="userContent">{?$reviewrows[i].posttext|truncate:160:"..."?}</div>
+</div>
+<div class="bottom">
+<span class="time">{?$reviewrows[i].posttime|date:Y-m-d H:i:s?}</span>
+</div>
+</li>
+{?/section?}
+</ul>
+</div>
+<div class="app_pinglun"><a href="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&type=all"><i>更多评论</i></a></div>
+ {?else?}
+</ul>
+</div>
+<div class="app_pinglun"><a href="#"><i>暂无评论</i></a></div>
+{?/if?}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<title>{?$article_title?}_{?$sortname?}_{?$jieqi_sitename?}</title>
+<meta name="keywords" content="{?$meta_keywords?}" />
+<meta name="description" content="{?$intro|truncate:500:'..'?}" />
+<meta charset="{?$jieqi_charset?}">
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="format-detection" content="telephone=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+</head>
+<script>
+    var SiteURL = "{?$jieqi_url?}";
+</script>
+<link rel="stylesheet" href="{?$jieqi_url?}/tianyin/css/style.css">
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/flexible.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/jquery.pin.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/main.js"></script>
+<script src="{?$jieqi_url?}/tianyin/js/layer.js"></script>
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/wap.js"></script>
+<link rel="stylesheet" href="{?$jieqi_url?}/tianyin/css/mobiscroll.custom-2.16.1.min.css">
+<script type="text/javascript" src="{?$jieqi_url?}/tianyin/js/mobiscroll.custom-2.16.1.min.js"></script>
+<style type="text/css">
+    .app_selectPlugIn input{
+        padding-right: 2rem;
+        box-sizing: border-box;
+    }
+</style>
+<script type="text/javascript">
+    if (isWeiXin()) {
+        document.title="章节列表";
+    }
+</script>
+<body>
+<div class="app_goBackToTop"></div>
+<div class="app_position"></div>
+<div class="app_header_section">
+<div class="app_header_section_top">
+<a class="app_logoLinK" style='background-image: url("{?$jieqi_url?}/tianyin/images/logo.png")' href="{?$jieqi_url?}"></a>
+<div class="app_header_section_rightButtons">
+<ul>
+<li class="book">
+<a href="{?$jieqi_url?}/bookshelf.html"></a>
+</li>
+<li class="search">
+<a href="{?$jieqi_url?}/search.html"></a>
+</li>
+<li class="my">
+<a href="{?$jieqi_url?}/userinfo.html"></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="app_header_section_bottom">
+<ul>
+<li {?if $jieqi_thisfile|basename == 'index.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}">首页</a>
+</li>
+<li {?if $jieqi_thisfile|basename == 'boutique.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}/boutique.html">精品</a>
+</li>
+<li {?if $jieqi_thisfile|basename == 'monthly.php'?}class="active"{?/if?}>
+<a href="{?$jieqi_url?}/monthly.html">包月</a>
+</li>
+<li>
+<a href="{?$jieqi_url?}/pay.html">充值</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">章节列表</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_catalogList">
+<ul id="chapterlist">
+{?section name=i loop=$chapterrows?}
+{?if $chapterrows[i].chaptertype > 0?}
+{?else?}
+{?if $chapterrows[i].isvip > 0?}
+<li>
+<a href="{?$chapterrows[i].url_chapter?}">
+<span class="content">{?$chapterrows[i].chaptername?}</span>
+<span class="money"></span>
+</a>
+</li>
+{?else?}
+<li>
+<a href="{?$chapterrows[i].url_chapter?}">
+<span class="content">{?$chapterrows[i].chaptername?}</span>
+<span class="tips">免费</span>
+</a>
+</li>
+{?/if?}
+{?/if?}
+{?/section?}
+</ul>
+</div>
+<div class="app_searchBlock">
+<div class="app_searchBlock_bar">
+<input type="text" value="" id="searvalue2" placeholder="输入想要搜索的小说名"/>
+<button class="button" onclick="search(2)"></button>
+</div>
+</div>
+<div class="app_footerBlock">
+<button class="contact" onclick="javascript: window.location.href='{?$jieqi_url?}/kefu.html'">在线客服</button>
+<span class="footerCon">
+客服QQ群：1378283361<br/>
+客服电话：想办法自己填呗<br/>
+&copy; 根本就不存在的文化传媒有限公司<br/>
+这一行主要填各种备案号<br/>
+地址：根本就不存在的公司地址
+</span>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+
+    function treelist($obj,$title,$fun) {
+        $($obj).mobiscroll().treelist({
+            theme: 'mobiscroll',//样式
+            //display: 'bottom',//指定显示模式
+            lang: "zh",
+            rows: 3,
+            placeholder: $title,//空白等待提示
+            cancelText: null,
+            mode:'scroller',//选择模式
+            setText: '确定', //确认按钮名称
+            cancelText: '关闭',//取消按钮名籍我
+            headerText: function (valueText) {
+                return "请选择您需要的选项";
+            },
+            onBeforeShow:function(inst){
+                //展示前的事件
+            },
+            onSelect:function(valueText,inst){
+                var pageindex = (valueText*1+1*1);
+                ajaxrequest('books/getchapterlist?bookid=1942&ordertype=0&pageindex='+pageindex,{},function(data)
+                {
+                    var html = data.data;
+                    if (html.trim() !="") {
+                        $("#chapterlist").empty();
+                        $("#chapterlist").html(html);
+                    } else {
+                        malerr("获取失败,请稍后再试",2);
+                    }
+                },function()
+                {
+                    malerr(data.message, 2);
+                });
+                //点击确定以后的结果
+                $($obj).prev().val($($obj).find("li").eq(valueText).html());
+                $fun();  //点击后的回调函数
+
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        var ordertype = "1-100章";
+
+        treelist('.incomeList',ordertype,function () {
+            console.log('弹窗完了执行的代码');
+        });
+
+        $('.app_catalogList li').bind('click',function () {
+            $(".app_catalogList li").removeClass('active');
+            $(this).addClass('active');
+        })
+
+    })
+
+</script>
+</body>
+</html>

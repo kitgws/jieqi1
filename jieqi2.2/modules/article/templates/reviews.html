@@ -1,0 +1,39 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_page_rows = "10"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">评论</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_userComment">
+<form class="form-base" name="frmreview" id="frmreview" method="post" action="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}"> 
+<textarea name="pcontent" cols="30" rows="10" placeholder="有深度的评论，我也来说两句……" class="app_comment_textarea" id="bookcomment"></textarea>
+<input type="hidden" name="act" id="act" value="newpost" />{?$jieqi_token_input?}
+<button type="submit" class="app_comment_button">提交评论</button>
+</form> 
+</div>
+<div class="app_comment">
+<div class="app_title">
+<span class="h1">评论列表</span>
+</div>
+<div class="app_comment_list">
+<ul>
+{?section name=i loop=$reviewrows?}
+<li>
+<span class="userHeader"><a href="javascript:void(0)"><img src="{?function jieqi_geturl:'system':'avatar':$reviewrows[i].posterid:'s'?}" /></a></span>
+<div class="contentList">
+<div class="userName">{?$reviewrows[i].poster?}</div>
+<div class="userContent">{?$reviewrows[i].posttext?}</div>
+</div>
+<div class="bottom">
+<span class="time">{?$reviewrows[i].posttime|date:Y-m-d H:i:s?}</span>
+</div>
+</li>
+{?/section?}
+</ul>
+<div class="app_comment_more"><a href="javascript:void(0)" onclick="getBookComment({?$articleid?})">更多评论</a></div>
+</div>
+</div>

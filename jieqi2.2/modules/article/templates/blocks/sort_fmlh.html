@@ -1,0 +1,20 @@
+<div class="jsbox etn">
+	<div class="jsimglft">
+		{?section name=i loop=$articlerows?}
+		<a style="display: {?if $i['index'] == 0?}block{?else?}none{?/if?}" id="jy_con{?$i['order']?}" href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img alt="{?$articlerows[i].articlename?}" src="{?$articlerows[i].url_image?}"></a> 
+		{?/section?}
+	</div>
+	<div class="jstxtrit">
+		{?section name=i loop=$articlerows?}
+		<div id="jy{?$i['order']?}" class="{?if $i['index'] == 0?}contiguous{?else?}jstxtbox{?/if?} etn" onmouseover=onchageid({?$i['order']?})>
+			<div class="jsimgrit"><a href="{?$articlerows[i].url_articleinfo?}" target="_blank"><img alt="{?$articlerows[i].articlename?}" src="{?$articlerows[i].url_image?}"></a></div>
+			<div class="jstxtlist">
+				<h3><a href="{?$articlerows[i].url_articleinfo?}" target="_blank">¡¶{?$articlerows[i].articlename|truncate:18:'..'?}¡·</a></h3>
+				<p>{?$articlerows[i].intro|truncate:60:'..'?}</p>
+			</div>
+		</div>
+		{?/section?}
+	</div>
+	<div class="cb"></div>
+</div>
+<script language="javascript">TabList();</script>

@@ -1,0 +1,106 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "authorblocks"?}
+<script type="text/javascript">
+function frmchapteredit_validate(){
+  if(document.frmchapteredit.chaptername.value == ""){
+    alert("请输入章节章节标题");
+    document.frmchapteredit.chaptername.focus();
+    return false;
+  }
+}
+//统计输入字数
+function show_inputsize(txt){
+	txt = $_(txt);
+	var size = (arguments.length > 1) ? $_(arguments[1]) : $_(txt.id + '_size');
+	size.innerHTML = txt.value.replace(/\s/g, '').length;
+}
+//显示默认字数
+addEvent(window, 'load', function(){show_inputsize('chaptercontent');});
+</script>
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/attaches.js"></script>
+<form name="frmchapteredit" id="frmchapteredit" action="{?$url_chapteredit?}" method="post" onsubmit="return frmchapteredit_validate();" enctype="multipart/form-data">
+<table width="100%" class="grid" cellspacing="1" align="center">
+<caption>{?if $chaptertype == 1?}编辑分卷{?else?}编辑章节{?/if?}</caption>
+<tr valign="middle" align="left">
+  <td class="tdl" width="20%">小说名称：</td>
+  <td class="tdr" width="80%"><a href="{?$article_static_url?}/articlemanage.php?id={?$articleid?}">{?$articlename?}</a></td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">{?if $chaptertype == 1?}分卷标题：{?else?}章节标题：{?/if?}</td>
+  <td class="tdr"><input type="text" class="text" name="chaptername" id="chaptername" size="50" maxlength="50" value="{?$chaptername?}" />{?if $isvip_n > 0 && $chaptertype == 0?}<span class="hot">vip</span>{?/if?}</td>
+</tr>
+{?if $chaptertype != 1?}
+<tr valign="middle" align="left">
+  <td class="tdl">章节内容：<br />已输入 <span class="hot" id="chaptercontent_size">0</span> 字</td>
+  <td class="tdr"><textarea class="textarea" name="chaptercontent" id="chaptercontent" rows="25" cols="80" onkeyup="show_inputsize(this);" oninput="show_inputsize(this);" onpropertychange="show_inputsize(this);">{?$chaptercontent?}</textarea></td>
+</tr>
+{?if $isvip_n > 0 && $customprice > 0?}
+<tr valign="middle" align="left">
+  <td class="tdl">销售价格：</td>
+  <td class="tdr"><input type="text" class="text" name="saleprice" id="saleprice" size="4" maxlength="10" value="{?if $autoprice == 0?}{?$saleprice?}{?/if?}" />{?$egoldname?} <span class="hot">(留空则自动按字数计价)</span>
+</td>
+</tr>
+{?/if?}
+{?if $authtypeset == 1?}
+<tr valign="middle" align="left">
+  <td class="tdl">小说排版：</td>
+  <td class="tdr"><input type="radio" class="radio" name="typeset" value="1" checked="checked" />自动排版
+<input type="radio" class="radio" name="typeset" value="0" />无需排版
+</td>
+</tr>
+{?/if?}
+{?if $attachnum > 0?}
+<tr valign="middle" align="left">
+  <td class="tdl">现有附件： <br /><span class="hot">（取消打勾表示删除该附件）</span></td>
+  <td class="tdr">
+  {?section name=i loop=$attachrows?}
+  <input type="checkbox" class="checkbox" name="oldattach[]" value="{?$attachrows[i].attachid?}" checked="checked" />{?$attachrows[i].name?} 
+  {?/section?}
+  </td>
+</tr>
+{?/if?}
+{?if $canupload == true && $maxattachnum > 0?}
+<tr valign="middle" align="left">
+  <td class="tdl">附件限制：</td>
+  <td class="tdr">文件类型：{?$attachtype?}, 图片最大：{?$maximagesize?}K, 文件最大：{?$maxfilesize?}K</td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">附件上传：</td>
+  <td class="tdr">
+  <input type="file" class="file" name="attachfile[]" id="attachfile" onchange="Attaches.addFile('attachfile', 'attachdiv', true);" /><input type="button" class="filebutton" onclick="if(document.all){document.getElementById('attachfile').outerHTML += '';}else{document.getElementById('attachfile').value = '';}" value="清空" />
+  <div id="attachdiv"></div>
+  </td>
+</tr>
+{?/if?}
+{?/if?}
+{?$jieqi_group?}
+{?if $chapternew == 0?}
+<tr valign="middle" align="left">
+  <td class="tdl"></td>
+  <td class="tdr">
+  <a class="button" href="{?$jieqi_url?}/newmessage.php?tosys=1&title=申请修改章节-书号{?$articleid?}-{?$chaptername?}">申请修改章节</a><span>本章已被锁定，禁止修改！如果确实需要修改，请联系管理员处理。</span>
+  </td>
+  {?else?}
+<tr valign="middle" align="left">
+  <td class="tdl">
+  &nbsp;
+  <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+  <input type="hidden" name="id" value="{?$chapterid?}" />
+  <input type="hidden" name="chaptertype" value="{?$chaptertype?}" />
+  </td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="提 交" /></td>
+</tr>
+{?/if?}
+{?if $jieqi_group == 2?}
+<tr valign="middle" align="left">
+  <td class="tdl">
+  &nbsp;
+  <input type="hidden" name="act" value="update" />{?$jieqi_token_input?}
+  <input type="hidden" name="id" value="{?$chapterid?}" />
+  <input type="hidden" name="chaptertype" value="{?$chaptertype?}" />
+  </td>
+  <td class="tdr"><input type="submit" class="button" name="submit" value="提 交" /></td>
+</tr>
+{?/if?}
+</table>
+</form>

@@ -1,0 +1,34 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set $jieqi_pagetitle = "充值记录-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "20"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">充值记录</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_rechargeRecord">
+<div class="app_rechargeRecord_list">
+<ul>
+{?section name=i loop=$paylogrows?}
+<li>
+<a href="#">
+<div class="leftBlock"><i><img src="https://askstatic.txtbook.com.cn/ledu_wap/v2/images/yd_ico.png" /></i></div>
+<div class="rightBlock">
+<div class="lis">
+<span class="left1">{?$paylogrows[i].payflag?}</span>
+<span class="right1">{?$paylogrows[i].egold?}{?$egoldname?}</span>
+</div>
+<div class="lis">
+<span class="left2">{?$paylogrows[i].paytype?}</span>
+<span class="right2">{?$paylogrows[i].buytime|date:'Y-m-d H:i:s'?}</span>
+</div>
+</div></a>
+</li>
+{?/section?}
+</ul>
+</div>
+<div class="app_reload"><span class="reload">正在加载更多</span></div>
+</div>

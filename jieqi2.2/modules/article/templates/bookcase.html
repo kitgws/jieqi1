@@ -1,0 +1,73 @@
+{?set jieqi_blocks_module = "system"?}
+{?set $jieqi_pagetitle = "我的书架-{$jieqi_sitename}"?}
+<script type="text/javascript" src="{?$jieqi_url?}/scripts/common.js"></script>
+<script type="text/javascript">
+//删除
+function act_delete(url){
+	var o = getTarget();
+	var param = {
+		method: 'POST', 
+		onReturn: function(){
+			$_(o.parentNode.parentNode).remove();
+		}
+	}
+	if(confirm('确实要将本书移出书架么？')) Ajax.Tip(url, param);
+	return false;
+}
+</script>
+
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">我的书架</div>
+</div>
+</div>
+<div class="app_manageBar">
+<div class="app_manageBar_left" id="showbooknum">共有{?$nowbookcase?}本书</div>
+<input type="hidden" id="booknum" value="0" />
+<div class="app_manageBar_rightButton" id="manage">管理</div>
+<!-- <div class="app_manageBar_rightButton" id="deleteAll" onclick="bookshelf(0,0, 4,'.txtbook.com.cn')" style="width: auto;padding:0 0.8rem;margin-right:0.6rem;display:none">清空</div> -->
+</div>
+{?if $nowbookcase>0?}
+<div class="app_body">
+<div class="app_listBlock app_deleteMargin">
+<div class="app_listBlock_con3">
+<ul>
+{?section name=i loop=$bookcaserows?}
+<li id="book_{?$bookcaserows[i].articleid?}">
+<a href="{?$jieqi_modules['article']['url']?}/readbookcase.php?bid={?$bookcaserows[i].caseid?}&aid={?$bookcaserows[i].articleid?}&cid={?$bookcaserows[i].chapterid?}">
+<div class="leftImage"><img src="{?$jieqi_url?}/files/article/image{?$bookcaserows[i].articleid|subdirectory?}/{?$bookcaserows[i].articleid?}/{?$bookcaserows[i].articleid?}s.jpg" /></div>
+<div class="rightBlock">
+<span class="rightBlock_title"></span>
+<span class="rightBlock_name">{?$bookcaserows[i].author?} | {?$bookcaserows[i].sort?}</span>
+<span class="rightBlock_page">
+{?if $bookcaserows[i].viptime > $bookcaserows[i].freetime?}
+<span class="rightBlock_pageLi">{?$bookcaserows[i].vipchapter?}</span>
+{?else?}
+<span class="rightBlock_pageLi">{?$bookcaserows[i].lastchapter?}</span>
+{?/if?}
+<span class="rightBlock_pageLi">阅读至{?$bookcaserows[i].articlemark?}</span>
+<span class="delete" id="act_delete_{?$bookcaserows[i].caseid?}" onclick="act_delete('{?$jieqi_modules['article']['url']?}/bookcase.php?bid={?$bookcaserows[i].caseid?}&act=delete{?$jieqi_token_url?}');"></span>
+<span class="rightTime">{?$bookcaserows[i].lastupdate|date:"m-d"?}</span>
+</span>
+</div>
+<input type="hidden" value="{?$bookcaserows[i].articleid?}" />
+</a>
+</li>
+{?/section?}
+</ul>
+</div>
+<div class="app_reload"><span class="reload">正在加载更多</span></div>
+</div>
+{?else?}
+<div class="app_body">
+<div class="app_downloadSection" style="padding: 5rem 1.25rem;background-color:#f1f1f1;">
+<div class="app_downloadSection_font">
+<img src="{?$jieqi_url?}/tianyin/picture/nodata_n3.png">
+</div>
+<div style=" margin-top:1rem; text-align: center; font-size:1rem; line-height:1.5rem;color:#999;">
+书架空空如也，你看过的书会在这里，<br>去书城抢本好书吧.
+</div>
+</div>
+{?/if?}

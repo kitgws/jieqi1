@@ -1,0 +1,66 @@
+{?set $jieqi_pagetitle = "用户登录-{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">登录</div>
+</div>
+</div>
+
+<div class="app_body">
+<div class="app_bindPhoneBlock">
+<div class="app_bindPhoneBlock_header">
+<span class="app_header"><img src="{?$jieqi_url?}/tianyin/picture/ladyheader2.png" /></span>
+</div>
+<form name="frmlogin" method="post" action="{?$url_login?}">
+<div class="app_lisBlockSpan">
+<ul>
+<li class="username">
+<input id="userphone" type="phone" name="username" value="" placeholder="请输入用户名" />
+</li>
+<li class="password">
+<input id="userpass" type="password" name="password" value="" placeholder="请输入密码" />
+</li>
+</ul>
+</div>
+<input type="hidden" name="usecookie" value="86400">
+<input type="hidden" name="act" value="login">
+<div class="app_listBlockButton"><button type="submit" name="submit">立即登录</button></div>
+</form>
+<div class="app_listBlockButton2"><button onclick="javascript: window.location.href='register.php'">注册</button></div>
+<div class="app_dengLu_title"><i>以下账号直接登录</i></div>
+<div class="app_iconList">
+<ul>
+<li>
+<a href="{?$jieqi_url?}/api/weixin/login.php">
+<span><img src="{?$jieqi_url?}/tianyin/picture/wx_ico.png" /></span>
+<span class="name">微信</span>
+</a>
+</li>
+<li>
+<a href="{?$jieqi_url?}/api/qq/login.php">
+<span><img src="{?$jieqi_url?}/tianyin/picture/qq_ico.png" /></span>
+<span class="name">QQ</span>
+</a>
+</li>
+<li>
+<a href="{?$jieqi_url?}/api/weibo/login.php">
+<span><img src="{?$jieqi_url?}/tianyin/picture/wb_ico.png" /></span>
+<span class="name">微博</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span><img src="{?$jieqi_url?}/tianyin/picture/bd_ico.png" /></span>
+<span class="name">百度</span>
+</a>
+</li>
+<li>
+<a href="#">
+<span><img src="{?$jieqi_url?}/tianyin/picture/zfb_ico.png" /></span>
+<span class="name">支付宝</span>
+</a>
+</li>
+</ul>
+</div>
+</div>

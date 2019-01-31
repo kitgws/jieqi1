@@ -1,0 +1,14 @@
+<ul>
+{?section name=i loop=$actlogrows?}
+<li>
+{?if $actlogrows[i].actname == 'redrose'?}<span><img src="/sink/image/r-coin.png" alt="魔法币"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?elseif $actlogrows[i].actname == 'yellowrose'?}<span><img src="/sink/image/r-flower.png" alt="红玫瑰"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?elseif $actlogrows[i].actname == 'greenrose'?}<span><img src="/sink/image/r-shoes.png" alt="水晶鞋"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?elseif $actlogrows[i].actname == 'bluerose'?}<span><img src="/sink/image/r-wine.png" alt="葡萄酒"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?elseif $actlogrows[i].actname == 'whiterose'?}<span><img src="/sink/image/r-cake.png" alt="巧克力"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?elseif $actlogrows[i].actname == 'blackrose'?}<span><img src="/sink/image/r-gharry.png" alt="马车"><em class="count">{?$actlogrows[i].actnum?}</em></span>
+<a href="{?function jieqi_geturl:'system':'user':$actlogrows[i].uid:'info'?}" title="{?$actlogrows[i].uname?}">{?$actlogrows[i].uname?}</a>{?/if?}
+</li>
+{?/section?}
+<p class="more"><a data-collect-index="2" href="/modules/article/donate.php?id={?$articleid?}" target="_blank">全部捧场记录&gt;&gt;</a></p>
+ </ul>

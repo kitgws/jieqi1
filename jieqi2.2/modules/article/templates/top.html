@@ -1,0 +1,256 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "topindex"?}
+{?set $jieqi_pagetitle = "排行榜-{$jieqi_sitename}"?}
+{?set $meta_keywords = "小说 排行榜 {$jieqi_sitename}"?}
+
+
+<div class="c-left">
+						<h1 class="page-title">
+							<i class="icon-rank"></i>{?$jieqi_sitename?}排行榜
+						</h1>
+						
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>总钻石榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2120" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['1']['content']?}
+										</ol>
+								<ol data-collect-id="2121" class="rank-list" style="display:none">
+									{?$jieqi_pageblocks['2']['content']?}
+										</ol>
+								<ol data-collect-id="2122" class="rank-list" style="display:none">
+									{?$jieqi_pageblocks['3']['content']?}
+										</ol>
+								<p class="more"><a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}" data-collect-id="2123" data-collect-index="1" target="_blank">更多</a></p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="">日</span><span class="active">周</span><span>月</span>
+								</p>
+								<h5><span>热门榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2501" class="rank-list" style="display: none;">
+									{?$jieqi_pageblocks['4']['content']?}
+										</ol>
+								<ol data-collect-id="2502" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['5']['content']?}
+										</ol>
+								<ol data-collect-id="2503" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['6']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>点击榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2504" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['7']['content']?}
+										</ol>
+								<ol data-collect-id="2505" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['8']['content']?}
+										</ol>
+								<ol data-collect-id="2506" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['9']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>订阅榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2507" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['10']['content']?}
+										</ol>
+								<ol data-collect-id="2508" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['11']['content']?}
+										</ol>
+								<ol data-collect-id="2509" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['12']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>收藏榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2510" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['13']['content']?}
+										</ol>
+								<ol data-collect-id="2511" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['14']['content']?}
+										</ol>
+								<ol data-collect-id="2512" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['15']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>推荐榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2513" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['16']['content']?}
+										</ol>
+								<ol data-collect-id="2514" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['17']['content']?}
+										</ol>
+								<ol data-collect-id="2515" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['18']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>新书榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2516" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['19']['content']?}
+										</ol>
+								<ol data-collect-id="2517" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['20']['content']?}
+										</ol>
+								<ol data-collect-id="2518" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['21']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>捧场榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2519" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['22']['content']?}
+										</ol>
+								<ol data-collect-id="2520" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['23']['content']?}
+										</ol>
+								<ol data-collect-id="2521" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['24']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>更新榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2522" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['25']['content']?}
+										</ol>
+								<ol data-collect-id="2523" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['26']['content']?}
+										</ol>
+								<ol data-collect-id="2524" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['27']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+						<div class="mod pattern-rank">
+							<div class="hd">
+								<p class="handles">
+									<span class="active">日</span><span>周</span><span>月</span>
+								</p>
+								<h5><span>VIP更新榜</span></h5>
+							</div>
+							<div class="bd">
+								<ol data-collect-id="2522" class="rank-list" style="display: block;">
+									{?$jieqi_pageblocks['28']['content']?}
+										</ol>
+								<ol data-collect-id="2523" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['29']['content']?}
+										</ol>
+								<ol data-collect-id="2524" class="rank-list" style="display:none;">
+									{?$jieqi_pageblocks['30']['content']?}
+										</ol>
+								<p class="more">
+									<a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">更多&gt;&gt;</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="c-right">
+						<div class="mod mod-block sidebar-menu">
+							<div class="hd"> 
+								<h5><span>排行榜</span></h5>
+							</div>
+							<div class="bd">
+								<ul>
+			<li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvisit'?}">总点击榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvisit'?}">月点击榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvisit'?}">周点击榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'allvote'?}">总推荐榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'monthvote'?}">月推荐榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'weekvote'?}">周推荐榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'goodnum'?}">总收藏榜</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'size'?}">总字数榜 </a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'toptime'?}">编辑推荐</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'postdate'?}">最新入库</a></li>
+				<li><a href="{?function jieqi_geturl:'article':'toplist':1:'giftnumus'?}">总捧场榜</a></li>
+				
+									</ul>
+							</div>
+						</div>
+					</div>

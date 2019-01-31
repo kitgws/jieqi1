@@ -1,0 +1,52 @@
+{?set jieqi_blocks_module = "system"?}
+{?set jieqi_blocks_config = "userblocks"?}
+{?set $jieqi_pagetitle = "写新消息-{$jieqi_sitename}"?}
+
+{?block bid="0" blockname="站内消息" module="system" filename="block_message_tab" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<script type="text/javascript">
+function frmnewmessage_validate(){
+  if(typeof(document.frmnewmessage.receiver) != "undefined"){
+    if(document.frmnewmessage.receiver.value == "" ){
+      alert("请输入收件人");
+	  document.frmnewmessage.receiver.focus();
+	  return false;
+    }
+  }
+  if(document.frmnewmessage.title.value == ""){
+    alert("请输入标题");
+	window.document.frmnewmessage.title.focus();
+	return false;
+  }
+}
+</script>
+<form name="frmnewmessage" action="{?$jieqi_url?}/newmessage.php?do=submit" method="post" onsubmit="return frmnewmessage_validate();">
+<table width="100%" class="grid" cellspacing="1" align="center" style="min-width:480px;">
+<caption>写新消息</caption>
+<tr valign="middle" align="left">
+  <td class="tdl" width="25%">收件人：</td>
+  <td class="tdr" width="75%">
+  {?if $tosys > 0?}
+  网站管理员<input type="hidden" name="tosys" value="{?$tosys?}" />
+  {?else?}
+  <input type="text" class="text" name="receiver" size="30" value="{?$receiver?}" />
+  {?/if?}
+  </td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">标题：</td>
+  <td class="tdr"><input type="text" class="text" name="title" size="60" value="{?$title?}" /></td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">内容：</td>
+  <td class="tdr"><textarea class="textarea" name="content" rows="12" cols="60">{?$content?}</textarea></td>
+</tr>
+<tr valign="middle" align="left">
+  <td class="tdl">&nbsp;</td>
+  <td class="tdr">
+	<input type="submit" class="button" name="submit" value="发 送" />
+	<input type="hidden" name="act" value="add" />
+	{?$jieqi_token_input?}
+  </td>
+</tr>
+</table>
+</form>

@@ -1,0 +1,5 @@
+<ul class="ullist">
+	{?section name=i loop=$articlerows?}
+	<li>[<a target="_blank" href="{?function jieqi_geturl:'article':'articlelist':1:$articlerows[i].sortid?}"><span>{?$articlerows[i].sort|truncate:8:''?}</span></a>]&nbsp;<a target="_blank" href="{?$articlerows[i].url_articleinfo?}">{?$articlerows[i].articlename|truncate:20:'..'?}</a></li>
+	{?/section?}
+</ul>

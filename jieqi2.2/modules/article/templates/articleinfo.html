@@ -1,0 +1,123 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "infoblocks"?}
+{?set $jieqi_pagetitle = "{$articlename}_{$author}_{$jieqi_sitename}"?}
+{?set $meta_keywords = "{$articlename} {$author} {$sort}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">书籍详情</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock app_deleteMargin">
+<div class="app_listBlock_con3">
+<ul class="app_deletePadding">
+<li class="deleteLine">
+<a href="javascript:void(0)">
+<div class="leftImage"><img src="{?$url_limage?}" /></div>
+<div class="rightBlock">
+<span class="rightBlock_title">{?$articlename?}</span>
+<span class="rightBlock_page2  app_newStyle2" style="padding-top: 0rem">
+<span class="rightBlock_pageLi" style="padding: 0.2rem 0;">作者：{?$author?}</span>
+<span class="rightBlock_pageLi" style="padding: 0.2rem 0;">分类：{?$sort?}</span>
+<span class="rightBlock_pageLi" style="padding: 0.2rem 0;">字数：{?$size_w?}万</span>
+<span class="rightBlock_pageLi" style="padding: 0.2rem 0;">点击：{?$allvisit?}</span>
+{?if $fullflag=="全本"?}
+<span class="rightBlock_success"></span>
+{?else?}
+<span class="rightBlock_success3"></span>
+{?/if?}
+</span>
+</div>
+</a>
+</li>
+</ul>
+</div>
+<div class="app_conButton">
+<ul>
+<li class="active">
+<a href="{?$jieqi_url?}/modules/article/articleread.php?id={?$articleid?}"><span>开始阅读</span></a>
+</li>
+<li>
+<a href="{?$url_bookcase?}"><span>加入收藏</span></a>
+</li>
+<li>
+<a href="{?$jieqi_url?}/modules/article/monthlybuy.php"><span>开通包月</span></a>
+</li>
+</ul>
+</div>
+</div>
+<div class="app_briefIntroduction">
+<div class="app_title tit_icon20">简介</div>
+<div class="app_cons">
+<!-- <span class="lis  line"> -->
+<!-- <i class="h1">小编书评</i> 二级标题的内容</span> -->
+<span class="lis">
+{?$intro|htmlclickable?}...
+</span>
+</div>
+</div>
+<div class="app_hotBlock">
+<div class="app_listBlock_title  tit_icon4">
+<span class="h1">本书状态</span>
+</div>
+<div class="app_hotBlock_lis">
+<a href="#">{?$fullflag?}</a>
+<a href="#">{?$isvip?}作品</a>
+<a href="#">{?$issign?}</a>
+<a href="#">{?$permission?}</a>
+<a href="#">{?$sort?}</a>
+</div>
+</div>
+<div class="app_catalogBlock">
+<div class="app_title tit_icon21">
+<a href="{?$url_read?}"><span class="h1">目录<i>（{?$fullflag?}共{?$size_w?}万字）</i></span></a>
+</div>
+<div class="app_catalogList2">
+<ul>
+<li>
+{?if $isvip_n > 0?}
+<a href="{?$url_vipchapter?}">
+<span class="content">最新章节：{?$vipchapter|truncate:20?}</span>
+<span class="time">{?$viptime|date:'Y-m-d'?}</span>
+{?else?}
+<a href="{?$url_lastchapter?}">
+<span class="content">最新章节：{?$lastchapter|truncate:20?}</span>
+<span class="time">{?$lastupdate|date:'Y-m-d'?}</span>
+{?/if?}
+</a>
+</li>
+</ul>
+</div>
+</div>
+<div class="app_comment">
+<div class="app_title tit_icon22">
+<span class="h1">评论<i>（{?$reviewsnum?}）</i></span>
+<a href="{?$jieqi_modules['article']['url']?}/reviews.php?aid={?$articleid?}&type=all" class="app_edit">撰写评论</a>
+</div>
+<div class="app_comment_list">
+<ul>
+{?block bid="0" blockname="最新书评" module="article" filename="block_areviews" classname="BlockArticleAreviews" side="-1" title="最新书评" vars="5,0,0,id" template="block_areviews.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+</div>
+<div class="app_listBlock ">
+<div class="app_listBlock_title  tit_icon23">
+<span class="h1">大家都在看</span>
+<!-- <a class="change" href="javascript:void (0)" onclick="getChangeBook(1)">换一换</a> -->
+</div>
+<div class="app_listBlock_con">
+<ul id="recombook">
+{?block bid="0" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="0" title="区块" vars="postdate,5,sortid,0,0,0" template="ledu_list.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+</ul>
+</div>
+</div>
+<div class="app_listBlock">
+<div class="app_listBlock_title  tit_icon24">
+<span class="h1">读过本书的人还读过</span>
+</div>
+<div class="app_listBlock_con2">
+<ul>
+{?block bid="0" module="article" filename="block_articlelist" classname="BlockArticleArticlelist" side="0" title="区块" vars="allvisit,3,sortid,0,0,0" template="ledu_hb.html" contenttype="4" custom="0" publish="3" hasvars="1"?}
+</ul>
+</div>
+</div>

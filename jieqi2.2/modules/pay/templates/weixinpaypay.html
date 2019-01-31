@@ -1,0 +1,37 @@
+{?set jieqi_blocks_module = "pay"?}
+{?set jieqi_blocks_config = "payblocks"?}
+<script>
+alert(微信充值);
+</script>
+{?set $jieqi_pagetitle = "微信充值-{$jieqi_sitename}"?}
+
+{?block bid="0" blockname="充值导航" module="pay" filename="block_paylist_tab" classname="BlockSystemCustom" side="-1" title="" vars="" template="" contenttype="4" custom="1" publish="3" hasvars="0"?}
+<form name="frmalipay" method="post" action="{?$jieqi_modules['pay']['url']?}/alipay.php">
+<table class="grid" width="100%" align="center">
+  <caption>微信充值</caption>
+  </div>
+    <a target="_blank" href=""><img src="/imagesd/342x120.png" width="342" height="120"></a>
+	</div>
+  <tr>
+    <td style="font-size:14px;line-height:200%;padding:20px;">
+	<strong>请选择您要的充值金额：</strong><br />
+	<div style="width:100%;clear:both;margin-bottom:10px;">
+	<ul>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="50000" class="price radio"> 500元(50000币)</li>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="30000" class="price radio"> 300元(30000币)</li>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="20000" class="price radio"> 200元(20000币)</li>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="10000" class="price radio"> 100元(10000币)</li>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="5000" class="price radio"> 50元(5000币)</li>
+    <li style="line-height:250%;float:left;width:50%;"><input type="radio" name="egold" value="2000" class="price radio"> 20元(2000币)</li>
+  </ul>
+	<div class="cb"></div>
+	</div>
+	<input type="submit" name="Submit" value="进入下一步" class="button" >
+    <input type="hidden" name="act" value="pay">{?$jieqi_token_input?}
+    </td>
+  </tr>
+</table>
+</form>
+<div class="textbox">
+<strong>说明：</strong><br />微信充值接口，除了支持支微信充值帐户余额支付，还可以在下一步选择网上银行支付及储蓄卡和信用卡快捷支付。<br />
+</div>

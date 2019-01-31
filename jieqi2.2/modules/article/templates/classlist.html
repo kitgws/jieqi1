@@ -1,0 +1,38 @@
+{?set jieqi_blocks_module = "article"?}
+{?set $jieqi_pagetitle = "小说书库-{$jieqi_sitename}"?}
+<div class="container">
+<div class="app_header_section2  app_scrollerHeader  pinned">
+<div class="app_header_detail2">
+<div class="app_header_back"></div>
+<div class="app_header_h1">分类</div>
+</div>
+</div>
+<div class="app_body">
+<div class="app_listBlock app_deleteMargin">
+<div class="app_listBlock_title  tit_icon15">
+<span class="h1">频道列表</span>
+</div>
+<div class="app_categoryList">
+<ul>
+{?section name=i loop=$sortidrows?}
+<li>
+<a href="{?$sortidrows[i]['url']?}">{?$sortidrows[i]['name']?}</a>
+</li>
+{?/section?}
+</ul>
+</div>
+</div>
+<div class="app_listBlock app_deleteMargin">
+<div class="app_listBlock_title  tit_icon14">
+<span class="h1">作品字数</span>
+</div>
+<div class="app_goodBookList">
+<ul>
+{?section name=i loop=$sizerows?}
+<li>
+<a href="{?$sizerows[i]['url']?}" class="color{?$i['order']?}">{?$sizerows[i]['name']?}</a>
+</li>
+{?/section?}
+</ul>
+</div>
+</div>

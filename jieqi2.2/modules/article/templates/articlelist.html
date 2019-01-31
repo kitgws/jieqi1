@@ -1,0 +1,51 @@
+{?set jieqi_blocks_module = "article"?}
+{?set jieqi_blocks_config = "sortblocks"?}
+{?set $jieqi_pagetitle = "{$articletitle}-{$jieqi_sitename}"?}
+{?set jieqi_page_rows = "30"?}
+						<h1 class="page-title">
+							<i class="icon icon-rank"></i>
+							{?if $sort == ''?}全部分类{?else?}{?$sort?}{?/if?}</h1>
+<div data-collect-id="2550" class="mod mod-clean pattern-update-list">
+							<div class="bd">
+								<table>
+										<thead>
+											<tr>
+												<th width="30">排名</th>
+												<th width="50">分类</th>
+												<th>书名/最新章节</th>
+												<th width="60">作者</th>
+												<th width="80">字数</th>
+												<th width="100">更新时间</th>
+											</tr>
+										</thead>
+										<tbody>
+										{?section name=i loop=$articlerows?}
+											<tr{?if $i['order'] % 2 == 0?} class="even"{?/if?}>
+													<td class="index">{?$i['order']?}.</td>
+													<td>
+														<a target="_blank" href="{?function jieqi_geturl:article:articlelist:1:$articlerows[i].sortid?}" class="tag" targe="_blank">{?$articlerows[i].sort|truncate:4:''?}</a>
+													</td>
+													<td>
+														<div class="range">
+															<a data-collect-index="{?$i['order']?}" target="_blank" href="{?$articlerows[i].url_articleinfo?}" targe="_blank" class="name">{?$articlerows[i].articlename?}</a>
+															{?if $articlerows[i].vipchapterid > 0?}<a href="{?$articlerows[i].url_vipchapter?}"  class="chapter">{?$articlerows[i].vipvolume?} {?$articlerows[i].vipchapter?}</a>{?else?}<a href="{?$articlerows[i].url_lastchapter?}"  class="chapter">{?$articlerows[i].lastvolume?} {?$articlerows[i].lastchapter?}</a>{?/if?}
+														</div>
+													</td>
+													<td>
+														<div class="range">
+															<a target="_blank" href="{?$jieqi_modules['article']['url']?}/authorpage.php?id={?$articlerows[i].authorid?}" targe="_blank" class="author">{?$articlerows[i].author?}</a>
+														</div>
+													</td>
+													<td>
+														<div>{?$articlerows[i].size_k?}K</div>
+													</td>
+													<td>
+														<span class="time">{?$articlerows[i].lastupdate|date:'Y-m-d'?}</span>
+													</td>
+												</tr>
+                                               {?/section?}
+											</tbody>
+									</table>
+								</div>
+						</div>
+<div class="pages">{?$url_jumppage?}</div>
